@@ -1,0 +1,686 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0341C08F1A5557900011A6D7 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C08E1A5557900011A6D7 /* KeyboardViewController.swift */; };
+		0341C0921A5557900011A6D7 /* MalayalamKB.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0341C08A1A5557900011A6D7 /* MalayalamKB.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0341C0E11A5558290011A6D7 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0C91A5558290011A6D7 /* DefaultKeyboard.swift */; };
+		0341C0E21A5558290011A6D7 /* DefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0CA1A5558290011A6D7 /* DefaultSettings.swift */; };
+		0341C0E31A5558290011A6D7 /* DefaultSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0CB1A5558290011A6D7 /* DefaultSettings.xib */; };
+		0341C0E41A5558290011A6D7 /* DirectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0CC1A5558290011A6D7 /* DirectionEnum.swift */; };
+		0341C0E51A5558290011A6D7 /* ExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0CD1A5558290011A6D7 /* ExtraView.swift */; };
+		0341C0E61A5558290011A6D7 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0CE1A5558290011A6D7 /* ForwardingView.swift */; };
+		0341C0E71A5558290011A6D7 /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0CF1A5558290011A6D7 /* ImageKey.swift */; };
+		0341C0F01A5558290011A6D7 /* KeyboardConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0D91A5558290011A6D7 /* KeyboardConnector.swift */; };
+		0341C0F11A5558290011A6D7 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0DA1A5558290011A6D7 /* KeyboardInputTraits.swift */; };
+		0341C0F21A5558290011A6D7 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0DB1A5558290011A6D7 /* KeyboardKey.swift */; };
+		0341C0F31A5558290011A6D7 /* KeyboardKeyBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0DC1A5558290011A6D7 /* KeyboardKeyBackground.swift */; };
+		0341C0F41A5558290011A6D7 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0DD1A5558290011A6D7 /* KeyboardLayout.swift */; };
+		0341C0F51A5558290011A6D7 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0DE1A5558290011A6D7 /* KeyboardModel.swift */; };
+		0341C0F61A5558290011A6D7 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0DF1A5558290011A6D7 /* Shapes.swift */; };
+		0341C0F71A5558290011A6D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341C0E01A5558290011A6D7 /* Utilities.swift */; };
+		0341C1011A5558AB0011A6D7 /* dismisskb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0F91A5558AB0011A6D7 /* dismisskb.png */; };
+		0341C1021A5558AB0011A6D7 /* dismisskbwh.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0FA1A5558AB0011A6D7 /* dismisskbwh.png */; };
+		0341C1031A5558AB0011A6D7 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0FB1A5558AB0011A6D7 /* gear.png */; };
+		0341C1041A5558AB0011A6D7 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0FC1A5558AB0011A6D7 /* gear@2x.png */; };
+		0341C1051A5558AB0011A6D7 /* gear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0FD1A5558AB0011A6D7 /* gear@3x.png */; };
+		0341C1061A5558AB0011A6D7 /* gearwh.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0FE1A5558AB0011A6D7 /* gearwh.png */; };
+		0341C1071A5558AB0011A6D7 /* gearwh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C0FF1A5558AB0011A6D7 /* gearwh@2x.png */; };
+		0341C1081A5558AB0011A6D7 /* gearwh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0341C1001A5558AB0011A6D7 /* gearwh@3x.png */; };
+		0341C10A1A555E940011A6D7 /* installation.html in Resources */ = {isa = PBXBuildFile; fileRef = 0341C1091A555E940011A6D7 /* installation.html */; };
+		035CC32D1A51AE9B00A66713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CC32C1A51AE9B00A66713 /* AppDelegate.swift */; };
+		035CC32F1A51AE9B00A66713 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CC32E1A51AE9B00A66713 /* MasterViewController.swift */; };
+		035CC3311A51AE9B00A66713 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CC3301A51AE9B00A66713 /* DetailViewController.swift */; };
+		035CC3341A51AE9B00A66713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3321A51AE9B00A66713 /* Main.storyboard */; };
+		035CC3361A51AE9B00A66713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3351A51AE9B00A66713 /* Images.xcassets */; };
+		035CC3391A51AE9B00A66713 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3371A51AE9B00A66713 /* LaunchScreen.xib */; };
+		035CC3451A51AE9B00A66713 /* MalayalamEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CC3441A51AE9B00A66713 /* MalayalamEditorTests.swift */; };
+		035CC34F1A51B02800A66713 /* info.html in Resources */ = {isa = PBXBuildFile; fileRef = 035CC34E1A51B02700A66713 /* info.html */; };
+		035CC3511A51B04A00A66713 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3501A51B04A00A66713 /* help.html */; };
+		035CC3551A51B13C00A66713 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3531A51B13C00A66713 /* settings.png */; };
+		035CC3561A51B13C00A66713 /* settingsadd.png in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3541A51B13C00A66713 /* settingsadd.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0341C0901A5557900011A6D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 035CC31F1A51AE9A00A66713 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0341C0891A5557900011A6D7;
+			remoteInfo = MalayalamKB;
+		};
+		035CC33F1A51AE9B00A66713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 035CC31F1A51AE9A00A66713 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 035CC3261A51AE9B00A66713;
+			remoteInfo = MalayalamEditor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0341C0561A554F690011A6D7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0341C0921A5557900011A6D7 /* MalayalamKB.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0341C08A1A5557900011A6D7 /* MalayalamKB.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MalayalamKB.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0341C08D1A5557900011A6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0341C08E1A5557900011A6D7 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		0341C0C91A5558290011A6D7 /* DefaultKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
+		0341C0CA1A5558290011A6D7 /* DefaultSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSettings.swift; sourceTree = "<group>"; };
+		0341C0CB1A5558290011A6D7 /* DefaultSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultSettings.xib; sourceTree = "<group>"; };
+		0341C0CC1A5558290011A6D7 /* DirectionEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionEnum.swift; sourceTree = "<group>"; };
+		0341C0CD1A5558290011A6D7 /* ExtraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraView.swift; sourceTree = "<group>"; };
+		0341C0CE1A5558290011A6D7 /* ForwardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardingView.swift; sourceTree = "<group>"; };
+		0341C0CF1A5558290011A6D7 /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
+		0341C0D91A5558290011A6D7 /* KeyboardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConnector.swift; sourceTree = "<group>"; };
+		0341C0DA1A5558290011A6D7 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
+		0341C0DB1A5558290011A6D7 /* KeyboardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
+		0341C0DC1A5558290011A6D7 /* KeyboardKeyBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKeyBackground.swift; sourceTree = "<group>"; };
+		0341C0DD1A5558290011A6D7 /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
+		0341C0DE1A5558290011A6D7 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		0341C0DF1A5558290011A6D7 /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		0341C0E01A5558290011A6D7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		0341C0F91A5558AB0011A6D7 /* dismisskb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismisskb.png; sourceTree = "<group>"; };
+		0341C0FA1A5558AB0011A6D7 /* dismisskbwh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismisskbwh.png; sourceTree = "<group>"; };
+		0341C0FB1A5558AB0011A6D7 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		0341C0FC1A5558AB0011A6D7 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		0341C0FD1A5558AB0011A6D7 /* gear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@3x.png"; sourceTree = "<group>"; };
+		0341C0FE1A5558AB0011A6D7 /* gearwh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gearwh.png; sourceTree = "<group>"; };
+		0341C0FF1A5558AB0011A6D7 /* gearwh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gearwh@2x.png"; sourceTree = "<group>"; };
+		0341C1001A5558AB0011A6D7 /* gearwh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gearwh@3x.png"; sourceTree = "<group>"; };
+		0341C1091A555E940011A6D7 /* installation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = installation.html; sourceTree = "<group>"; };
+		035CC3271A51AE9B00A66713 /* MalayalamEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MalayalamEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		035CC32B1A51AE9B00A66713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		035CC32C1A51AE9B00A66713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		035CC32E1A51AE9B00A66713 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		035CC3301A51AE9B00A66713 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		035CC3331A51AE9B00A66713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		035CC3351A51AE9B00A66713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		035CC3381A51AE9B00A66713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		035CC33E1A51AE9B00A66713 /* MalayalamEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MalayalamEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		035CC3431A51AE9B00A66713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		035CC3441A51AE9B00A66713 /* MalayalamEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MalayalamEditorTests.swift; sourceTree = "<group>"; };
+		035CC34E1A51B02700A66713 /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info.html; sourceTree = "<group>"; };
+		035CC3501A51B04A00A66713 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+		035CC3531A51B13C00A66713 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		035CC3541A51B13C00A66713 /* settingsadd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsadd.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0341C0871A5557900011A6D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035CC3241A51AE9B00A66713 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035CC33B1A51AE9B00A66713 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0341C08B1A5557900011A6D7 /* MalayalamKB */ = {
+			isa = PBXGroup;
+			children = (
+				0341C0F81A5558AB0011A6D7 /* images */,
+				0341C0C91A5558290011A6D7 /* DefaultKeyboard.swift */,
+				0341C0CA1A5558290011A6D7 /* DefaultSettings.swift */,
+				0341C0CB1A5558290011A6D7 /* DefaultSettings.xib */,
+				0341C0CC1A5558290011A6D7 /* DirectionEnum.swift */,
+				0341C0CD1A5558290011A6D7 /* ExtraView.swift */,
+				0341C0CE1A5558290011A6D7 /* ForwardingView.swift */,
+				0341C0CF1A5558290011A6D7 /* ImageKey.swift */,
+				0341C0D91A5558290011A6D7 /* KeyboardConnector.swift */,
+				0341C0DA1A5558290011A6D7 /* KeyboardInputTraits.swift */,
+				0341C0DB1A5558290011A6D7 /* KeyboardKey.swift */,
+				0341C0DC1A5558290011A6D7 /* KeyboardKeyBackground.swift */,
+				0341C0DD1A5558290011A6D7 /* KeyboardLayout.swift */,
+				0341C0DE1A5558290011A6D7 /* KeyboardModel.swift */,
+				0341C0DF1A5558290011A6D7 /* Shapes.swift */,
+				0341C0E01A5558290011A6D7 /* Utilities.swift */,
+				0341C08E1A5557900011A6D7 /* KeyboardViewController.swift */,
+				0341C08C1A5557900011A6D7 /* Supporting Files */,
+			);
+			path = MalayalamKB;
+			sourceTree = "<group>";
+		};
+		0341C08C1A5557900011A6D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0341C08D1A5557900011A6D7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0341C0F81A5558AB0011A6D7 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0341C0F91A5558AB0011A6D7 /* dismisskb.png */,
+				0341C0FA1A5558AB0011A6D7 /* dismisskbwh.png */,
+				0341C0FB1A5558AB0011A6D7 /* gear.png */,
+				0341C0FC1A5558AB0011A6D7 /* gear@2x.png */,
+				0341C0FD1A5558AB0011A6D7 /* gear@3x.png */,
+				0341C0FE1A5558AB0011A6D7 /* gearwh.png */,
+				0341C0FF1A5558AB0011A6D7 /* gearwh@2x.png */,
+				0341C1001A5558AB0011A6D7 /* gearwh@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		035CC31E1A51AE9A00A66713 = {
+			isa = PBXGroup;
+			children = (
+				035CC3291A51AE9B00A66713 /* MalayalamEditor */,
+				035CC3411A51AE9B00A66713 /* MalayalamEditorTests */,
+				0341C08B1A5557900011A6D7 /* MalayalamKB */,
+				035CC3281A51AE9B00A66713 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		035CC3281A51AE9B00A66713 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				035CC3271A51AE9B00A66713 /* MalayalamEditor.app */,
+				035CC33E1A51AE9B00A66713 /* MalayalamEditorTests.xctest */,
+				0341C08A1A5557900011A6D7 /* MalayalamKB.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		035CC3291A51AE9B00A66713 /* MalayalamEditor */ = {
+			isa = PBXGroup;
+			children = (
+				035CC32C1A51AE9B00A66713 /* AppDelegate.swift */,
+				035CC32E1A51AE9B00A66713 /* MasterViewController.swift */,
+				035CC3301A51AE9B00A66713 /* DetailViewController.swift */,
+				035CC3321A51AE9B00A66713 /* Main.storyboard */,
+				035CC3351A51AE9B00A66713 /* Images.xcassets */,
+				035CC3371A51AE9B00A66713 /* LaunchScreen.xib */,
+				035CC32A1A51AE9B00A66713 /* Supporting Files */,
+			);
+			path = MalayalamEditor;
+			sourceTree = "<group>";
+		};
+		035CC32A1A51AE9B00A66713 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0341C1091A555E940011A6D7 /* installation.html */,
+				035CC3521A51B13C00A66713 /* images */,
+				035CC3501A51B04A00A66713 /* help.html */,
+				035CC34E1A51B02700A66713 /* info.html */,
+				035CC32B1A51AE9B00A66713 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		035CC3411A51AE9B00A66713 /* MalayalamEditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				035CC3441A51AE9B00A66713 /* MalayalamEditorTests.swift */,
+				035CC3421A51AE9B00A66713 /* Supporting Files */,
+			);
+			path = MalayalamEditorTests;
+			sourceTree = "<group>";
+		};
+		035CC3421A51AE9B00A66713 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				035CC3431A51AE9B00A66713 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		035CC3521A51B13C00A66713 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				035CC3531A51B13C00A66713 /* settings.png */,
+				035CC3541A51B13C00A66713 /* settingsadd.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0341C0891A5557900011A6D7 /* MalayalamKB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0341C0931A5557900011A6D7 /* Build configuration list for PBXNativeTarget "MalayalamKB" */;
+			buildPhases = (
+				0341C0861A5557900011A6D7 /* Sources */,
+				0341C0871A5557900011A6D7 /* Frameworks */,
+				0341C0881A5557900011A6D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MalayalamKB;
+			productName = MalayalamKB;
+			productReference = 0341C08A1A5557900011A6D7 /* MalayalamKB.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		035CC3261A51AE9B00A66713 /* MalayalamEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035CC3481A51AE9B00A66713 /* Build configuration list for PBXNativeTarget "MalayalamEditor" */;
+			buildPhases = (
+				035CC3231A51AE9B00A66713 /* Sources */,
+				035CC3241A51AE9B00A66713 /* Frameworks */,
+				035CC3251A51AE9B00A66713 /* Resources */,
+				0341C0561A554F690011A6D7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0341C0911A5557900011A6D7 /* PBXTargetDependency */,
+			);
+			name = MalayalamEditor;
+			productName = MalayalamEditor;
+			productReference = 035CC3271A51AE9B00A66713 /* MalayalamEditor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		035CC33D1A51AE9B00A66713 /* MalayalamEditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035CC34B1A51AE9B00A66713 /* Build configuration list for PBXNativeTarget "MalayalamEditorTests" */;
+			buildPhases = (
+				035CC33A1A51AE9B00A66713 /* Sources */,
+				035CC33B1A51AE9B00A66713 /* Frameworks */,
+				035CC33C1A51AE9B00A66713 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				035CC3401A51AE9B00A66713 /* PBXTargetDependency */,
+			);
+			name = MalayalamEditorTests;
+			productName = MalayalamEditorTests;
+			productReference = 035CC33E1A51AE9B00A66713 /* MalayalamEditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		035CC31F1A51AE9A00A66713 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = jeesmon;
+				TargetAttributes = {
+					0341C0891A5557900011A6D7 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					035CC3261A51AE9B00A66713 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					035CC33D1A51AE9B00A66713 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 035CC3261A51AE9B00A66713;
+					};
+				};
+			};
+			buildConfigurationList = 035CC3221A51AE9A00A66713 /* Build configuration list for PBXProject "MalayalamEditor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 035CC31E1A51AE9A00A66713;
+			productRefGroup = 035CC3281A51AE9B00A66713 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				035CC3261A51AE9B00A66713 /* MalayalamEditor */,
+				035CC33D1A51AE9B00A66713 /* MalayalamEditorTests */,
+				0341C0891A5557900011A6D7 /* MalayalamKB */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0341C0881A5557900011A6D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0341C1071A5558AB0011A6D7 /* gearwh@2x.png in Resources */,
+				0341C1081A5558AB0011A6D7 /* gearwh@3x.png in Resources */,
+				0341C1061A5558AB0011A6D7 /* gearwh.png in Resources */,
+				0341C0E31A5558290011A6D7 /* DefaultSettings.xib in Resources */,
+				0341C1011A5558AB0011A6D7 /* dismisskb.png in Resources */,
+				0341C1031A5558AB0011A6D7 /* gear.png in Resources */,
+				0341C1041A5558AB0011A6D7 /* gear@2x.png in Resources */,
+				0341C1051A5558AB0011A6D7 /* gear@3x.png in Resources */,
+				0341C1021A5558AB0011A6D7 /* dismisskbwh.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035CC3251A51AE9B00A66713 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035CC3551A51B13C00A66713 /* settings.png in Resources */,
+				035CC34F1A51B02800A66713 /* info.html in Resources */,
+				035CC3561A51B13C00A66713 /* settingsadd.png in Resources */,
+				035CC3511A51B04A00A66713 /* help.html in Resources */,
+				035CC3341A51AE9B00A66713 /* Main.storyboard in Resources */,
+				035CC3391A51AE9B00A66713 /* LaunchScreen.xib in Resources */,
+				0341C10A1A555E940011A6D7 /* installation.html in Resources */,
+				035CC3361A51AE9B00A66713 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035CC33C1A51AE9B00A66713 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0341C0861A5557900011A6D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0341C0F41A5558290011A6D7 /* KeyboardLayout.swift in Sources */,
+				0341C0F31A5558290011A6D7 /* KeyboardKeyBackground.swift in Sources */,
+				0341C0F51A5558290011A6D7 /* KeyboardModel.swift in Sources */,
+				0341C0E61A5558290011A6D7 /* ForwardingView.swift in Sources */,
+				0341C0F01A5558290011A6D7 /* KeyboardConnector.swift in Sources */,
+				0341C08F1A5557900011A6D7 /* KeyboardViewController.swift in Sources */,
+				0341C0E41A5558290011A6D7 /* DirectionEnum.swift in Sources */,
+				0341C0E71A5558290011A6D7 /* ImageKey.swift in Sources */,
+				0341C0F71A5558290011A6D7 /* Utilities.swift in Sources */,
+				0341C0F61A5558290011A6D7 /* Shapes.swift in Sources */,
+				0341C0E11A5558290011A6D7 /* DefaultKeyboard.swift in Sources */,
+				0341C0E21A5558290011A6D7 /* DefaultSettings.swift in Sources */,
+				0341C0F11A5558290011A6D7 /* KeyboardInputTraits.swift in Sources */,
+				0341C0E51A5558290011A6D7 /* ExtraView.swift in Sources */,
+				0341C0F21A5558290011A6D7 /* KeyboardKey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035CC3231A51AE9B00A66713 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035CC3311A51AE9B00A66713 /* DetailViewController.swift in Sources */,
+				035CC32F1A51AE9B00A66713 /* MasterViewController.swift in Sources */,
+				035CC32D1A51AE9B00A66713 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035CC33A1A51AE9B00A66713 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035CC3451A51AE9B00A66713 /* MalayalamEditorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0341C0911A5557900011A6D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0341C0891A5557900011A6D7 /* MalayalamKB */;
+			targetProxy = 0341C0901A5557900011A6D7 /* PBXContainerItemProxy */;
+		};
+		035CC3401A51AE9B00A66713 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 035CC3261A51AE9B00A66713 /* MalayalamEditor */;
+			targetProxy = 035CC33F1A51AE9B00A66713 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		035CC3321A51AE9B00A66713 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				035CC3331A51AE9B00A66713 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		035CC3371A51AE9B00A66713 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				035CC3381A51AE9B00A66713 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0341C0941A5557900011A6D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MalayalamKB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0341C0951A5557900011A6D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MalayalamKB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		035CC3461A51AE9B00A66713 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		035CC3471A51AE9B00A66713 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		035CC3491A51AE9B00A66713 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = MalayalamEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		035CC34A1A51AE9B00A66713 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = MalayalamEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		035CC34C1A51AE9B00A66713 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MalayalamEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MalayalamEditor.app/MalayalamEditor";
+			};
+			name = Debug;
+		};
+		035CC34D1A51AE9B00A66713 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MalayalamEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MalayalamEditor.app/MalayalamEditor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0341C0931A5557900011A6D7 /* Build configuration list for PBXNativeTarget "MalayalamKB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0341C0941A5557900011A6D7 /* Debug */,
+				0341C0951A5557900011A6D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035CC3221A51AE9A00A66713 /* Build configuration list for PBXProject "MalayalamEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035CC3461A51AE9B00A66713 /* Debug */,
+				035CC3471A51AE9B00A66713 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035CC3481A51AE9B00A66713 /* Build configuration list for PBXNativeTarget "MalayalamEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035CC3491A51AE9B00A66713 /* Debug */,
+				035CC34A1A51AE9B00A66713 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035CC34B1A51AE9B00A66713 /* Build configuration list for PBXNativeTarget "MalayalamEditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035CC34C1A51AE9B00A66713 /* Debug */,
+				035CC34D1A51AE9B00A66713 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 035CC31F1A51AE9A00A66713 /* Project object */;
+}
