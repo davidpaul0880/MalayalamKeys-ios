@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>45711A2F-973B-4DBA-80C8-2BC6B191D218</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MalayalamEditor</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FCBBF9E31970AF4BB58BC4A2543B0B4F041F1468</key>
+		<string>https://github.com/davidpaul0880/MalayalamKeys-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MalayalamEditor.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FCBBF9E31970AF4BB58BC4A2543B0B4F041F1468</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/davidpaul0880/MalayalamKeys-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FCBBF9E31970AF4BB58BC4A2543B0B4F041F1468</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FCBBF9E31970AF4BB58BC4A2543B0B4F041F1468</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MalayalamKeys-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
