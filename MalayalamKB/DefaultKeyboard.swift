@@ -8,9 +8,12 @@
 import UIKit
 
 func defaultKeyboard() -> Keyboard {
+    
+    
+    
     var defaultKeyboard = Keyboard()
     
-    for key in ["ൗ", "ൈ", "ാ‍", "ീ", "ൂ", "ബ‌", "ങ", "ഗ", "ദ", "ജ", "ഡ"] {
+    for key in ["ൗ", "ൈ", "ാ‍", "ീ", "ൂ", "ബ", "ങ", "ഗ", "ദ", "ജ", "ഡ"] {
         var keyModel = Key(.Character)
         switch key {
         case "ൗ":
@@ -35,9 +38,9 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ഊ"
             keyModel.lowercaseOutput = key
        
-        case "ബ‌":
-            keyModel.uppercaseKeyCap = "ഭ‌\n\(key)"
-            keyModel.uppercaseOutput = "ഭ‌"
+        case "ബ":
+            keyModel.uppercaseKeyCap = "ഭ\n\(key)"
+            keyModel.uppercaseOutput = "ഭ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             
@@ -46,6 +49,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ഹ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.primaryValue = 9
         
         case "ഗ":
             keyModel.uppercaseKeyCap = "ഘ\n\(key)"
@@ -112,6 +116,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ഫ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.secondaryValue = 5
         case "റ":
             keyModel.uppercaseKeyCap = "ര\n\(key)"
             keyModel.uppercaseOutput = "ര"
@@ -122,23 +127,27 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ഖ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.secondaryValue = 1
         case "ത":
             keyModel.uppercaseKeyCap = "ഥ\n\(key)"
             keyModel.uppercaseOutput = "ഥ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.secondaryValue = 4
             
         case "ച":
             keyModel.uppercaseKeyCap = "ഛ\n\(key)"
             keyModel.uppercaseOutput = "ഛ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.secondaryValue = 2
             
         case "ട":
             keyModel.uppercaseKeyCap = "ഠ\n\(key)"
             keyModel.uppercaseOutput = "ഠ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.secondaryValue = 3
             
         default:
             
@@ -177,17 +186,19 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ം"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.primaryValue = 5
         case "ണ":
             keyModel.uppercaseKeyCap = "ൺ\n\(key)"
             keyModel.uppercaseOutput = "ൺ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.primaryValue = 7
         case "ന":
             keyModel.uppercaseKeyCap = "ൻ\n\(key)"
             keyModel.uppercaseOutput = "ൻ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
-            
+            keyModel.primaryValue = 6
         case "വ":
             keyModel.uppercaseKeyCap = "ഴ\n\(key)"
             keyModel.uppercaseOutput = "ഴ"
@@ -280,6 +291,7 @@ func defaultKeyboard() -> Keyboard {
     keyModelrr.uppercaseOutput = "ർ"
     keyModelrr.lowercaseOutput = rr
     keyModelrr.isDoubleTappable = true
+    keyModelrr.primaryValue = 8
     defaultKeyboard.addKey(keyModelrr, row: 3, page: 0)
     
     
@@ -300,13 +312,14 @@ func defaultKeyboard() -> Keyboard {
         defaultKeyboard.addKey(dismiss, row: 3, page: 0)
     }else{
         //m+20150107
-        var m2 = Key(.SpecialCharacter)
+        /*var m2 = Key(.SpecialCharacter)
         m2.uppercaseKeyCap = ".\n,"
         m2.uppercaseOutput = "."
         m2.lowercaseOutput = ","
         defaultKeyboard.addKey(m2, row: 3, page: 0)
-        
+        */
         defaultKeyboard.addKey(Key(returnKey), row: 3, page: 0)
+
     }
     
     

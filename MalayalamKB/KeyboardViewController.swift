@@ -71,6 +71,8 @@ class KeyboardViewController: UIInputViewController {
     //m+20150101
     var chandrakkaladoubletapped: Bool = false
     var lastchar: String = ""
+    var lastKey: Key?
+    var lasttime: Double = 0
     
     enum ShiftState {
         case Disabled
@@ -625,6 +627,9 @@ class KeyboardViewController: UIInputViewController {
     func shiftDown(sender: KeyboardKey) {
         //+20141229self.playKeySound()
         
+        //m+20150108
+        lastKey = nil
+        
         if self.shiftWasMultitapped {
             self.shiftWasMultitapped = false
             return
@@ -653,8 +658,8 @@ class KeyboardViewController: UIInputViewController {
                     let k = key.outputForCase(self.shiftState.uppercase())
                     if k == lastchar {
                         
-                        proxy.insertText("്‌")
-                        proxy.deleteBackward()
+                        proxy.insertText("്")
+                        //proxy.deleteBackward()
                     }
                     
                     
@@ -920,6 +925,17 @@ class KeyboardViewController: UIInputViewController {
             let keyOutput = key.outputForCase(self.shiftState.uppercase())
             
             //m+20150101
+            //key.
+            var nowtime = CACurrentMediaTime()
+            if lastKey != nil && lasttime > 0 && nowtime - lasttime < 0.4  {
+                if lastKey!.primaryValue + key.secondaryValue == 10 {
+                    proxy.insertText("്")
+                    
+                }
+            }
+            lastKey = key
+            lasttime = nowtime
+            
             proxy.insertText(keyOutput)
             if keyOutput == "്‌" && !chandrakkaladoubletapped{
                 proxy.deleteBackward()

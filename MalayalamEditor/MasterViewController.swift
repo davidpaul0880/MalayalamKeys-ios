@@ -116,11 +116,11 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         let viewBg: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 100))
-        viewBg.backgroundColor = UIColor(red: 250/255, green: 150/255, blue: 10/255, alpha: 1)
+        viewBg.backgroundColor = UIColor(red: 255/255, green: 160/255, blue: 25/255, alpha: 1)
         cell.selectedBackgroundView = viewBg
         
         let object = objects[indexPath.row] as String
-        cell.textLabel!.textColor = UIColor(red: 250/255, green: 150/255, blue: 10/255, alpha: 1) 
+        cell.textLabel!.textColor = UIColor(red: 255/255, green: 160/255, blue: 25/255, alpha: 1)
         cell.textLabel!.textAlignment = NSTextAlignment.Center
         cell.textLabel!.text = object
         

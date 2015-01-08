@@ -69,6 +69,8 @@ class Key: Hashable {
     var lowercaseOutput: String?
     var toMode: Int? //if the key is a mode button, this indicates which page it links to
     var isDoubleTappable: Bool //m+20150101
+    var primaryValue: Int8 //+20150108
+    var secondaryValue: Int8
     
     var isCharacter: Bool {
         get {
@@ -117,8 +119,11 @@ class Key: Hashable {
     var hashValue: Int
     
     init(_ type: KeyType) {
+        //+m+20150101
+        self.isDoubleTappable = false
+        self.primaryValue = 0
+        self.secondaryValue = 0
         
-        self.isDoubleTappable = false //+m+20150101
         self.type = type
         self.hashValue = counter
         counter += 1

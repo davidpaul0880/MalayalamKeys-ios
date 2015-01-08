@@ -930,14 +930,24 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
         
         let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
         var returnwidth: CGFloat = rightButtonWidth
-        if !isPad && !isLandscape && row.count == 9 {
+        var width123adjust: CGFloat = 0
+        
+        if !isPad && !isLandscape && row.count == 8 {
             
-            returnwidth +=  ( gapWidth / 2 )
-            /*var newwidth: CGFloat = rightButtonWidth * micButtonRatio
             
-            returnwidth += (rightButtonWidth - newwidth) * 2
+            var newwidth: CGFloat = rightButtonWidth * micButtonRatio
+            
+            returnwidth += ( (rightButtonWidth - newwidth) * 2 )
             returnwidth +=  ( gapWidth / 2 )
-            rightButtonWidth = newwidth*/
+            rightButtonWidth = newwidth
+            
+            
+            
+            width123adjust = returnwidth
+            returnwidth = returnwidth * micButtonRatio
+            width123adjust = width123adjust - returnwidth
+            
+            
         }
         
         var spaceWidth = frame.width - leftSideAreaWidth - rightSideAreaWidth - ( gapWidth * CGFloat(2) ) + adjustformic //m+20150105
@@ -953,7 +963,12 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
                     beforeSpace = false
                 }
                 else if beforeSpace {
-                    if hasButtonInMicButtonPosition && k == 2 { //mic button position
+                    if k == 0 {
+                        
+                        view.frame = CGRectMake(rounded(currentOrigin), frame.origin.y, leftButtonWidth + width123adjust, frame.height)
+                        currentOrigin += (leftButtonWidth + width123adjust + gapWidth)
+                        
+                    }else if hasButtonInMicButtonPosition && k == 2 { //mic button position
                         view.frame = CGRectMake(rounded(currentOrigin), frame.origin.y, micButtonWidth, frame.height)
                         currentOrigin += (micButtonWidth + gapWidth)
                     }
