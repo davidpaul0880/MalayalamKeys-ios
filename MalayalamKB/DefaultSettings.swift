@@ -54,9 +54,9 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
         get {
             return [
                 //kAutoCapitalization: "Auto-Capitalization",
-                kPeriodShortcut:  "“.” Shortcut, when two taps on space",
+                kPeriodShortcut:  "“.” Shortcut",
                 kKoottaksharamShortcut: "ങ്ക,ഞ്ച,ണ്ട,ന്ത,മ്പ Shortcut", //m+20150109
-                kCapitalizeSwarangal: "AutoCapitalize സ്വരങ്ങൾ after space.",
+                kCapitalizeSwarangal: "AutoCapitalize സ്വരങ്ങൾ",
                 kKeyboardClicks: "Keyboard Clicks",
                 kDisablePopupKeys: "Remove Top Banner"//+20141231
                 
@@ -66,6 +66,7 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
     var settingsNotes: [String: String] {
         get {
             return [
+                kPeriodShortcut: "Double tapping the spacebar will insert a period follwed by a space",
                 kKeyboardClicks: "Please note that keyboard clicks will work only if “Allow Full Access” is enabled in the keyboard settings. Unfortunately, this is a limitation of the operating system.",
                 kDisablePopupKeys: "This will remove top banner of the keyboard and also will disable the popup which when we tap on keys. You need to switch keyboard by tapping globe icon to see the change."
             ]

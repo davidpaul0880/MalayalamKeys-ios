@@ -420,7 +420,14 @@ class KeyboardViewController: UIInputViewController {
         //m+20150101
         if let key = self.layout?.keyForView(sender) {
             
-            let k = key.outputForCase(self.shiftState.uppercase())
+            var scase: Bool = self.shiftState.uppercase()
+            if key.isSwaram {
+                
+                scase = self.shouldAutoCapitalizeSwaram()
+                
+            }
+            
+            let k = key.outputForCase(scase)
             sender.showPopup(k)
         }
     }
@@ -848,72 +855,27 @@ class KeyboardViewController: UIInputViewController {
         }
         return true
     }
-    
-    func shouldAutoCapitalize() -> Bool {
-        /*if !NSUserDefaults.standardUserDefaults().boolForKey(kAutoCapitalization) {
-            return false
-        }*/
-        return false;//+20141218
-        /*if let traits = self.textDocumentProxy as? UITextInputTraits {
-            if let autocapitalization = traits.autocapitalizationType {
-                var documentProxy = self.textDocumentProxy as? UITextDocumentProxy
-                var beforeContext = documentProxy?.documentContextBeforeInput
-                
-                switch autocapitalization {
-                case .None:
-                    return false
-                case .Words:
-                    if let beforeContext = documentProxy?.documentContextBeforeInput {
-                        let previousCharacter = beforeContext[beforeContext.endIndex.predecessor()]
-                        return self.characterIsWhitespace(previousCharacter)
-                    }
-                    else {
-                        return true
-                    }
-                
-                case .Sentences:
-                    if let beforeContext = documentProxy?.documentContextBeforeInput {
-                        let offset = min(3, countElements(beforeContext))
-                        var index = beforeContext.endIndex
-                        
-                        for (var i = 0; i < offset; i += 1) {
-                            index = index.predecessor()
-                            let char = beforeContext[index]
-                            
-                            if characterIsPunctuation(char) {
-                                if i == 0 {
-                                    return false //not enough spaces after punctuation
-                                }
-                                else {
-                                    return true //punctuation with at least one space after it
-                                }
-                            }
-                            else {
-                                if !characterIsWhitespace(char) {
-                                    return false //hit a foreign character before getting to 3 spaces
-                                }
-                                else if characterIsNewline(char) {
-                                    return true //hit start of line
-                                }
-                            }
-                        }
-                        
-                        return true //either got 3 spaces or hit start of line
-                    }
-                    else {
-                        return true
-                    }
-                case .AllCharacters:
-                    return true
-                }
-            }
-            else {
-                return false
-            }
+    //m+20150109
+    func shouldAutoCapitalizeSwaram() -> Bool {
+        
+     
+        var documentProxy = self.textDocumentProxy as? UITextDocumentProxy
+        var beforeContext = documentProxy?.documentContextBeforeInput
+        
+        if let beforeContext = documentProxy?.documentContextBeforeInput {
+            let previousCharacter = beforeContext[beforeContext.endIndex.predecessor()]
+            return self.characterIsWhitespace(previousCharacter)
         }
         else {
-            return false
-        }*/
+            return true
+        }
+        
+    }
+
+    func shouldAutoCapitalize() -> Bool {
+        
+        return false
+        
     }
     
     // this only works if full access is enabled
@@ -943,7 +905,7 @@ class KeyboardViewController: UIInputViewController {
             
             if key.isSwaram {
                 
-                if NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) {
+                /*if NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) {
                     let previousContext = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
                     
                     if previousContext != nil  {
@@ -954,9 +916,11 @@ class KeyboardViewController: UIInputViewController {
                         if previousContext![index] == " " {
                             scase = true
                         }
+                    }else{
+                        scase = true
                     }
-                }
-                
+                }*/
+                scase = self.shouldAutoCapitalizeSwaram()
                 
             }
             
