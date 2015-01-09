@@ -56,7 +56,7 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
                 //kAutoCapitalization: "Auto-Capitalization",
                 kPeriodShortcut:  "“.” Shortcut, when two taps on space",
                 kKoottaksharamShortcut: "ങ്ക,ഞ്ച,ണ്ട,ന്ത,മ്പ Shortcut", //m+20150109
-                kCapitalizeSwarangal: "AutoCapitalize the keys of സ്വരങ്ങൾ after a space.",
+                kCapitalizeSwarangal: "AutoCapitalize സ്വരങ്ങൾ after space.",
                 kKeyboardClicks: "Keyboard Clicks",
                 kDisablePopupKeys: "Remove Top Banner"//+20141231
                 
