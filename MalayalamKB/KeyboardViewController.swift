@@ -30,6 +30,8 @@ func metric(name: String) -> CGFloat {
 let kPeriodShortcut = "kPeriodShortcut"
 let kKeyboardClicks = "kKeyboardClicks"
 let kDisablePopupKeys = "kDisablePopupKeys"
+let kKoottaksharamShortcut = "kKoottaksharamShortcut" //m+20150109
+let kCapitalizeSwarangal = "kCapitalizeSwarangal"
 //let kKeyPadMalayalam = "kKeyPadMalayalam"
 
 class KeyboardViewController: UIInputViewController {
@@ -129,6 +131,8 @@ class KeyboardViewController: UIInputViewController {
             //kAutoCapitalization: false, //+20141218
             //kKeyPadMalayalam: false,
             kPeriodShortcut: true,
+            kKoottaksharamShortcut: true, //m+20150109
+            kCapitalizeSwarangal: false,
             kKeyboardClicks: true,
             kDisablePopupKeys: false
         ])
@@ -371,7 +375,8 @@ class KeyboardViewController: UIInputViewController {
                     }
                     
                     if key.hasOutput {
-                        keyView.addTarget(self, action: "keyPressedHelper:", forControlEvents: .TouchUpInside)
+                        
+                       keyView.addTarget(self, action: "keyPressedHelper:", forControlEvents: .TouchUpInside)
                     }
                     
                     if key.isCharacter {
@@ -496,7 +501,7 @@ class KeyboardViewController: UIInputViewController {
     func unHighlightKey(sender: KeyboardKey) {
         sender.highlighted = false
     }
-    
+   
     func keyPressedHelper(sender: KeyboardKey) {
         //+20141229self.playKeySound()
         
@@ -649,7 +654,7 @@ class KeyboardViewController: UIInputViewController {
     //m+20150101
     func characterDoubleTapped(sender: KeyboardKey) {
         
-        //if !self.shiftState.uppercase() {
+        if !self.shiftState.uppercase() {
             if let key = self.layout?.keyForView(sender) {
                 
                 if let proxy = (self.textDocumentProxy as? UIKeyInput) {
@@ -666,7 +671,18 @@ class KeyboardViewController: UIInputViewController {
                 }
                 
             }
-        //}
+        }else{
+            if let key = self.layout?.keyForView(sender) {
+                if let proxy = (self.textDocumentProxy as? UIKeyInput) {
+                    
+                    let k = key.outputForCase(self.shiftState.uppercase())
+                    if k == lastchar && k == "ശ" {
+                        proxy.insertText("്")
+                    }
+                
+                }
+            }
+        }
     }
     //m+20150101
     func chandrakkalaDoubleTapped(sender: KeyboardKey) {
@@ -918,24 +934,50 @@ class KeyboardViewController: UIInputViewController {
     class var layoutClass: KeyboardLayout.Type { get { return KeyboardLayout.self }}
     class var layoutConstants: LayoutConstants.Type { get { return LayoutConstants.self }}
     class var globalColors: GlobalColors.Type { get { return GlobalColors.self }}
-    
+    //https://www.cocoanetics.com/2009/12/double-tapping-on-buttons/
     func keyPressed(key: Key) {
         if let proxy = (self.textDocumentProxy as? UIKeyInput) {
-            //+20141209
-            let keyOutput = key.outputForCase(self.shiftState.uppercase())
+            //m+20141209
+            
+            var scase: Bool = self.shiftState.uppercase()
+            
+            if key.isSwaram {
+                
+                if NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) {
+                    let previousContext = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                    
+                    if previousContext != nil  {
+                        
+                        var index = previousContext!.endIndex
+                        
+                        index = index.predecessor()
+                        if previousContext![index] == " " {
+                            scase = true
+                        }
+                    }
+                }
+                
+                
+            }
+            
+            
+            let keyOutput = key.outputForCase(scase)
+            
+            //m+20150108
+            if NSUserDefaults.standardUserDefaults().boolForKey(kKoottaksharamShortcut) {
+                var nowtime = CACurrentMediaTime()
+                if lastKey != nil && lasttime > 0 && nowtime - lasttime < 0.4  {
+                    if lastKey!.primaryValue + key.secondaryValue == 10 {
+                        proxy.insertText("്")
+                        
+                    }
+                }
+                lastKey = key
+                lasttime = nowtime
+            }
+            
             
             //m+20150101
-            //key.
-            var nowtime = CACurrentMediaTime()
-            if lastKey != nil && lasttime > 0 && nowtime - lasttime < 0.4  {
-                if lastKey!.primaryValue + key.secondaryValue == 10 {
-                    proxy.insertText("്")
-                    
-                }
-            }
-            lastKey = key
-            lasttime = nowtime
-            
             proxy.insertText(keyOutput)
             if keyOutput == "്‌" && !chandrakkaladoubletapped{
                 proxy.deleteBackward()

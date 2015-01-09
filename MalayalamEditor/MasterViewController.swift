@@ -28,6 +28,7 @@ class MasterViewController: UITableViewController {
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         self.tableView.rowHeight = 100
         // Do any additional setup after loading the view, typically from a nib.
         /*self.navigationItem.leftBarButtonItem = self.editButtonItem()
@@ -116,11 +117,11 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         let viewBg: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 100))
-        viewBg.backgroundColor = UIColor(red: 255/255, green: 160/255, blue: 25/255, alpha: 1)
+        viewBg.backgroundColor = UIColor(red: 200/255, green: 120/255, blue: 0/255, alpha: 1)
         cell.selectedBackgroundView = viewBg
         
         let object = objects[indexPath.row] as String
-        cell.textLabel!.textColor = UIColor(red: 255/255, green: 160/255, blue: 25/255, alpha: 1)
+        cell.textLabel!.textColor = UIColor(red: 200/255, green: 120/255, blue: 0/255, alpha: 1)
         cell.textLabel!.textAlignment = NSTextAlignment.Center
         cell.textLabel!.text = object
         

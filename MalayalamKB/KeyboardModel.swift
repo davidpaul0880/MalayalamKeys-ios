@@ -71,6 +71,7 @@ class Key: Hashable {
     var isDoubleTappable: Bool //m+20150101
     var primaryValue: Int8 //+20150108
     var secondaryValue: Int8
+    var isSwaram: Bool
     
     var isCharacter: Bool {
         get {
@@ -123,6 +124,7 @@ class Key: Hashable {
         self.isDoubleTappable = false
         self.primaryValue = 0
         self.secondaryValue = 0
+        self.isSwaram = false
         
         self.type = type
         self.hashValue = counter

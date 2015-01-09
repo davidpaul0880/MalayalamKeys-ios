@@ -21,22 +21,27 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseKeyCap = "ഔ\n\(key)"
             keyModel.uppercaseOutput = "ഔ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "ൈ":
             keyModel.uppercaseKeyCap = "ഐ\n\(key)"
             keyModel.uppercaseOutput = "ഐ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "ാ‍":
             keyModel.uppercaseKeyCap = "ആ\n\(key)"
             keyModel.uppercaseOutput = "ആ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "ീ":
             keyModel.uppercaseKeyCap = "ഈ\n\(key)"
             keyModel.uppercaseOutput = "ഈ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "ൂ":
             keyModel.uppercaseKeyCap = "ഊ\n\(key)"
             keyModel.uppercaseOutput = "ഊ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
        
         case "ബ":
             keyModel.uppercaseKeyCap = "ഭ\n\(key)"
@@ -94,23 +99,27 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseKeyCap = "ഓ\n\(key)"
             keyModel.uppercaseOutput = "ഓ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "േ":
             keyModel.uppercaseKeyCap = "ഏ\n\(key)"
             keyModel.uppercaseOutput = "ഏ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "്‌":
             keyModel.uppercaseKeyCap = "അ\n\(key)"
             keyModel.uppercaseOutput = "അ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "ി":
             keyModel.uppercaseKeyCap = "ഇ\n\(key)"
             keyModel.uppercaseOutput = "ഇ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "ു":
             keyModel.uppercaseKeyCap = "ഉ\n\(key)"
             keyModel.uppercaseOutput = "ഉ"
             keyModel.lowercaseOutput = key
-            
+            keyModel.isSwaram = true
         case "പ":
             keyModel.uppercaseKeyCap = "ഫ\n\(key)"
             keyModel.uppercaseOutput = "ഫ"
@@ -176,11 +185,12 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseKeyCap = "ഒ\n\(key)"
             keyModel.uppercaseOutput = "ഒ"
             keyModel.lowercaseOutput = key
+            keyModel.isSwaram = true
         case "െ":
             keyModel.uppercaseKeyCap = "എ\n\(key)"
             keyModel.uppercaseOutput = "എ"
             keyModel.lowercaseOutput = key
-            
+            keyModel.isSwaram = true
         case "മ":
             keyModel.uppercaseKeyCap = "ം\n\(key)"
             keyModel.uppercaseOutput = "ം"
@@ -271,6 +281,7 @@ func defaultKeyboard() -> Keyboard {
     keyModel1.uppercaseKeyCap = "ഋ\n\(ru)"
     keyModel1.uppercaseOutput = "ഋ"
     keyModel1.lowercaseOutput = ru
+    keyModel1.isSwaram = true
     defaultKeyboard.addKey(keyModel1, row: 3, page: 0)
     
     
@@ -440,7 +451,7 @@ func defaultKeyboard() -> Keyboard {
     
     
     var keyModeChangeLetters = Key(.ModeChange)
-    keyModeChangeLetters.uppercaseKeyCap = "ABC"
+    keyModeChangeLetters.uppercaseKeyCap = "അക"
     keyModeChangeLetters.toMode = 0
     defaultKeyboard.addKey(keyModeChangeLetters, row: 3, page: 1)
     

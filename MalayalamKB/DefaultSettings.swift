@@ -37,13 +37,13 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
             if isPad {
                 
                 return [
-                    ("General Settings", [kPeriodShortcut, kKeyboardClicks])
+                    ("General Settings", [kPeriodShortcut, kKoottaksharamShortcut,kCapitalizeSwarangal, kKeyboardClicks]) //m+20150109
                     
                     
                 ]
             }else {
                 return [
-                    ("General Settings", [kPeriodShortcut, kKeyboardClicks]),
+                    ("General Settings", [kPeriodShortcut, kKoottaksharamShortcut,kCapitalizeSwarangal, kKeyboardClicks]), //m+20150109
                     ("Extra Settings", [kDisablePopupKeys])
                 ]
             }
@@ -54,7 +54,9 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
         get {
             return [
                 //kAutoCapitalization: "Auto-Capitalization",
-                kPeriodShortcut:  "“.” Shortcut",
+                kPeriodShortcut:  "“.” Shortcut, when two taps on space",
+                kKoottaksharamShortcut: "ങ്ക,ഞ്ച,ണ്ട,ന്ത,മ്പ Shortcut", //m+20150109
+                kCapitalizeSwarangal: "AutoCapitalize the keys of സ്വരങ്ങൾ after a space.",
                 kKeyboardClicks: "Keyboard Clicks",
                 kDisablePopupKeys: "Remove Top Banner"//+20141231
                 
