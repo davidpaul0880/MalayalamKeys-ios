@@ -64,8 +64,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="727.55449"
+     inkscape:zoom="0.5"
+     inkscape:cx="550.55449"
      inkscape:cy="524.5"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
@@ -85,7 +85,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -95,7 +95,7 @@
      inkscape:label="Layer#1"
      style="display:inline">
     <rect
-       style="fill:#ffcc00;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#c87800;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
        id="rect3840"
        width="1024"
        height="1024"
@@ -118,48 +118,6 @@
          id="tspan3761"
          x="122.85714"
          y="264" /></text>
-    <rect
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.58074033px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect3763"
-       width="58.074036"
-       height="58.074036"
-       x="322.44391"
-       y="559.1767" />
-    <image
-       y="558.05664"
-       x="388.84683"
-       id="image3784"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
-       height="58.654774"
-       width="58.654774" />
-    <image
-       y="558.05664"
-       x="458.53568"
-       id="image3795"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
-       height="58.654774"
-       width="58.654774" />
-    <image
-       y="558.05664"
-       x="528.22443"
-       id="image3806"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
-       height="58.654774"
-       width="58.654774" />
-    <image
-       y="558.05664"
-       x="596.25403"
-       id="image3817"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
-       height="58.654774"
-       width="58.654774" />
-    <image
-       y="558.05664"
-       x="663.28809"
-       id="image3828"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
-       height="58.654774"
-       width="58.654774" />
     <text
        xml:space="preserve"
        style="font-size:225.98495483px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Rachana;-inkscape-font-specification:Rachana"
@@ -171,71 +129,92 @@
          id="tspan3962"
          x="119.7263"
          y="441.03787">മലയാളം</tspan></text>
-    <image
-       y="626.5"
-       x="321.5"
-       id="image3941"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU
-aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj
-/slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ
-KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII=
-"
-       height="59"
-       width="59" />
-    <image
-       y="627.5"
-       x="389.5"
-       id="image3952"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU
-aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj
-/slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ
-KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII=
-"
-       height="59"
-       width="59" />
-    <image
-       y="627.5"
-       x="459.5"
-       id="image3963"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU
-aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj
-/slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ
-KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII=
-"
-       height="59"
-       width="59" />
-    <image
-       y="627.5"
-       x="528.5"
-       id="image3974"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU
-aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj
-/slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ
-KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII=
-"
-       height="59"
-       width="59" />
-    <image
-       y="626.5"
-       x="595.5"
-       id="image3985"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU
-aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj
-/slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ
-KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII=
-"
-       height="59"
-       width="59" />
-    <image
-       y="626.5"
-       x="662.5"
-       id="image3996"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU
-aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj
-/slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ
-KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII=
-"
-       height="59"
-       width="59" />
+    <g
+       id="g3782">
+      <rect
+         y="559.1767"
+         x="322.44391"
+         height="58.074036"
+         width="58.074036"
+         id="rect3763"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.58074033px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <image
+         width="58.654774"
+         height="58.654774"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
+         id="image3784"
+         x="388.84683"
+         y="558.05664" />
+      <image
+         width="58.654774"
+         height="58.654774"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
+         id="image3795"
+         x="458.53568"
+         y="558.05664" />
+      <image
+         width="58.654774"
+         height="58.654774"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
+         id="image3806"
+         x="528.22443"
+         y="558.05664" />
+      <image
+         width="58.654774"
+         height="58.654774"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
+         id="image3817"
+         x="596.25403"
+         y="558.05664" />
+      <image
+         width="58.654774"
+         height="58.654774"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAIAAADbHrqYAAAAA3NCSVQICAjb4U/gAAAA70lEQVR4 nO3QwQnAMAzAQLv775zOoEcJhbsJhGYodmbOObcz/mF3n9sNP+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX 41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fjV+NX41fj V+MXX3oBHbIDxp6U5TUAAAAASUVORK5CYII= "
+         id="image3828"
+         x="663.28809"
+         y="558.05664" />
+      <image
+         width="59"
+         height="59"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj /slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII= "
+         id="image3941"
+         x="321.5"
+         y="626.5" />
+      <image
+         width="59"
+         height="59"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj /slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII= "
+         id="image3952"
+         x="389.5"
+         y="627.5" />
+      <image
+         width="59"
+         height="59"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj /slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII= "
+         id="image3963"
+         x="459.5"
+         y="627.5" />
+      <image
+         width="59"
+         height="59"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj /slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII= "
+         id="image3974"
+         x="528.5"
+         y="627.5" />
+      <image
+         width="59"
+         height="59"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj /slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII= "
+         id="image3985"
+         x="595.5"
+         y="626.5" />
+      <image
+         width="59"
+         height="59"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAYAAADFJfKzAAAABHNCSVQICAgIfAhkiAAAAItJREFU aIHtz1ENxCAYwOCx7I0gBQu/BwTgCl0ng5uLnQqOpOunoE211iciDro5531FxDHG2N2yXO89nbsj /slZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZKmepnKVylspZ KmepnKV61WxqrX1zzml3yGqllM8PQtsM0EjQE/0AAAAASUVORK5CYII= "
+         id="image3996"
+         x="662.5"
+         y="626.5" />
+    </g>
   </g>
 </svg>
