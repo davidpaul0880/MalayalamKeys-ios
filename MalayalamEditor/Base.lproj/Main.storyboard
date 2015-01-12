@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Malayalam-->
+        <!--Ez Malayalam-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
-                <navigationController title="Malayalam" id="RMx-3f-FxP" sceneMemberID="viewController">
+                <navigationController title="Ez Malayalam" id="RMx-3f-FxP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.8255621693121693" green="0.49175639967780732" blue="0.0051432566932861018" alpha="1" colorSpace="calibratedRGB"/>
@@ -118,8 +118,8 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Malayalam" id="Zdf-7t-Un8">
-                        <barButtonItem key="backBarButtonItem" title="Malayalam" id="qgS-9B-oMD"/>
+                    <navigationItem key="navigationItem" title="Ez Malayalam" id="Zdf-7t-Un8">
+                        <barButtonItem key="backBarButtonItem" title="Ez Malayalam" id="qgS-9B-oMD"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </tableViewController>

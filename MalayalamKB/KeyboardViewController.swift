@@ -132,7 +132,7 @@ class KeyboardViewController: UIInputViewController {
             //kKeyPadMalayalam: false,
             kPeriodShortcut: true,
             kKoottaksharamShortcut: true, //m+20150109
-            kCapitalizeSwarangal: false,
+            kCapitalizeSwarangal: true,
             kKeyboardClicks: true,
             kDisablePopupKeys: false
         ])
