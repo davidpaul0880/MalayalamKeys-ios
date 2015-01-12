@@ -13,7 +13,7 @@ func defaultKeyboard() -> Keyboard {
     
     var defaultKeyboard = Keyboard()
     
-    for key in ["ൗ", "ൈ", "ാ‍", "ീ", "ൂ", "ബ", "ങ", "ഗ", "ദ", "ജ", "ഡ"] {
+    for key in ["ൗ", "ൈ", "ാ", "ീ", "ൂ", "ബ", "ങ", "ഗ", "ദ", "ജ", "ഡ"] {
         var keyModel = Key(.Character)
         switch key {
         case "ൗ":
@@ -27,7 +27,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ഐ"
             keyModel.lowercaseOutput = key
             keyModel.isSwaram = true
-        case "ാ‍":
+        case "ാ":
             keyModel.uppercaseKeyCap = "ആ\n\(key)"
             keyModel.uppercaseOutput = "ആ"
             keyModel.lowercaseOutput = key
