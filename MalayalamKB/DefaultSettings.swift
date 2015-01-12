@@ -68,7 +68,7 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
             return [
                 kPeriodShortcut: "Double tapping the spacebar will insert a period follwed by a space",
                 kKeyboardClicks: "Please note that keyboard clicks will work only if “Allow Full Access” is enabled in the keyboard settings. Unfortunately, this is a limitation of the operating system.",
-                kDisablePopupKeys: "This will remove top banner of the keyboard and also will disable the popup which when we tap on keys. You need to switch keyboard by tapping globe icon to see the change."
+                kDisablePopupKeys: "This will remove top banner of the keyboard and disable key popup on tap. You need to switch keyboard by tapping globe icon to see the change."
             ]
         }
     }
