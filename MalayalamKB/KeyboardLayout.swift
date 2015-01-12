@@ -52,7 +52,7 @@ class LayoutConstants: NSObject {
         if isPad {
             return 9
         }else {
-            return 6
+            return 4//6
         }
     }
     class func keyGapPortraitSmall() -> CGFloat {
@@ -61,7 +61,7 @@ class LayoutConstants: NSObject {
         if isPad {
             return 8
         }else {
-            return 5
+            return 3//5
         }
     }
     class func keyGapLandscapeNormal() -> CGFloat {
@@ -70,7 +70,7 @@ class LayoutConstants: NSObject {
         if isPad {
             return 10
         }else {
-            return 6
+            return 4//6
         }
     }
     class func keyGapLandscapeSmall() -> CGFloat {
@@ -79,7 +79,7 @@ class LayoutConstants: NSObject {
         if isPad {
             return 9
         }else {
-            return 5
+            return 3//5
         }
     }
     class func lastRowKeyGapPortrait() -> CGFloat {
@@ -88,7 +88,7 @@ class LayoutConstants: NSObject {
         if isPad {
             return 9
         }else {
-            return 6
+            return 4//6
         }
     }
     //m+20150105
