@@ -858,17 +858,23 @@ class KeyboardViewController: UIInputViewController {
     //m+20150109
     func shouldAutoCapitalizeSwaram() -> Bool {
         
+        if NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) {
+            
+            var documentProxy = self.textDocumentProxy as? UITextDocumentProxy
+            var beforeContext = documentProxy?.documentContextBeforeInput
+            
+            if let beforeContext = documentProxy?.documentContextBeforeInput {
+                let previousCharacter = beforeContext[beforeContext.endIndex.predecessor()]
+                return self.characterIsWhitespace(previousCharacter)
+            }
+            else {
+                return true
+            }
+        }else{
+            return false
+        }
      
-        var documentProxy = self.textDocumentProxy as? UITextDocumentProxy
-        var beforeContext = documentProxy?.documentContextBeforeInput
         
-        if let beforeContext = documentProxy?.documentContextBeforeInput {
-            let previousCharacter = beforeContext[beforeContext.endIndex.predecessor()]
-            return self.characterIsWhitespace(previousCharacter)
-        }
-        else {
-            return true
-        }
         
     }
 
