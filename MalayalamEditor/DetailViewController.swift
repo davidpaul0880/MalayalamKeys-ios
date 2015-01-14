@@ -27,16 +27,16 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
         
         if modeDisplay == 0 {
             
-            self.title = "Installation"
+            self.title = "Setup & Usage"
             
             
         }else if modeDisplay == 1 {
             
-            self.title = "Guide"
+            self.title = "User Guide"
             
         }else{
             
-            self.title = "Info"
+            self.title = "About"
         }
         
         if let detail: String = self.filePath {
