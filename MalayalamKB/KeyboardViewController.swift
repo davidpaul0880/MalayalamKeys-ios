@@ -388,7 +388,7 @@ class KeyboardViewController: UIInputViewController {
                             keyView.addTarget(self, action: Selector("hidePopupDelay:"), forControlEvents: .TouchUpInside | .TouchUpOutside | .TouchDragOutside)
                         }
                         //m+20150101
-                        if key.lowercaseOutput == "്‌" {
+                        if key.lowercaseOutput == "്" {
                             keyView.addTarget(self, action: Selector("chandrakkalaDoubleTapped:"), forControlEvents: .TouchDownRepeat)
                         }
                         if key.isDoubleTappable {
@@ -702,7 +702,7 @@ class KeyboardViewController: UIInputViewController {
                     chandrakkaladoubletapped = true
                     //let k = key.outputForCase(self.shiftState.uppercase())
                     
-                    proxy.deleteBackward()
+                    //m+20151227proxy.deleteBackward()
                     
                 }
                 
@@ -909,7 +909,7 @@ class KeyboardViewController: UIInputViewController {
             
             var scase: Bool = self.shiftState.uppercase()
             
-            if key.isSwaram {
+            if !scase && key.isSwaram { //m+20150127
                 
                 /*if NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) {
                     let previousContext = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
@@ -948,9 +948,22 @@ class KeyboardViewController: UIInputViewController {
             
             
             //m+20150101
-            proxy.insertText(keyOutput)
-            if keyOutput == "്‌" && !chandrakkaladoubletapped{
-                proxy.deleteBackward()
+            
+            if keyOutput == "്" {
+                
+                if chandrakkaladoubletapped {
+                    
+                    let endChar: Character = "\u{200C}"
+                    proxy.insertText("\(endChar)")
+                    
+                }else {
+                    
+                    proxy.insertText(keyOutput)
+                    //proxy.deleteBackward()
+                }
+                
+            }else{
+                proxy.insertText(keyOutput)
             }
             
             lastchar = keyOutput

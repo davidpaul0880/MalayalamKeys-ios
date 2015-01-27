@@ -32,6 +32,7 @@ class KeyboardKey: UIControl {
     
     var text: String {
         didSet {
+
             self.label.text = text
             self.label.frame = CGRectMake(self.labelInset, self.labelInset, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2)
             self.redrawText()
