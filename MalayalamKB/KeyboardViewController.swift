@@ -421,7 +421,7 @@ class KeyboardViewController: UIInputViewController {
         if let key = self.layout?.keyForView(sender) {
             
             var scase: Bool = self.shiftState.uppercase()
-            if key.isSwaram {
+            if !scase && key.isSwaram {//+20150129
                 
                 scase = self.shouldAutoCapitalizeSwaram()
                 

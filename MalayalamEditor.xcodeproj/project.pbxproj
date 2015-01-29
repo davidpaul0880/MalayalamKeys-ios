@@ -605,7 +605,7 @@
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b66beafa-64a9-4164-a234-8f8c40ec0d4f";
+				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
 			};
 			name = Debug;
 		};
@@ -619,7 +619,7 @@
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b66beafa-64a9-4164-a234-8f8c40ec0d4f";
+				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
 			};
 			name = Release;
 		};
