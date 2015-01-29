@@ -606,8 +606,10 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func backspaceDown(sender: KeyboardKey) {
-        self.cancelBackspaceTimers()
         
+        self.cancelBackspaceTimers()
+        lastchar = "" //+20150129
+        lastKey = nil //+20150129
         //+20141229self.playKeySound()
         
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
@@ -641,6 +643,7 @@ class KeyboardViewController: UIInputViewController {
         
         //m+20150108
         lastKey = nil
+        lastchar = "sd" //+20150129
         
         if self.shiftWasMultitapped {
             self.shiftWasMultitapped = false
@@ -712,16 +715,21 @@ class KeyboardViewController: UIInputViewController {
     }
 
     func shiftDoubleTapped(sender: KeyboardKey) {
-        self.shiftWasMultitapped = true
         
-        switch self.shiftState {
-        case .Disabled:
-            self.shiftState = .Locked
-        case .Enabled:
-            self.shiftState = .Locked
-        case .Locked:
-            self.shiftState = .Disabled
+        if lastchar == "sd" {//+20150129
+            
+            self.shiftWasMultitapped = true
+            
+            switch self.shiftState {
+            case .Disabled:
+                self.shiftState = .Locked
+            case .Enabled:
+                self.shiftState = .Locked
+            case .Locked:
+                self.shiftState = .Disabled
+            }
         }
+        
     }
     
     // TODO: this should be uppercase, not lowercase
@@ -936,7 +944,7 @@ class KeyboardViewController: UIInputViewController {
             //m+20150108
             if NSUserDefaults.standardUserDefaults().boolForKey(kKoottaksharamShortcut) {
                 var nowtime = CACurrentMediaTime()
-                if lastKey != nil && lasttime > 0 && nowtime - lasttime < 0.4  {
+                if lastKey != nil && lasttime > 0 && nowtime - lasttime < 0.5  {
                     if lastKey!.primaryValue + key.secondaryValue == 10 {
                         proxy.insertText("്")
                         
