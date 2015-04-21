@@ -61,7 +61,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
         self.edgesForExtendedLayout = UIRectEdge.None
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.titleTextAttributes = titleDict
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         

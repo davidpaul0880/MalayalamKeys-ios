@@ -2,7 +2,7 @@
 <Scheme
    LastUpgradeVersion = "0610"
    wasCreatedForAppExtension = "YES"
-   version = "1.3">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0341C0491A554F690011A6D7"
+               BlueprintIdentifier = "0341C0891A5557900011A6D7"
                BuildableName = "MalayalamKB.appex"
                BlueprintName = "MalayalamKB"
                ReferencedContainer = "container:MalayalamEditor.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0341C0491A554F690011A6D7"
+            BlueprintIdentifier = "0341C0891A5557900011A6D7"
             BuildableName = "MalayalamKB.appex"
             BlueprintName = "MalayalamKB"
             ReferencedContainer = "container:MalayalamEditor.xcodeproj">
@@ -58,13 +58,18 @@
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
-      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
+      <RemoteRunnable
+         runnableDebuggingMode = "1"
+         BundleIdentifier = "com.apple.mobilenotes"
+         RemotePath = "/Applications/MobileNotes.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "035CC3261A51AE9B00A66713"
@@ -72,7 +77,13 @@
             BlueprintName = "MalayalamEditor"
             ReferencedContainer = "container:MalayalamEditor.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-com.apple.CoreData.SQLDebug 1"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -82,8 +93,9 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES"
-      askForAppToLaunch = "Yes">
-      <BuildableProductRunnable>
+      launchAutomaticallySubstyle = "2">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "035CC3261A51AE9B00A66713"

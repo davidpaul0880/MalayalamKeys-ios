@@ -30,11 +30,16 @@ class KeyboardKey: UIControl {
     
     var vibrancy: VibrancyType?
     
-    var text: String {
+    var attributetext: NSAttributedString {
+        
         didSet {
 
-            self.label.text = text
-            self.label.frame = CGRectMake(self.labelInset, self.labelInset, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2)
+            self.label.attributedText = attributetext;
+            
+            //self.label.text = text
+            
+            self.label.frame = CGRectMake(self.labelInset, self.labelInset - 1, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2) ////m+20150324 -3
+            
             self.redrawText()
         }
     }
@@ -48,7 +53,7 @@ class KeyboardKey: UIControl {
     var drawBorder: Bool { didSet { updateColors() }}
     var underOffset: CGFloat { didSet { updateColors() }}
     
-    var textColor: UIColor { didSet { updateColors() }}
+    var textColor: UIColor? { didSet { updateColors() }}//m+20150324
     var downColor: UIColor? { didSet { updateColors() }}
     var downUnderColor: UIColor? { didSet { updateColors() }}
     var downBorderColor: UIColor? { didSet { updateColors() }}
@@ -57,7 +62,7 @@ class KeyboardKey: UIControl {
     var labelInset: CGFloat = 0 {
         didSet {
             if oldValue != labelInset {
-                self.label.frame = CGRectMake(self.labelInset, self.labelInset, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2)
+                self.label.frame = CGRectMake(self.labelInset, self.labelInset - 1, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2) //m+20150324 -3
             }
         }
     }
@@ -125,7 +130,7 @@ class KeyboardKey: UIControl {
         self.shadowView = UIView()
         
         self.label = UILabel()
-        self.text = ""
+        self.attributetext = NSAttributedString(string: "") //m+20150324
         
         self.color = UIColor.whiteColor()
         self.underColor = UIColor.grayColor()
@@ -138,7 +143,7 @@ class KeyboardKey: UIControl {
         
         self.background = KeyboardKeyBackground(cornerRadius: 4, underOffset: self.underOffset)
         
-        self.textColor = UIColor.blackColor()
+        self.textColor = nil //m+20150324UIColor.blackColor()
         self.popupDirection = nil
         
         super.init(frame: CGRectZero)
@@ -207,7 +212,7 @@ class KeyboardKey: UIControl {
         CATransaction.setDisableActions(true)
         
         self.background.frame = self.bounds
-        self.label.frame = CGRectMake(self.labelInset, self.labelInset, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2)
+        self.label.frame = CGRectMake(self.labelInset, self.labelInset - 1, self.bounds.width - self.labelInset * 2, self.bounds.height - self.labelInset * 2) //m+20150324 -3
         
         self.displayView.frame = boundingBox
         self.shadowView.frame = boundingBox
@@ -314,7 +319,7 @@ class KeyboardKey: UIControl {
     
     func redrawShape() {
         if let shape = self.shape {
-            self.text = ""
+            self.attributetext = NSAttributedString(string: "") //m+20150324
             shape.removeFromSuperview()
             self.addSubview(shape)
             
@@ -364,7 +369,11 @@ class KeyboardKey: UIControl {
                 self.shape?.color = downTextColor
             }
             else {
-                self.label.textColor = self.textColor
+                //m+20150324
+                if self.textColor  != nil {
+                    self.label.textColor = self.textColor
+                }
+                
                 self.popupLabel?.textColor = self.textColor
                 self.shape?.color = self.textColor
             }
@@ -375,8 +384,11 @@ class KeyboardKey: UIControl {
             self.underView?.fillColor = self.underColor
             
             self.borderView?.strokeColor = self.borderColor
+            //m+20150324
+            if self.textColor  != nil {
+                self.label.textColor = self.textColor
+            }
             
-            self.label.textColor = self.textColor
             self.popupLabel?.textColor = self.textColor
             self.shape?.color = self.textColor
         }
@@ -486,7 +498,7 @@ PERFORMANCE NOTES
 
 class ShapeView: UIView {
     
-    let shapeLayer: CAShapeLayer?
+    var shapeLayer: CAShapeLayer? //+roll let +20150421
     
     override class func layerClass() -> AnyClass {
         return CAShapeLayer.self
@@ -538,7 +550,7 @@ class ShapeView: UIView {
         }
     }
     
-    override convenience init() {
+    convenience init() {
         self.init(frame: CGRectZero)
     }
     
@@ -548,10 +560,6 @@ class ShapeView: UIView {
         if let myLayer = self.layer as? CAShapeLayer {
             self.shapeLayer = myLayer
         }
-        
-        // optimization: off by default to ensure quick mode transitions; re-enable during rotations
-        //self.layer.shouldRasterize = true
-        //self.layer.rasterizationScale = UIScreen.mainScreen().scale
     }
     
     required init(coder aDecoder: NSCoder) {

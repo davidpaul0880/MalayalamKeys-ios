@@ -435,10 +435,11 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
         Key.KeyType.SpecialCharacter,
         Key.KeyType.Period:
             key.color = self.self.globalColors.regularKey(darkMode, solidColorMode: solidColorMode)
-            key.textColor = (darkMode ? self.globalColors.darkModeTextColor : self.globalColors.lightModeTextColor)
+            key.textColor = (darkMode ? self.globalColors.darkModeTextColor : nil)//m+20150324 self.globalColors.lightModeTextColor
             if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad || NSUserDefaults.standardUserDefaults().boolForKey(kDisablePopupKeys) { //+20150102
                 key.downColor = self.globalColors.specialKey(darkMode, solidColorMode: solidColorMode)
             }
+
         case
         Key.KeyType.Space:
             key.color = self.globalColors.regularKey(darkMode, solidColorMode: solidColorMode)
@@ -555,7 +556,7 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
                         
                         let keyViewName = "key\(j)x\(i)p\(h)"
                         keyView.enabled = true
-                        keyView.text = key.keyCapForCase(false)
+                        keyView.attributetext = key.keyCapForCase(false)
                         keyView.delegate = self
                         
                         self.superview.addSubview(keyView)

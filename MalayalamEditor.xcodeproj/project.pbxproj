@@ -44,6 +44,9 @@
 		035CC3511A51B04A00A66713 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3501A51B04A00A66713 /* help.html */; };
 		035CC3551A51B13C00A66713 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3531A51B13C00A66713 /* settings.png */; };
 		035CC3561A51B13C00A66713 /* settingsadd.png in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3541A51B13C00A66713 /* settingsadd.png */; };
+		036D12DC1AC3DA99001CDF36 /* mlwords.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 036D12DB1AC3DA99001CDF36 /* mlwords.sqlite */; };
+		036D12E01AC3E21F001CDF36 /* WordsDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 036D12DF1AC3E21F001CDF36 /* WordsDAO.m */; };
+		036D12E31AC3EC6A001CDF36 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,11 @@
 		035CC3501A51B04A00A66713 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		035CC3531A51B13C00A66713 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		035CC3541A51B13C00A66713 /* settingsadd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsadd.png; sourceTree = "<group>"; };
+		036D12DB1AC3DA99001CDF36 /* mlwords.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mlwords.sqlite; sourceTree = "<group>"; };
+		036D12DD1AC3E21F001CDF36 /* MalayalamKB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MalayalamKB-Bridging-Header.h"; sourceTree = "<group>"; };
+		036D12DE1AC3E21F001CDF36 /* WordsDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsDAO.h; sourceTree = "<group>"; };
+		036D12DF1AC3E21F001CDF36 /* WordsDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsDAO.m; sourceTree = "<group>"; };
+		036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036D12E31AC3EC6A001CDF36 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +159,7 @@
 		0341C08B1A5557900011A6D7 /* MalayalamKB */ = {
 			isa = PBXGroup;
 			children = (
+				036D12DB1AC3DA99001CDF36 /* mlwords.sqlite */,
 				0341C0F81A5558AB0011A6D7 /* images */,
 				0341C0C91A5558290011A6D7 /* DefaultKeyboard.swift */,
 				0341C0CA1A5558290011A6D7 /* DefaultSettings.swift */,
@@ -168,6 +178,9 @@
 				0341C0E01A5558290011A6D7 /* Utilities.swift */,
 				0341C08E1A5557900011A6D7 /* KeyboardViewController.swift */,
 				0341C08C1A5557900011A6D7 /* Supporting Files */,
+				036D12DE1AC3E21F001CDF36 /* WordsDAO.h */,
+				036D12DF1AC3E21F001CDF36 /* WordsDAO.m */,
+				036D12DD1AC3E21F001CDF36 /* MalayalamKB-Bridging-Header.h */,
 			);
 			path = MalayalamKB;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 		035CC31E1A51AE9A00A66713 = {
 			isa = PBXGroup;
 			children = (
+				036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */,
 				035CC3291A51AE9B00A66713 /* MalayalamEditor */,
 				035CC3411A51AE9B00A66713 /* MalayalamEditorTests */,
 				0341C08B1A5557900011A6D7 /* MalayalamKB */,
@@ -374,6 +388,7 @@
 			files = (
 				0341C1071A5558AB0011A6D7 /* gearwh@2x.png in Resources */,
 				0341C1081A5558AB0011A6D7 /* gearwh@3x.png in Resources */,
+				036D12DC1AC3DA99001CDF36 /* mlwords.sqlite in Resources */,
 				0341C1061A5558AB0011A6D7 /* gearwh.png in Resources */,
 				0341C0E31A5558290011A6D7 /* DefaultSettings.xib in Resources */,
 				0341C1011A5558AB0011A6D7 /* dismisskb.png in Resources */,
@@ -419,6 +434,7 @@
 				0341C0E61A5558290011A6D7 /* ForwardingView.swift in Sources */,
 				0341C0F01A5558290011A6D7 /* KeyboardConnector.swift in Sources */,
 				0341C08F1A5557900011A6D7 /* KeyboardViewController.swift in Sources */,
+				036D12E01AC3E21F001CDF36 /* WordsDAO.m in Sources */,
 				0341C0E41A5558290011A6D7 /* DirectionEnum.swift in Sources */,
 				0341C0E71A5558290011A6D7 /* ImageKey.swift in Sources */,
 				0341C0F71A5558290011A6D7 /* Utilities.swift in Sources */,
@@ -487,7 +503,8 @@
 		0341C0941A5557900011A6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: John Carini (97HKSGE29L)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John Carini (97HKSGE29L)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -496,21 +513,25 @@
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b66beafa-64a9-4164-a234-8f8c40ec0d4f";
+				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		0341C0951A5557900011A6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: John Carini (97HKSGE29L)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John Carini (97HKSGE29L)";
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b66beafa-64a9-4164-a234-8f8c40ec0d4f";
+				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -551,7 +572,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "b66beafa-64a9-4164-a234-8f8c40ec0d4f";
+				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -588,7 +609,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "b66beafa-64a9-4164-a234-8f8c40ec0d4f";
+				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -599,7 +620,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: John Carini (97HKSGE29L)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John Carini (97HKSGE29L)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
@@ -613,7 +634,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: John Carini (97HKSGE29L)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John Carini (97HKSGE29L)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 var counter = 0
 
@@ -63,8 +64,43 @@ class Key: Hashable {
     }
     
     var type: KeyType
-    var uppercaseKeyCap: String?
-    var lowercaseKeyCap: String?
+    
+    //m+20150324
+    var keyText : String {
+        
+        didSet{
+            
+            
+            let range = keyText.rangeOfString("\n.*", options :.RegularExpressionSearch)
+            let skipSaram = (NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) && isSwaram)
+            
+            if !skipSaram && range != nil {//m+20150401
+                
+                var myMutableString1 = NSMutableAttributedString(string: keyText)
+                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.grayColor(), NSFontAttributeName : UIFont.systemFontOfSize(20)], range: NSMakeRange(1, (keyText as NSString).length-1))
+                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(24)], range: NSMakeRange(0, 1))
+                
+                self.uppercaseKeyCap = myMutableString1
+                
+                
+                var myMutableString = NSMutableAttributedString(string: keyText)
+                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.grayColor(), NSFontAttributeName : UIFont.systemFontOfSize(20)], range: NSMakeRange(0, 1))
+                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(24)], range: NSMakeRange(1, (keyText as NSString).length-1))
+               
+                self.lowercaseKeyCap = myMutableString
+                
+                
+            }else{
+                
+                self.uppercaseKeyCap = NSAttributedString(string: keyText)
+            }
+        }
+        
+        
+    }
+    
+    var uppercaseKeyCap: NSAttributedString?
+    var lowercaseKeyCap: NSAttributedString?
     var uppercaseOutput: String?
     var lowercaseOutput: String?
     var toMode: Int? //if the key is a mode button, this indicates which page it links to
@@ -129,6 +165,7 @@ class Key: Hashable {
         self.type = type
         self.hashValue = counter
         counter += 1
+        keyText = "" //m+20150324
     }
     
     convenience init(_ key: Key) {
@@ -144,8 +181,17 @@ class Key: Hashable {
     func setLetter(letter: String) {
         self.lowercaseOutput = (letter as NSString).lowercaseString
         self.uppercaseOutput = (letter as NSString).uppercaseString
-        self.lowercaseKeyCap = self.lowercaseOutput
-        self.uppercaseKeyCap = self.uppercaseOutput
+        //m+20150324
+        if self.lowercaseOutput != nil {
+        
+            self.lowercaseKeyCap = NSAttributedString(string: self.lowercaseOutput!)
+        }
+        if self.uppercaseOutput != nil {
+            
+            self.uppercaseKeyCap = NSAttributedString(string: self.uppercaseOutput!)
+        }
+        
+
     }
     
     func outputForCase(uppercase: Bool) -> String {
@@ -173,7 +219,7 @@ class Key: Hashable {
         }
     }
     
-    func keyCapForCase(uppercase: Bool) -> String {
+    func keyCapForCase(uppercase: Bool) -> NSAttributedString {//m+20150324
         if uppercase {
             if self.uppercaseKeyCap != nil {
                 return self.uppercaseKeyCap!
@@ -182,7 +228,7 @@ class Key: Hashable {
                 return self.lowercaseKeyCap!
             }
             else {
-                return ""
+                return NSAttributedString(string : "")
             }
         }
         else {
@@ -193,7 +239,7 @@ class Key: Hashable {
                 return self.uppercaseKeyCap!
             }
             else {
-                return ""
+                return NSAttributedString(string : "")
             }
         }
     }
