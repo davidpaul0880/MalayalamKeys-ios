@@ -108,6 +108,9 @@ class Key: Hashable {
     var primaryValue: Int8 //+20150108
     var secondaryValue: Int8
     var isSwaram: Bool
+    var extentionValues: String?
+    var extentionValuesUpper: String?
+    var isLeftExtention: Bool = false
     
     var isCharacter: Bool {
         get {
@@ -192,6 +195,14 @@ class Key: Hashable {
         }
         
 
+    }
+    func extentionValuesCase(uppercase: Bool) -> String? {
+        
+        if uppercase {
+            return self.extentionValuesUpper
+        }else{
+            return self.extentionValues
+        }
     }
     
     func outputForCase(uppercase: Bool) -> String {

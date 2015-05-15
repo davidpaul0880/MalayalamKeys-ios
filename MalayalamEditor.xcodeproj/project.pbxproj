@@ -47,6 +47,7 @@
 		036D12DC1AC3DA99001CDF36 /* mlwords.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 036D12DB1AC3DA99001CDF36 /* mlwords.sqlite */; };
 		036D12E01AC3E21F001CDF36 /* WordsDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 036D12DF1AC3E21F001CDF36 /* WordsDAO.m */; };
 		036D12E31AC3EC6A001CDF36 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */; };
+		03FA07571AE7DAD7009D12BB /* PopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA07561AE7DAD7009D12BB /* PopupButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		036D12DE1AC3E21F001CDF36 /* WordsDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsDAO.h; sourceTree = "<group>"; };
 		036D12DF1AC3E21F001CDF36 /* WordsDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsDAO.m; sourceTree = "<group>"; };
 		036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		03FA07561AE7DAD7009D12BB /* PopupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				0341C0D91A5558290011A6D7 /* KeyboardConnector.swift */,
 				0341C0DA1A5558290011A6D7 /* KeyboardInputTraits.swift */,
 				0341C0DB1A5558290011A6D7 /* KeyboardKey.swift */,
+				03FA07561AE7DAD7009D12BB /* PopupButton.swift */,
 				0341C0DC1A5558290011A6D7 /* KeyboardKeyBackground.swift */,
 				0341C0DD1A5558290011A6D7 /* KeyboardLayout.swift */,
 				0341C0DE1A5558290011A6D7 /* KeyboardModel.swift */,
@@ -439,6 +442,7 @@
 				0341C0E71A5558290011A6D7 /* ImageKey.swift in Sources */,
 				0341C0F71A5558290011A6D7 /* Utilities.swift in Sources */,
 				0341C0F61A5558290011A6D7 /* Shapes.swift in Sources */,
+				03FA07571AE7DAD7009D12BB /* PopupButton.swift in Sources */,
 				0341C0E11A5558290011A6D7 /* DefaultKeyboard.swift in Sources */,
 				0341C0E21A5558290011A6D7 /* DefaultSettings.swift in Sources */,
 				0341C0F11A5558290011A6D7 /* KeyboardInputTraits.swift in Sources */,
@@ -513,7 +517,7 @@
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
+				PROVISIONING_PROFILE = "c73664b4-8c22-430d-99c5-1358e8dea277";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -529,7 +533,7 @@
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
+				PROVISIONING_PROFILE = "c73664b4-8c22-430d-99c5-1358e8dea277";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
 			};
@@ -572,7 +576,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
+				PROVISIONING_PROFILE = "c73664b4-8c22-430d-99c5-1358e8dea277";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -609,7 +613,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
+				PROVISIONING_PROFILE = "c73664b4-8c22-430d-99c5-1358e8dea277";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -626,7 +630,7 @@
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
+				PROVISIONING_PROFILE = "c73664b4-8c22-430d-99c5-1358e8dea277";
 			};
 			name = Debug;
 		};
@@ -640,7 +644,7 @@
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9155a599-3662-444e-b4c2-d22b4693672d";
+				PROVISIONING_PROFILE = "c73664b4-8c22-430d-99c5-1358e8dea277";
 			};
 			name = Release;
 		};

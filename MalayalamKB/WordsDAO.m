@@ -215,13 +215,14 @@
     
     
     //sqlite3_bind_text(selectstmt, 1, [arg UTF8String], -1, SQLITE_TRANSIENT);
-    NSLog(@"start");
+    
     @try {
         
         if (mode == 0) {
-            NSString *sql = [NSString stringWithFormat:@"select zword from zwords where zmode=0 and zword like '%@%%' order by zpriority limit 15", matchstr];
             
+            NSString *sql = [NSString stringWithFormat:@"select zword from zwords where zpriority=50 and zword like '%@%%' order by zpriority limit 15", matchstr];
             
+            NSLog(@"sql = %@", sql);
             
             if ([self preparingStatement:&selectstmt Query:sql] != SQLITE_OK) {
                 NSLog(@"failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
@@ -268,7 +269,6 @@
     
     
     
-    NSLog(@"array = %@", array);
     return array;
     
     

@@ -40,7 +40,7 @@ let kKoottaksharamShortcut = "kKoottaksharamShortcut" //m+20150109
 let kCapitalizeSwarangal = "kCapitalizeSwarangal"
 //let kKeyPadMalayalam = "kKeyPadMalayalam"
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtocol {
     
     let backspaceDelay: NSTimeInterval = 0.5
     let backspaceRepeat: NSTimeInterval = 0.07
@@ -266,7 +266,7 @@ class KeyboardViewController: UIInputViewController {
         
         self.setupLayout()
         
-        let orientationSavvyBounds = CGRectMake(0, 0, self.view.bounds.width, self.heightForOrientation(UIDevice.currentDevice().orientation, withTopBanner: false))
+        let orientationSavvyBounds = CGRectMake(0, 0, self.view.bounds.width, self.heightForOrientation(self.interfaceOrientation, withTopBanner: false))
         
         if (lastLayoutBounds != nil && lastLayoutBounds == orientationSavvyBounds) {
             // do nothing
@@ -298,18 +298,40 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.bannerView?.hidden = false //+20150325
-        self.keyboardHeight = self.heightForOrientation(UIDevice.currentDevice().orientation, withTopBanner: true)
+        self.keyboardHeight = self.heightForOrientation(self.interfaceOrientation, withTopBanner: true)
     }
     
+    /*override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        // optimization: ensures quick mode and shift transitions
+        if let keyPool = self.layout?.keyPool {
+            for view in keyPool {
+                view.shouldRasterize = false
+            }
+        }
+    }*/
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.forwardingView.resetTrackedViews()
+        //self.shiftStartingState = nil
+        self.shiftWasMultitapped = false
+        
+        // optimization: ensures smooth animation
+        /*if let keyPool = self.layout?.keyPool {
+            for view in keyPool {
+                view.shouldRasterize = true
+            }
+        }*/
+        
+        self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
+    }
     /*+20150421override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
     }*/
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
+    /*override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
         
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
         self.keyboardHeight = self.heightForOrientation(UIDevice.currentDevice().orientation, withTopBanner: true)
-    }
+    }*/
     //+20141217
     // Workaround:
     private struct SubStruct { static var staticVariable: Bool = false }
@@ -324,7 +346,7 @@ class KeyboardViewController: UIInputViewController {
         return workaroundClassVariable
     }
     
-    func heightForOrientation(orientation: UIDeviceOrientation, withTopBanner: Bool) -> CGFloat {
+    func heightForOrientation(orientation: UIInterfaceOrientation, withTopBanner: Bool) -> CGFloat {
         let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
         
         //TODO: hardcoded stuff
@@ -398,12 +420,19 @@ class KeyboardViewController: UIInputViewController {
                     
                     if key.isCharacter {
                         //+20150101
+
                         if UIDevice.currentDevice().userInterfaceIdiom != UIUserInterfaceIdiom.Pad && !NSUserDefaults.standardUserDefaults().boolForKey(kDisablePopupKeys) {
 
                             keyView.addTarget(self, action: Selector("showPopup:"), forControlEvents: .TouchDown | .TouchDragInside | .TouchDragEnter)
                             keyView.addTarget(keyView, action: Selector("hidePopup"), forControlEvents: .TouchDragExit)
                             keyView.addTarget(self, action: Selector("hidePopupDelay:"), forControlEvents: .TouchUpInside | .TouchUpOutside | .TouchDragOutside)
+                            
                         }
+
+                        //m+20150421
+                        //let longp =  UILongPressGestureRecognizer(target: self, action: Selector("showExpandPopup:"))
+                        //keyView.addGestureRecognizer(longp)
+                        
                         //m+20150101
                         if key.lowercaseOutput == "്" {
                             keyView.addTarget(self, action: Selector("chandrakkalaDoubleTapped:"), forControlEvents: .TouchDownRepeat)
@@ -415,8 +444,10 @@ class KeyboardViewController: UIInputViewController {
                     
                     if key.type != Key.KeyType.Shift && key.type != Key.KeyType.ModeChange {
                         keyView.addTarget(self, action: Selector("highlightKey:"), forControlEvents: .TouchDown | .TouchDragInside | .TouchDragEnter)
+                        //keyView.addTarget(self, action: Selector("highlightKey:"), forControlEvents: .TouchDown)
                         keyView.addTarget(self, action: Selector("unHighlightKey:"), forControlEvents: .TouchUpInside | .TouchUpOutside | .TouchDragOutside | .TouchDragExit)
                     }
+                    keyView.addTarget(self, action: Selector("hideExtPoup:"), forControlEvents: .TouchUpInside | .TouchUpOutside)
                     keyView.addTarget(self, action: Selector("playKeySound"), forControlEvents: .TouchDown)
                 }
             }
@@ -429,7 +460,12 @@ class KeyboardViewController: UIInputViewController {
     
     var keyWithDelayedPopup: KeyboardKey?
     var popupDelayTimer: NSTimer?
-    
+    //+20150421
+    /*func showExpandPopup(gestureRecognizer: UIGestureRecognizer) {
+        println("here")
+        let sender : KeyboardKey  = gestureRecognizer.view as! KeyboardKey
+        sender.showExpandPopup("A")
+    }*/
     func showPopup(sender: KeyboardKey) {
         if sender == self.keyWithDelayedPopup {
             self.popupDelayTimer?.invalidate()
@@ -524,66 +560,155 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func highlightKey(sender: KeyboardKey) {
+        
+        
         sender.highlighted = true
+        //m+20150421
+        
+        if let modell = self.layout?.keyForView(sender) {
+            
+            if  let extvalues = modell.extentionValuesCase(self.shiftState.uppercase()) {
+                
+                var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    
+                    
+                    if sender.highlighted {
+                        
+                        
+                        
+                        sender.downColor = UIColor.whiteColor()
+                        self.bannerView?.alpha = 0.8
+                        
+                        self.forwardingView.longPressKey = sender
+                        for (model, key) in self.layout!.modelToView {
+                            
+                            if key != sender {
+                                
+                                key.alpha = 0.8
+                                key.enabled = false
+                                
+                            }else{
+                                
+                                sender.showExpandPopup(extvalues, isleft: model.isLeftExtention , famee: self.view.bounds)
+                                sender.delegateExtention = self
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                })
+            }
+        }
+        
     }
-    
+    //m+20150421 also called from delegate
+    func hideExtPoup(sender: KeyboardKey) {
+       
+        self.bannerView?.alpha = 1.0
+        for (model, key) in self.layout!.modelToView {
+            
+            
+            key.alpha = 1
+            key.enabled = true
+            
+            if key.popupExtended != nil {
+                
+                sender.downColor = GlobalColors.lightModeSpecialKeyiPad
+                key.highlighted = false
+                key.hideExtendedPopup()
+                
+                key.delegateExtention = nil;
+            }
+           
+        }
+        self.forwardingView.longPressKey = nil
+    }
+
     func unHighlightKey(sender: KeyboardKey) {
-        sender.highlighted = false
+        
+        if sender.popupExtended == nil { //m+20150422
+            
+            sender.highlighted = false
+        }
+        
+        
     }
-   
+    //m+20150423
+    func keyPressedAfter(){
+        
+        //m+20150325
+        let previousContext:String? = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+        
+        if let banner = self.bannerView as? PredictiveBanner {
+            
+            if previousContext == nil || previousContext!.isEmpty {
+                
+                banner.clearBanner()
+                
+            }else{
+                
+                
+                if lastchar == " " {
+                    banner.clearBanner()
+                }else{
+                    
+                    let range = previousContext!.rangeOfString(" ", options: NSStringCompareOptions.BackwardsSearch)
+                    
+                    if range != nil {
+                        let lastword = previousContext!.substringFromIndex(range!.endIndex)
+                        
+                        let ct = count(lastword.utf16)
+                        println("ct = \(ct)")
+                        if ct == 1 {
+                            banner.updateAlternateKeyList(lastword, Mode:0)
+                        }else if ct > 1 {
+                            banner.updateAlternateKeyList(lastword, Mode:1)
+                        }
+                        
+                        
+                        
+                    }else{
+                        let ct = count(previousContext!.utf16)
+                        println("ct2 = \(ct)")
+                        if ct == 1 {
+                        
+                            banner.updateAlternateKeyList(previousContext, Mode:0)
+                        }else if ct > 1 {
+                            banner.updateAlternateKeyList(previousContext, Mode:1)
+                        }
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                
+            }
+            
+        }
+    }
+    //m+20150423 Delegate from popupbutton
+    func keyPressedExtention(value: String){
+        
+        if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
+            
+            lastchar = value
+            textDocumentProxy.insertText(value)
+            
+            keyPressedAfter()
+        }
+        
+    }
     func keyPressedHelper(sender: KeyboardKey) {
         //+20141229self.playKeySound()
         
         if let model = self.layout?.keyForView(sender) {
             self.keyPressed(model)
             
-            //m+20150325
-            let previousContext:String? = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
-            
-            if let banner = self.bannerView as? PredictiveBanner {
-                
-                if previousContext == nil || previousContext!.isEmpty {
-                    
-                    banner.clearBanner()
-                    
-                }else{
-                    
-                    
-                    
-                    if lastchar == " " {
-                        banner.clearBanner()
-                    }else{
-                        
-                        let range = previousContext!.rangeOfString(" ", options: NSStringCompareOptions.BackwardsSearch)
-                        
-                        if range != nil {
-                            let lastword = previousContext!.substringFromIndex(range!.endIndex)
-                            let ct = count(lastword.utf16)
-                            if ct > 1 {
-                                
-                                banner.updateAlternateKeyList(lastword, Mode:100)
-                            }else if ct == 1 {
-                                banner.updateAlternateKeyList(lastword, Mode:0)
-                            }
-                            
-                        }else{
-                            let ct = count(previousContext!.utf16)
-                            if ct > 1 {
-                                banner.updateAlternateKeyList(previousContext, Mode:100)
-                            }else if ct == 1 {
-                                banner.updateAlternateKeyList(previousContext, Mode:0)
-                            }
-                            
-                        }
-                        
-                        
-                        
-                    }
-                    
-                    
-                }
-                
-            }
+            keyPressedAfter()
 
             
             // auto exit from special char subkeyboard
@@ -684,6 +809,7 @@ class KeyboardViewController: UIInputViewController {
         //+20141229self.playKeySound()
         
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
+            
             textDocumentProxy.deleteBackward()
             //+20150326
             let previousContext:String? = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
@@ -701,21 +827,22 @@ class KeyboardViewController: UIInputViewController {
                     if range != nil {
                         let lastword = previousContext!.substringFromIndex(range!.endIndex)
                         let ct = count(lastword.utf16)
-                        if ct > 1 {
-                            
-                            banner.updateAlternateKeyList(lastword, Mode:100)
-                        }else if ct == 1 {
+                        if ct == 1 {
                             banner.updateAlternateKeyList(lastword, Mode:0)
+                        }else if ct > 1{
+                            banner.updateAlternateKeyList(lastword, Mode:1)
                         }
+                        
                         
                     }else{
+                       
                         let ct = count(previousContext!.utf16)
-                        if ct > 1 {
-                            banner.updateAlternateKeyList(previousContext, Mode:100)
-                        }else if ct == 1 {
+                        if ct == 1 {
+                       
                             banner.updateAlternateKeyList(previousContext, Mode:0)
+                        }else if ct > 1 {
+                            banner.updateAlternateKeyList(previousContext, Mode:1)
                         }
-                        
                     }
                 }
             }
@@ -1127,7 +1254,7 @@ class KeyboardViewController: UIInputViewController {
 class PredictiveBanner: ExtraView {
     
     //var label: UILabel = UILabel()
-    var keyboard: KeyboardViewController?
+    weak var keyboard: KeyboardViewController?
     var dataStore : WordsDAO!
     var searchText :String?
     
@@ -1178,18 +1305,151 @@ class PredictiveBanner: ExtraView {
                 
                 if searchText != nil {
                     
-                    let countt = count(searchText!.utf16)
-                    for var i = 0 ; i<countt ; i++ {
+                    
+                    let previousContext:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                    
+                    
+                    let array1: [String]? = previousContext?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    
+                    
+                    let ct2 = count(array1!.last!.utf16)
+                    for var i = 0 ; i < ct2 ; i++ {
                         
                         textDocumentProxy.deleteBackward()
                     }
+                    
+                    /*let previousContext:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                    
+                    
+                    let array1: [String]? = previousContext?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    
+                    let ct1 = count(array1!.last!)
+                    let ct2 = count(array1!.last!.utf16)
+                    for var i = 0 ; i < ct1 ; i++ {
+                        
+                        textDocumentProxy.deleteBackward()
+                    }
+                    
+                    
+                    println("ct1 = \(ct1)")
+                    println("ct2 = \(ct2)")
+                    
+                   
+                    let ct = ct2 - ct1
+                    
+                    //textDocumentProxy.insertText(" ")
+                    //(self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.adjustTextPositionByCharacterOffset(-1)
+                    
+                    if ct > 0 {
+                        
+                        println("ct = \(ct)")
+                        
+                        
+                        let previousContext2:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                        let array2: [String]? = previousContext2?.componentsSeparatedByString(" ") //CharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                        
+                        //("previousContext2_\(previousContext2)_end")
+                        
+                        
+                        
+                        if array2 != nil {
+                            
+                            println("previousContextValue_\(array2!.last!.utf16)_end")
+                            
+                            let newct = count(array2!.last!.utf16)
+                            
+                            println("newct = \(newct)")
+                            
+                            if newct == ct {
+                                
+                                for var i = 0 ; i < ct ; i++ {
+                                    
+                                    //textDocumentProxy.deleteBackward()
+                                }
+                            }
+                        }
+                        
+                        
+                        
+                    }*/
+                    
+                    /*
+                    let previousContext2:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                    
+                    var index = previousContext2!.endIndex
+                    
+                    index = index.predecessor()
+                    if previousContext2![index] != " "{
+                        
+                        let array2: [String]? = previousContext2?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                        
+                        for var i = 0 ; i < count(array2!.last!.utf16) ; i++ {
+                            
+                            textDocumentProxy.deleteBackward()
+                        }
+                    }
+                    
+                    */
+                    
+                    
+                    /*
+                    let range = previousContext!.rangeOfString(" ", options: NSStringCompareOptions.BackwardsSearch)
+                    
+                    if range != nil {
+                        let lastword = previousContext!.substringFromIndex(range!.endIndex)
+                        let ct = count(lastword)
+                        
+                        for var i = 0 ; i<ct ; i++ {
+                            textDocumentProxy.deleteBackward()
+                        }
+                        
+                        
+                        
+                    }else{
+                        let ct = count(previousContext!)
+                        
+                        for var i = 0 ; i<ct ; i++ {
+                            textDocumentProxy.deleteBackward()
+                        }
+
+                        
+                    }
+                    
+                    
+                    let previousContext:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                    
+                    
+                    let array1: [String]? = previousContext?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    
+                    let newstr = array1!.last! as NSString
+                    
+                    //let countt = count(searchText!.utf16)
+                    let countt = newstr.length //count(array1!.last!.utf16)
+                    
+                    for var i = countt-1 ; i > 0 ; i-- {
+                        
+                        let previousContext2:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
+                        
+
+                        
+                        
+                        if previousContext2 == " " {
+                     
+                            break
+                        }
+                        
+                        
+                        
+                        textDocumentProxy.deleteBackward()
+                    }
+                    */
                 }
                 
                 textDocumentProxy.insertText(sender.titleLabel!.text!)
-                textDocumentProxy.insertText(" ")
+                //textDocumentProxy.insertText(" ")
                 
                 self.clearBanner()
-                //self.updateAlternateKeyList(sender.titleLabel!.text!, Mode: 100)
+                self.updateAlternateKeyList(sender.titleLabel!.text!, Mode: 1)
                 
             }
             
@@ -1292,7 +1552,7 @@ class PredictiveBanner: ExtraView {
             //btn.setTitle(char as? String, forState: .Normal)
             //btn.titleLabel!.sizeToFit()
             //btn.sizeToFit()
-            btn.titleLabel?.font = UIFont.systemFontOfSize(16)
+            //m+btn.titleLabel?.font = UIFont.systemFontOfSize(16)
             //btn.setTranslatesAutoresizingMaskIntoConstraints(false)
             if darkMode {//+20150421
                 btn.backgroundColor = UIColor(red: CGFloat(12)/CGFloat(255), green: CGFloat(12)/CGFloat(255), blue: CGFloat(12)/CGFloat(255), alpha: 1)

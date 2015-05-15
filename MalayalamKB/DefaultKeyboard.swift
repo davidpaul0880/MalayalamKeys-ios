@@ -54,36 +54,46 @@ func defaultKeyboard() -> Keyboard {
             keyModel.uppercaseOutput = "ഭ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
-            
+            keyModel.extentionValues = "ബ്ര"
+            keyModel.extentionValuesUpper = "ഭ്ര"
         case "ങ":
             keyModel.keyText = "ഹ\n\(key)"
             keyModel.uppercaseOutput = "ഹ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.primaryValue = 9
-        
+            
+            keyModel.extentionValuesUpper = "ഹ്ര,ഹ്യ,ഹ്വ"
         case "ഗ":
             keyModel.keyText = "ഘ\n\(key)"
             keyModel.uppercaseOutput = "ഘ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
-      
+            keyModel.extentionValues = "ഗ്ര,ഗ്യ,ഗ്വ,ഗ്ല"
+            keyModel.extentionValuesUpper = "ഘ്ര"
         case "ദ":
             keyModel.keyText = "ധ\n\(key)"
             keyModel.uppercaseOutput = "ധ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.extentionValues = "ദ്ര,ദ്യ,ദ്വ"
+            keyModel.extentionValuesUpper = "ധ്ര,ധ്യ,ധ്വ"
+            keyModel.isLeftExtention = true
         case "ജ":
             keyModel.keyText = "ഝ\n\(key)"
             keyModel.uppercaseOutput = "ഝ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
-        
+            keyModel.extentionValues = "ജ്ര,ജ്യ,ജ്വ"
+            keyModel.isLeftExtention = true
         case "ഡ":
             keyModel.keyText = "ഢ\n\(key)"
             keyModel.uppercaseOutput = "ഢ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.extentionValues = "ഡ്ര,ഡ്യ"
+            keyModel.extentionValuesUpper = "ഢ്യ"
+            keyModel.isLeftExtention = true
         default:
             
             keyModel.setLetter(key)
@@ -137,6 +147,8 @@ func defaultKeyboard() -> Keyboard {
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 5
+            keyModel.extentionValues = "പ്ര,പ്യ,പ്ല"
+            keyModel.extentionValuesUpper = "ഫ്ര"
         case "ര":
             keyModel.keyText = "റ\n\(key)"
             keyModel.uppercaseOutput = "റ"
@@ -148,19 +160,23 @@ func defaultKeyboard() -> Keyboard {
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 1
+            keyModel.extentionValues = "ക്ര,ക്യ,ക്വ,ക്ല"
+            keyModel.extentionValuesUpper = "ഖ്ര,ഖ്യ"
         case "ത":
             keyModel.keyText = "ഥ\n\(key)"
             keyModel.uppercaseOutput = "ഥ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 4
-            
+            keyModel.extentionValues = "ത്ര,ത്യ,ത്വ"
+
         case "ച":
             keyModel.keyText = "ഛ\n\(key)"
             keyModel.uppercaseOutput = "ഛ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 2
+            keyModel.extentionValues = "ച്ര,ച്യ"
             
         case "ട":
             keyModel.keyText = "ഠ\n\(key)"
@@ -168,7 +184,9 @@ func defaultKeyboard() -> Keyboard {
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 3
-            
+            keyModel.extentionValues = "ട്ര,ട്യ"
+            keyModel.extentionValuesUpper = "ഠ്യ"
+            keyModel.isLeftExtention = true
         default:
             
             keyModel.setLetter(key)
@@ -210,39 +228,52 @@ func defaultKeyboard() -> Keyboard {
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.primaryValue = 5
+            keyModel.extentionValues = "മ്ര,മ്യ,മ്ല"
+            
         case "ണ":
             keyModel.keyText = "ൺ\n\(key)"
             keyModel.uppercaseOutput = "ൺ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.primaryValue = 7
+            keyModel.extentionValues = "ണ്യ,ണ്വ"
+
         case "ന":
             keyModel.keyText = "ൻ\n\(key)"
             keyModel.uppercaseOutput = "ൻ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.primaryValue = 6
+            keyModel.extentionValues = "ന്യ,ന്വ"
+            
         case "വ":
             keyModel.keyText = "ഴ\n\(key)"
             keyModel.uppercaseOutput = "ഴ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
-            
+            keyModel.extentionValues = "വ്ര,വ്യ"
+
         case "ല":
             keyModel.keyText = "ൽ\n\(key)"
             keyModel.uppercaseOutput = "ൽ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.extentionValues = "ല്യ"
+
         case "ള":
             keyModel.keyText = "ൾ\n\(key)"
             keyModel.uppercaseOutput = "ൾ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.extentionValues = "ള്യ"
+
         case "സ":
             keyModel.keyText = "ശ\n\(key)"
             keyModel.uppercaseOutput = "ശ"
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
+            keyModel.extentionValues = "സ്ര,സ്യ,സ്വ"
+            keyModel.extentionValuesUpper = "ശ്ര,ശ്യ,ശ്വ"
        
         default:
             
@@ -317,6 +348,8 @@ func defaultKeyboard() -> Keyboard {
     keyModelrr.lowercaseOutput = rr
     keyModelrr.isDoubleTappable = true
     keyModelrr.primaryValue = 8
+    keyModelrr.extentionValues = "ഞ്യ"
+
     defaultKeyboard.addKey(keyModelrr, row: 3, page: 0)
     
     
@@ -325,6 +358,7 @@ func defaultKeyboard() -> Keyboard {
     keyModel2.uppercaseOutput = "ഷ"
     keyModel2.lowercaseOutput = "യ"
     keyModel2.isDoubleTappable = true
+  
     defaultKeyboard.addKey(keyModel2, row: 3, page: 0)
     
     
@@ -423,6 +457,9 @@ func defaultKeyboard() -> Keyboard {
         keyModel.setLetter(key)
         defaultKeyboard.addKey(keyModel, row: 1, page: 1)
     }
+    
+    
+    
     if isPad {
         
         defaultKeyboard.addKey(Key(returnKey), row: 1, page: 1)

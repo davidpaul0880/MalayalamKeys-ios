@@ -11,6 +11,7 @@ import UIKit
 class ForwardingView: UIView {
     
     var touchToView: [UITouch:UIView]
+    var longPressKey: UIControl?
     
     override init(frame: CGRect) {
         self.touchToView = [:]
@@ -44,17 +45,20 @@ class ForwardingView: UIView {
     
     func handleControl(view: UIView?, controlEvent: UIControlEvents) {
         if let control = view as? UIControl {
-            let targets = control.allTargets() as NSSet
-            for target in targets.allObjects { // TODO: Xcode crashes
-                var actions = control.actionsForTarget(target, forControlEvent: controlEvent)
-                if (actions != nil) {
-                    for action in actions! {
-                        let selector = Selector(action as! String)
-                        control.sendAction(selector, to: target, forEvent: nil)
+            
+                let targets = control.allTargets() as NSSet
+                for target in targets.allObjects { // TODO: Xcode crashes
+                    var actions = control.actionsForTarget(target, forControlEvent: controlEvent)
+                    if (actions != nil) {
+                        for action in actions! {
+                            let selector = Selector(action as! String)
+                            control.sendAction(selector, to: target, forEvent: nil)
+                        }
                     }
                 }
             }
-        }
+            
+        
     }
     
     // TODO: there's a bit of "stickiness" to Apple's implementation
@@ -72,18 +76,80 @@ class ForwardingView: UIView {
                 continue
             }
             
-            view.alpha = 1
+            //m+20140522view.alpha = 1
             
-            let distance = distanceBetween(view.frame, point: position)
+            var isFound = false
             
-            if closest != nil {
-                if distance < closest!.1 {
-                    closest = (view, distance)
+            //m+20140522
+            if let popview = view.viewWithTag(12) {
+                
+                //("view = \(view.description)")
+                
+                //let widthh = 3.0 * view.frame.size.width / 4.0
+                //let heightt = 3.0 * view.frame.size.height / 4.0
+                
+                //let parentrect = CGRectMake(view.frame.origin.x , view.frame.origin.y -  heightt - 2, 0, 0)
+                var rectClosest = CGRectZero
+                
+                for anyBtnView in popview.subviews {
+                    
+                    let viewbtn = anyBtnView as! UIView
+                    
+                    var rect1 = popview.convertRect(viewbtn.frame, toView: self)
+
+                    //var rect1 = viewbtn.frame
+                    //rect1.origin.x += parentrect.origin.x
+                    //rect1.origin.y += parentrect.origin.y
+                    
+                    //("rect = \(rect1.origin.x),\(rect1.origin.y),\(rect1.size.width),\(rect1.size.height)")
+                    
+                    let distance = distanceBetween(rect1, point: position)
+                    //("distance = \(distance)")
+                    
+                    if closest != nil {
+                        if distance < closest!.1 {
+                            closest = (viewbtn, distance)
+                            rectClosest = rect1
+                        }
+                    }
+                    else {
+                        closest = (viewbtn, distance)
+                        rectClosest = rect1
+                    }
+                    
+                    
                 }
+                
+                
+                if popview.bounds.contains(position) {
+                    
+                    return closest!.0
+                }
+                
             }
-            else {
-                closest = (view, distance)
+            
+            if let f = view as? UIControl {
+                
+                if f.enabled {
+                    
+                    let distance = distanceBetween(view.frame, point: position)
+                    
+                    if closest != nil {
+                        if distance < closest!.1 {
+                            closest = (view, distance)
+                        }
+                    }
+                    else {
+                        closest = (view, distance)
+                    }
+                }
+                
             }
+            
+            //("distance2 = \(distance)")
+            
+            //("closest!.0 = \(closest!.0.description)")
+            
         }
         
         if closest != nil {
@@ -177,21 +243,41 @@ class ForwardingView: UIView {
             var oldView = self.touchToView[touch]
             var newView = findNearestView(position)
             
-            if oldView != newView {
-                self.handleControl(oldView, controlEvent: .TouchDragExit)
+            //("newview = \(newView?.description)")
+            
+            //m+20150422
+            if let control = newView as? UIControl {
                 
-                var viewChangedOwnership = self.ownView(touch, viewToOwn: newView)
-                
-                if !viewChangedOwnership {
-                    self.handleControl(newView, controlEvent: .TouchDragEnter)
-                }
-                else {
-                    self.handleControl(newView, controlEvent: .TouchDragInside)
+                if control.enabled {
+                    
+                    if oldView != newView {
+                        self.handleControl(oldView, controlEvent: .TouchDragExit)
+                        
+                        var viewChangedOwnership = self.ownView(touch, viewToOwn: newView)
+                        
+                        if !viewChangedOwnership {
+                            self.handleControl(newView, controlEvent: .TouchDragEnter)
+                        }
+                        else {
+                            self.handleControl(newView, controlEvent: .TouchDragInside)
+                        }
+                    }
+                    else {
+                        self.handleControl(oldView, controlEvent: .TouchDragInside)
+                    }
+                }else{//m+20150423
+                    /*
+                    if oldView!.tag > 0 && oldView != newView  {
+                        
+                        self.handleControl(oldView, controlEvent: .TouchDragExit)
+                    }else{
+                        
+                        self.handleControl(oldView, controlEvent: .TouchDragInside)
+                    }*/
                 }
             }
-            else {
-                self.handleControl(oldView, controlEvent: .TouchDragInside)
-            }
+            
+            
         }
     }
     
@@ -204,9 +290,22 @@ class ForwardingView: UIView {
             let touchPosition = touch.locationInView(self)
             
             if self.bounds.contains(touchPosition) {
-                self.handleControl(view, controlEvent: .TouchUpInside)
+                //m+20150422
+                if let control = view as? UIControl {
+                    if control.enabled {
+                        //("endeddd enabled")
+                        self.handleControl(view, controlEvent: .TouchUpInside)
+                    }else{
+                        //("endeddd --f")
+                        //this is to input same pressed key when touch-up from anywhere
+                        self.handleControl(longPressKey , controlEvent: .TouchUpInside)
+                    }
+                }
+                
+                
             }
             else {
+                //("endeddd cancel")
                 self.handleControl(view, controlEvent: .TouchCancel)
             }
             

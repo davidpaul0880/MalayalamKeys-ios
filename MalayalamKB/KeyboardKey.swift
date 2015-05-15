@@ -16,6 +16,12 @@ protocol KeyboardKeyProtocol: class {
     func frameForPopup(key: KeyboardKey, direction: Direction) -> CGRect
     func willShowPopup(key: KeyboardKey, direction: Direction) //may be called multiple times during layout
     func willHidePopup(key: KeyboardKey)
+    
+}
+protocol KeyboardKeyExtentionProtocol: class {
+    
+    func keyPressedExtention(value: String) //m+20150423
+    func hideExtPoup(sender: KeyboardKey)
 }
 
 enum VibrancyType {
@@ -27,6 +33,7 @@ enum VibrancyType {
 class KeyboardKey: UIControl {
     
     weak var delegate: KeyboardKeyProtocol?
+    weak var delegateExtention: KeyboardKeyExtentionProtocol?
     
     var vibrancy: VibrancyType?
     
@@ -93,6 +100,7 @@ class KeyboardKey: UIControl {
     override var frame: CGRect {
         didSet {
             self.redrawText()
+            
         }
     }
     
@@ -110,6 +118,7 @@ class KeyboardKey: UIControl {
     
     var background: KeyboardKeyBackground
     var popup: KeyboardKeyBackground?
+    var popupExtended: UIView? //+20150421
     var connector: KeyboardConnector?
     
     var displayView: ShapeView
@@ -182,6 +191,8 @@ class KeyboardKey: UIControl {
             self.label.userInteractionEnabled = false
             self.label.numberOfLines = 2//+201412
             }()
+        
+        
     }
     
     required init(coder: NSCoder) {
@@ -437,9 +448,89 @@ class KeyboardKey: UIControl {
             //            self.connector!.drawUnder = false
         }
     }
-    
+    //+20150421
+    func showExpandPopup(value: String, isleft: Bool, famee: CGRect){
+        
+
+        if(highlighted){
+            
+            hidePopup()
+            
+            if self.popupExtended == nil {
+            
+             
+                
+                let arrayVals = value.componentsSeparatedByString(",")
+                
+                let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+                
+                var widthh =  self.bounds.size.width
+                var heightt =  self.bounds.size.height
+                if(isPad){
+                    
+                     widthh = 3.0 * widthh / 4.0
+                     //heightt = 3.0 * heightt / 4.0
+                    heightt -= 5;
+                }
+                
+                var xx = self.bounds.origin.x
+                
+                if isleft {
+                    xx -= (widthh * CGFloat(arrayVals.count - 1))
+                }
+              
+                let popup = UIView(frame: CGRectMake(xx , self.bounds.origin.y -  heightt - 2, widthh * CGFloat(arrayVals.count), heightt) )
+                popup.backgroundColor = UIColor.whiteColor()
+                
+                var x = 0
+                
+                for eachChar in arrayVals {
+                    
+                    var btn: PopupButton = PopupButton()//UIButton.buttonWithType(UIButtonType.System) as! UIButton//PopupButton()
+                    btn.frame = CGRectMake(CGFloat(x++) * widthh , 0.0 - heightt, widthh, heightt * 3)
+                    btn.text = eachChar
+                    //btn.setTitle(eachChar, forState: .Normal)
+                    btn.tag = x
+                    btn.addTarget(btn, action: Selector("highlightLabel:"), forControlEvents: .TouchDragEnter | .TouchDragInside  )
+                    btn.addTarget(btn, action: Selector("unHighlightLabel:"), forControlEvents: .TouchUpOutside | .TouchDragOutside | .TouchDragExit)
+                    
+                    btn.addTarget(self, action: Selector("selectedKey:"), forControlEvents: .TouchUpInside)
+                    
+                    popup.addSubview(btn)
+                }
+                
+
+                popup.tag = 12
+                self.addSubview(popup)
+            
+                self.popupExtended = popup
+
+
+            }
+        }
+        
+    }
+    func selectedKey(sender: PopupButton) {
+        
+        if sender.label.highlighted {
+            
+            delegateExtention?.keyPressedExtention(sender.label.text!)
+            
+        }
+        delegateExtention?.hideExtPoup(self)
+    }
+
+    func hideExtendedPopup(){
+        
+        //m+20150421
+        if self.popupExtended != nil {
+            
+            self.popupExtended?.removeFromSuperview()
+            self.popupExtended = nil
+        }
+    }
     func showPopup(value: String) { //m+20150101
-        if self.popup == nil {
+        if self.popup == nil && self.popupExtended == nil { //m+20150422  
             self.layer.zPosition = 1000
             
             var popup = KeyboardKeyBackground(cornerRadius: 9.0, underOffset: self.underOffset)
@@ -483,6 +574,7 @@ class KeyboardKey: UIControl {
             
             self.popupDirection = nil
         }
+        
     }
 }
 
