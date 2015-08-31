@@ -24,7 +24,7 @@ class ForwardingView: UIView {
         self.opaque = false
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
@@ -48,10 +48,10 @@ class ForwardingView: UIView {
             
                 let targets = control.allTargets() as NSSet
                 for target in targets.allObjects { // TODO: Xcode crashes
-                    var actions = control.actionsForTarget(target, forControlEvent: controlEvent)
+                    let actions = control.actionsForTarget(target, forControlEvent: controlEvent)
                     if (actions != nil) {
                         for action in actions! {
-                            let selector = Selector(action as! String)
+                            let selector = Selector(action )
                             control.sendAction(selector, to: target, forEvent: nil)
                         }
                     }
@@ -70,7 +70,7 @@ class ForwardingView: UIView {
         var closest: (UIView, CGFloat)? = nil
         
         for anyView in self.subviews {
-            let view = anyView as! UIView
+            let view = anyView 
             
             if view.hidden {
                 continue
@@ -78,7 +78,7 @@ class ForwardingView: UIView {
             
             //m+20140522view.alpha = 1
             
-            var isFound = false
+            //var isFound = false
             
             //m+20140522
             if let popview = view.viewWithTag(12) {
@@ -89,13 +89,13 @@ class ForwardingView: UIView {
                 //let heightt = 3.0 * view.frame.size.height / 4.0
                 
                 //let parentrect = CGRectMake(view.frame.origin.x , view.frame.origin.y -  heightt - 2, 0, 0)
-                var rectClosest = CGRectZero
+                //var rectClosest = CGRectZero
                 
                 for anyBtnView in popview.subviews {
                     
-                    let viewbtn = anyBtnView as! UIView
+                    let viewbtn = anyBtnView 
                     
-                    var rect1 = popview.convertRect(viewbtn.frame, toView: self)
+                    let rect1 = popview.convertRect(viewbtn.frame, toView: self)
 
                     //var rect1 = viewbtn.frame
                     //rect1.origin.x += parentrect.origin.x
@@ -109,12 +109,12 @@ class ForwardingView: UIView {
                     if closest != nil {
                         if distance < closest!.1 {
                             closest = (viewbtn, distance)
-                            rectClosest = rect1
+                            //rectClosest = rect1
                         }
                     }
                     else {
                         closest = (viewbtn, distance)
-                        rectClosest = rect1
+                        //rectClosest = rect1
                     }
                     
                     
@@ -216,13 +216,13 @@ class ForwardingView: UIView {
         return foundView
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for obj in touches {
-            let touch = obj as! UITouch
+            let touch = obj 
             let position = touch.locationInView(self)
-            var view = findNearestView(position)
+            let view = findNearestView(position)
             
-            var viewChangedOwnership = self.ownView(touch, viewToOwn: view)
+            let viewChangedOwnership = self.ownView(touch, viewToOwn: view)
             
             if !viewChangedOwnership {
                 self.handleControl(view, controlEvent: .TouchDown)
@@ -235,13 +235,13 @@ class ForwardingView: UIView {
         }
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for obj in touches {
-            let touch = obj as! UITouch
+            let touch = obj 
             let position = touch.locationInView(self)
             
-            var oldView = self.touchToView[touch]
-            var newView = findNearestView(position)
+            let oldView = self.touchToView[touch]
+            let newView = findNearestView(position)
             
             //("newview = \(newView?.description)")
             
@@ -253,7 +253,7 @@ class ForwardingView: UIView {
                     if oldView != newView {
                         self.handleControl(oldView, controlEvent: .TouchDragExit)
                         
-                        var viewChangedOwnership = self.ownView(touch, viewToOwn: newView)
+                        let viewChangedOwnership = self.ownView(touch, viewToOwn: newView)
                         
                         if !viewChangedOwnership {
                             self.handleControl(newView, controlEvent: .TouchDragEnter)
@@ -281,11 +281,11 @@ class ForwardingView: UIView {
         }
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for obj in touches {
-            let touch = obj as! UITouch
+            let touch = obj 
             
-            var view = self.touchToView[touch]
+            let view = self.touchToView[touch]
             
             let touchPosition = touch.locationInView(self)
             
@@ -313,11 +313,11 @@ class ForwardingView: UIView {
         }
     }
     
-    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
-        for obj in touches {
-            let touch = obj as! UITouch
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        for obj in touches! {
+            let touch = obj
             
-            var view = self.touchToView[touch]
+            let view = self.touchToView[touch]
             
             self.handleControl(view, controlEvent: .TouchCancel)
             

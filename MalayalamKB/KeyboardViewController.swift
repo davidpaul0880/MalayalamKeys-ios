@@ -162,7 +162,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
@@ -182,9 +182,9 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     var kludge: UIView?
     func setupKludge() {
         if self.kludge == nil {
-            var kludge = UIView()
+            let kludge = UIView()
             self.view.addSubview(kludge)
-            kludge.setTranslatesAutoresizingMaskIntoConstraints(false)
+            kludge.translatesAutoresizingMaskIntoConstraints = false
             kludge.hidden = true
             
             let a = NSLayoutConstraint(item: kludge, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 0)
@@ -219,7 +219,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     var constraintsAdded: Bool = false
     func setupLayout() {
         if !constraintsAdded {
-            self.layout = self.dynamicType.layoutClass(model: self.keyboard, superview: self.forwardingView, layoutConstants: self.dynamicType.layoutConstants, globalColors: self.dynamicType.globalColors, darkMode: self.darkMode(), solidColorMode: self.solidColorMode())
+            self.layout = self.dynamicType.layoutClass.init(model: self.keyboard, superview: self.forwardingView, layoutConstants: self.dynamicType.layoutConstants, globalColors: self.dynamicType.globalColors, darkMode: self.darkMode(), solidColorMode: self.solidColorMode())
             
             self.layout?.initialize()
             self.setupKeys()
@@ -239,7 +239,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     
     // only available after frame becomes non-zero
     func darkMode() -> Bool {
-        var darkMode = { () -> Bool in
+        let darkMode = { () -> Bool in
             if let proxy = self.textDocumentProxy as? UITextDocumentProxy {
                 return proxy.keyboardAppearance == UIKeyboardAppearance.Dark
             }
@@ -286,7 +286,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     override func loadView() {
         super.loadView()
         //+20150325
-        if var aBanner = self.createBanner() {
+        if let aBanner = self.createBanner() {
             aBanner.hidden = true
             self.view.insertSubview(aBanner, belowSubview: self.forwardingView)
             self.bannerView = aBanner
@@ -388,7 +388,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         for page in keyboard.pages {
             for rowKeys in page.rows { // TODO: quick hack
                 for key in rowKeys {
-                    var keyView = self.layout!.viewForKey(key)! // TODO: check
+                    let keyView = self.layout!.viewForKey(key)! // TODO: check
                     
                     keyView.removeTarget(nil, action: nil, forControlEvents: UIControlEvents.AllEvents)//+201412
                     
@@ -396,7 +396,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     case Key.KeyType.KeyboardChange:
                         keyView.addTarget(self, action: "advanceTapped:", forControlEvents: .TouchUpInside)
                     case Key.KeyType.Backspace:
-                        let cancelEvents: UIControlEvents = UIControlEvents.TouchUpInside|UIControlEvents.TouchUpInside|UIControlEvents.TouchDragExit|UIControlEvents.TouchUpOutside|UIControlEvents.TouchCancel|UIControlEvents.TouchDragOutside
+                        let cancelEvents: UIControlEvents = [UIControlEvents.TouchUpInside, UIControlEvents.TouchUpInside, UIControlEvents.TouchDragExit, UIControlEvents.TouchUpOutside, UIControlEvents.TouchCancel, UIControlEvents.TouchDragOutside]
                         
                         keyView.addTarget(self, action: "backspaceDown:", forControlEvents: .TouchDown)
                         keyView.addTarget(self, action: "backspaceUp:", forControlEvents: cancelEvents)
@@ -423,9 +423,9 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
 
                         if UIDevice.currentDevice().userInterfaceIdiom != UIUserInterfaceIdiom.Pad && !NSUserDefaults.standardUserDefaults().boolForKey(kDisablePopupKeys) {
 
-                            keyView.addTarget(self, action: Selector("showPopup:"), forControlEvents: .TouchDown | .TouchDragInside | .TouchDragEnter)
+                            keyView.addTarget(self, action: Selector("showPopup:"), forControlEvents: [.TouchDown, .TouchDragInside, .TouchDragEnter])
                             keyView.addTarget(keyView, action: Selector("hidePopup"), forControlEvents: .TouchDragExit)
-                            keyView.addTarget(self, action: Selector("hidePopupDelay:"), forControlEvents: .TouchUpInside | .TouchUpOutside | .TouchDragOutside)
+                            keyView.addTarget(self, action: Selector("hidePopupDelay:"), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragOutside])
                             
                         }
 
@@ -443,11 +443,11 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     }
                     
                     if key.type != Key.KeyType.Shift && key.type != Key.KeyType.ModeChange {
-                        keyView.addTarget(self, action: Selector("highlightKey:"), forControlEvents: .TouchDown | .TouchDragInside | .TouchDragEnter)
+                        keyView.addTarget(self, action: Selector("highlightKey:"), forControlEvents: [.TouchDown, .TouchDragInside, .TouchDragEnter])
                         //keyView.addTarget(self, action: Selector("highlightKey:"), forControlEvents: .TouchDown)
-                        keyView.addTarget(self, action: Selector("unHighlightKey:"), forControlEvents: .TouchUpInside | .TouchUpOutside | .TouchDragOutside | .TouchDragExit)
+                        keyView.addTarget(self, action: Selector("unHighlightKey:"), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragOutside, .TouchDragExit])
                     }
-                    keyView.addTarget(self, action: Selector("hideExtPoup:"), forControlEvents: .TouchUpInside | .TouchUpOutside)
+                    keyView.addTarget(self, action: Selector("hideExtPoup:"), forControlEvents: [.TouchUpInside, .TouchUpOutside])
                     keyView.addTarget(self, action: Selector("playKeySound"), forControlEvents: .TouchDown)
                 }
             }
@@ -512,11 +512,11 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
     }
-    override func textWillChange(textInput: UITextInput) {
+    override func textWillChange(textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
     }
     // TODO: this is currently not working as intended; only called when selection changed -- iOS bug
-    override func textDidChange(textInput: UITextInput) {
+    override func textDidChange(textInput: UITextInput?) {
         //m+20150325
         let previousContext:String? = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
         if previousContext == nil {
@@ -569,7 +569,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             
             if  let extvalues = modell.extentionValuesCase(self.shiftState.uppercase()) {
                 
-                var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+                let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
                 dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                     
                     
@@ -659,8 +659,8 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     if range != nil {
                         let lastword = previousContext!.substringFromIndex(range!.endIndex)
                         
-                        let ct = count(lastword.utf16)
-                        println("ct = \(ct)")
+                        let ct = lastword.utf16.count
+                        print("ct = \(ct)")
                         if ct == 1 {
                             banner.updateAlternateKeyList(lastword, Mode:0)
                         }else if ct > 1 {
@@ -670,8 +670,8 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                         
                         
                     }else{
-                        let ct = count(previousContext!.utf16)
-                        println("ct2 = \(ct)")
+                        let ct = previousContext!.utf16.count
+                        print("ct2 = \(ct)")
                         if ct == 1 {
                         
                             banner.updateAlternateKeyList(previousContext, Mode:0)
@@ -753,7 +753,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             let charactersAreInCorrectState = { () -> Bool in
                 let previousContext = (self.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
                 
-                if previousContext == nil || count(previousContext!) < 3 {
+                if previousContext == nil || (previousContext!).characters.count < 3 {
                     return false
                 }
                 
@@ -826,7 +826,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     
                     if range != nil {
                         let lastword = previousContext!.substringFromIndex(range!.endIndex)
-                        let ct = count(lastword.utf16)
+                        let ct = lastword.utf16.count
                         if ct == 1 {
                             banner.updateAlternateKeyList(lastword, Mode:0)
                         }else if ct > 1{
@@ -836,7 +836,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                         
                     }else{
                        
-                        let ct = count(previousContext!.utf16)
+                        let ct = previousContext!.utf16.count
                         if ct == 1 {
                        
                             banner.updateAlternateKeyList(previousContext, Mode:0)
@@ -1017,11 +1017,11 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         self.advanceToNextInputMode()
     }
     func setMode(mode: Int) {
-        for (pageIndex, page) in enumerate(self.keyboard.pages) {
-            for (rowIndex, row) in enumerate(page.rows) {
-                for (keyIndex, key) in enumerate(row) {
+        for (pageIndex, page) in self.keyboard.pages.enumerate() {
+            for (rowIndex, row) in page.rows.enumerate() {
+                for (keyIndex, key) in row.enumerate() {
                     if self.layout?.modelToView[key] != nil {
-                        var keyView = self.layout?.modelToView[key]
+                        let keyView = self.layout?.modelToView[key]
                         keyView?.hidden = (pageIndex != mode)
                     }
                 }
@@ -1033,7 +1033,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         //+20141229self.playKeySound()
         
         if self.settingsView == nil {
-            if var aSettings = self.createSettings() {
+            if let aSettings = self.createSettings() {
                 
                 aSettings.darkMode = self.darkMode()
                 
@@ -1041,7 +1041,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                 self.view.addSubview(aSettings)
                 self.settingsView = aSettings
                 
-                aSettings.setTranslatesAutoresizingMaskIntoConstraints(false)
+                aSettings.translatesAutoresizingMaskIntoConstraints = false
                 
                 let widthConstraint = NSLayoutConstraint(item: aSettings, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0)
                 let heightConstraint = NSLayoutConstraint(item: aSettings, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
@@ -1095,7 +1095,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     
     func stringIsWhitespace(string: String?) -> Bool {
         if string != nil {
-            for char in string! {
+            for char in (string!).characters {
                 if !characterIsWhitespace(char) {
                     return false
                 }
@@ -1108,7 +1108,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
         if NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) {
             
-            var documentProxy = self.textDocumentProxy as? UITextDocumentProxy
+            let documentProxy = self.textDocumentProxy as? UITextDocumentProxy
             var beforeContext = documentProxy?.documentContextBeforeInput
             
             if let beforeContext = documentProxy?.documentContextBeforeInput {
@@ -1183,7 +1183,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             
             //m+20150108
             if NSUserDefaults.standardUserDefaults().boolForKey(kKoottaksharamShortcut) {
-                var nowtime = CACurrentMediaTime()
+                let nowtime = CACurrentMediaTime()
                 if lastKey != nil && lasttime > 0 && nowtime - lasttime < 0.5  {
                     if lastKey!.primaryValue + key.secondaryValue == 10 {
                         proxy.insertText("്")
@@ -1237,7 +1237,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     // a settings view that replaces the keyboard when the settings button is pressed
     func createSettings() -> ExtraView? {
         // note that dark mode is not yet valid here, so we just put false for clarity
-        var settingsView = DefaultSettings(globalColors: self.dynamicType.globalColors, darkMode: false, solidColorMode: self.solidColorMode())
+        let settingsView = DefaultSettings(globalColors: self.dynamicType.globalColors, darkMode: false, solidColorMode: self.solidColorMode())
         settingsView.backButton?.addTarget(self, action: Selector("toggleSettings"), forControlEvents: UIControlEvents.TouchUpInside)
         return settingsView
     }
@@ -1281,7 +1281,7 @@ class PredictiveBanner: ExtraView {
         
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -1312,7 +1312,7 @@ class PredictiveBanner: ExtraView {
                     let array1: [String]? = previousContext?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     
                     
-                    let ct2 = count(array1!.last!.utf16)
+                    let ct2 = array1!.last!.utf16.count
                     for var i = 0 ; i < ct2 ; i++ {
                         
                         textDocumentProxy.deleteBackward()
@@ -1500,7 +1500,7 @@ class PredictiveBanner: ExtraView {
     
     func clearBanner(){
         
-        var sv = scrolview.subviews
+        let sv = scrolview.subviews
         for v in sv {
             v.removeFromSuperview()
         }
@@ -1531,10 +1531,10 @@ class PredictiveBanner: ExtraView {
         var preButton : UIButton?
         for char in objects {
             
-            var btn: UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+            let btn: UIButton = UIButton(type: UIButtonType.System)
             
             
-            var text:String = char as! String
+            let text:String = char as! String
             var startx:CGFloat = 0
             if preButton != nil {
                 
@@ -1578,16 +1578,16 @@ class PredictiveBanner: ExtraView {
         if wdth < self.frame.size.width {
             
             let firstBtn = scrolview.subviews[0] as! UIButton
-            var lastN = objects.count-1
+            let lastN = objects.count-1
             var prevBtn: UIButton?
             var nextBtn: UIButton?
             
-            for (n, view) in enumerate(scrolview.subviews) {
+            for (n, view) in scrolview.subviews.enumerate() {
                 let btn = view as! UIButton
                 
                 btn.frame = CGRectMake(0, 0, 20, 20)
                 btn.sizeToFit()
-                btn.setTranslatesAutoresizingMaskIntoConstraints(false)
+                btn.translatesAutoresizingMaskIntoConstraints = false
                 btn.setContentHuggingPriority(1000, forAxis: .Horizontal)
                 btn.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
                 

@@ -11,10 +11,10 @@ func defaultKeyboard() -> Keyboard {
     
     
     
-    var defaultKeyboard = Keyboard()
+    let defaultKeyboard = Keyboard()
     
     for key in ["ൗ", "ൈ", "ാ", "ീ", "ൂ", "ബ", "ങ", "ഗ", "ദ", "ജ", "ഡ"] {
-        var keyModel = Key(.Character)
+        let keyModel = Key(.Character)
         switch key {
         case "ൗ":
             
@@ -104,12 +104,12 @@ func defaultKeyboard() -> Keyboard {
     //+20141212 starting ipad
     let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
     if isPad {
-        var backspace = Key(.Backspace)
+        let backspace = Key(.Backspace)
         defaultKeyboard.addKey(backspace, row: 0, page: 0)
     }
     
     for key in ["ോ", "േ", "്", "ി", "ു", "പ", "ര", "ക", "ത", "ച", "ട"] { //"ത", "ന", "സ" , "ണ"
-        var keyModel = Key(.Character)
+        let keyModel = Key(.Character)
         switch key {
         case "ോ":
             keyModel.isSwaram = true
@@ -169,6 +169,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 4
             keyModel.extentionValues = "ത്ര,ത്യ,ത്വ"
+            keyModel.isLeftExtention = true
 
         case "ച":
             keyModel.keyText = "ഛ\n\(key)"
@@ -177,6 +178,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.isDoubleTappable = true
             keyModel.secondaryValue = 2
             keyModel.extentionValues = "ച്ര,ച്യ"
+            keyModel.isLeftExtention = true
             
         case "ട":
             keyModel.keyText = "ഠ\n\(key)"
@@ -195,7 +197,7 @@ func defaultKeyboard() -> Keyboard {
         defaultKeyboard.addKey(keyModel, row: 1, page: 0)
     }
     
-    var returnKey = Key(.Return)
+    let returnKey = Key(.Return)
     returnKey.keyText = "return"
     returnKey.uppercaseOutput = "\n"
     returnKey.lowercaseOutput = "\n"
@@ -204,11 +206,11 @@ func defaultKeyboard() -> Keyboard {
         defaultKeyboard.addKey(returnKey, row: 1, page: 0)
     }
     
-    var keyModel = Key(.Shift)
+    let keyModel = Key(.Shift)
     defaultKeyboard.addKey(keyModel, row: 2, page: 0)
     
     for key in ["ൊ", "െ", "മ","ണ", "ന", "വ", "ല", "ള", "സ"] { //, "റ", "യ"
-        var keyModel = Key(.Character)
+        let keyModel = Key(.Character)
         switch key {
         case "ൊ":
             keyModel.isSwaram = true
@@ -266,7 +268,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.extentionValues = "ള്യ"
-
+            keyModel.isLeftExtention = true
         case "സ":
             keyModel.keyText = "ശ\n\(key)"
             keyModel.uppercaseOutput = "ശ"
@@ -274,7 +276,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.isDoubleTappable = true
             keyModel.extentionValues = "സ്ര,സ്യ,സ്വ"
             keyModel.extentionValuesUpper = "ശ്ര,ശ്യ,ശ്വ"
-       
+            keyModel.isLeftExtention = true
         default:
             
             keyModel.setLetter(key)
@@ -293,35 +295,35 @@ func defaultKeyboard() -> Keyboard {
         m1.lowercaseOutput = ","
         defaultKeyboard.addKey(m1, row: 2, page: 0)
         */
-        var m2 = Key(.SpecialCharacter)
+        let m2 = Key(.SpecialCharacter)
         m2.keyText = ".\n,"
         m2.uppercaseOutput = "."
         m2.lowercaseOutput = ","
         defaultKeyboard.addKey(m2, row: 2, page: 0)
         
-        var keyModel = Key(.Shift)
+        let keyModel = Key(.Shift)
         defaultKeyboard.addKey(keyModel, row: 2, page: 0)
     }else{
-        var backspace = Key(.Backspace)
+        let backspace = Key(.Backspace)
         defaultKeyboard.addKey(backspace, row: 2, page: 0)
     }
     
     
-    var keyModeChangeNumbers = Key(.ModeChange)
+    let keyModeChangeNumbers = Key(.ModeChange)
     keyModeChangeNumbers.keyText = "123"
     keyModeChangeNumbers.toMode = 1
     defaultKeyboard.addKey(keyModeChangeNumbers, row: 3, page: 0)
     
-    var keyboardChange = Key(.KeyboardChange)
+    let keyboardChange = Key(.KeyboardChange)
     defaultKeyboard.addKey(keyboardChange, row: 3, page: 0)
     
-    var settings = Key(.Settings)
+    let settings = Key(.Settings)
     defaultKeyboard.addKey(settings, row: 3, page: 0)
     
     //m+20150105
     let ru: String = "ൃ"
     
-    var keyModel1 = Key(.Character)
+    let keyModel1 = Key(.Character)
     keyModel1.isSwaram = true
     keyModel1.keyText = "ഋ\n\(ru)"
     keyModel1.uppercaseOutput = "ഋ"
@@ -332,7 +334,7 @@ func defaultKeyboard() -> Keyboard {
     
     
     
-    var space = Key(.Space)
+    let space = Key(.Space)
     space.keyText = "space"
     space.uppercaseOutput = " "
     space.lowercaseOutput = " "
@@ -342,7 +344,7 @@ func defaultKeyboard() -> Keyboard {
     //m+20150105
     let rr: String = "ഞ"
     
-    var keyModelrr = Key(.Character)
+    let keyModelrr = Key(.Character)
     keyModelrr.keyText = "ർ\n\(rr)"
     keyModelrr.uppercaseOutput = "ർ"
     keyModelrr.lowercaseOutput = rr
@@ -353,7 +355,7 @@ func defaultKeyboard() -> Keyboard {
     defaultKeyboard.addKey(keyModelrr, row: 3, page: 0)
     
     
-    var keyModel2 = Key(.Character)
+    let keyModel2 = Key(.Character)
     keyModel2.keyText = "ഷ\nയ"
     keyModel2.uppercaseOutput = "ഷ"
     keyModel2.lowercaseOutput = "യ"
@@ -367,7 +369,7 @@ func defaultKeyboard() -> Keyboard {
         
         defaultKeyboard.addKey(Key(keyModeChangeNumbers), row: 3, page: 0)
         
-        var dismiss = Key(.Dismiss)
+        let dismiss = Key(.Dismiss)
         defaultKeyboard.addKey(dismiss, row: 3, page: 0)
     }else{
         //m+20150107
@@ -385,7 +387,7 @@ func defaultKeyboard() -> Keyboard {
     
     
     for key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"] {
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         
         /*switch key {
             
@@ -453,7 +455,7 @@ func defaultKeyboard() -> Keyboard {
     }
     
     for key in ["-", "/", ":", ";", "(", ")", c, "&", "@"] {
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter(key)
         defaultKeyboard.addKey(keyModel, row: 1, page: 1)
     }
@@ -465,30 +467,30 @@ func defaultKeyboard() -> Keyboard {
         defaultKeyboard.addKey(Key(returnKey), row: 1, page: 1)
     }else{
         
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter("\"")
         defaultKeyboard.addKey(keyModel, row: 1, page: 1)
         
     }
     
-    var keyModeChangeSpecialCharacters = Key(.ModeChange)
+    let keyModeChangeSpecialCharacters = Key(.ModeChange)
     keyModeChangeSpecialCharacters.keyText = "#+="
     keyModeChangeSpecialCharacters.toMode = 2
     defaultKeyboard.addKey(keyModeChangeSpecialCharacters, row: 2, page: 1)
     
     for key in [".", ",", "?", "!", "'"] {
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter(key)
         defaultKeyboard.addKey(keyModel, row: 2, page: 1)
     }
     
     if isPad {
         
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter("\"")
         defaultKeyboard.addKey(keyModel, row: 2, page: 1)
         
-        var keyModeChangeSpecialCharacters2 = Key(.ModeChange)
+        let keyModeChangeSpecialCharacters2 = Key(.ModeChange)
         keyModeChangeSpecialCharacters2.keyText = "#+="
         keyModeChangeSpecialCharacters2.toMode = 2
         defaultKeyboard.addKey(keyModeChangeSpecialCharacters2, row: 2, page: 1)
@@ -501,7 +503,7 @@ func defaultKeyboard() -> Keyboard {
     
     
     
-    var keyModeChangeLetters = Key(.ModeChange)
+    let keyModeChangeLetters = Key(.ModeChange)
     keyModeChangeLetters.keyText = "അക"
     keyModeChangeLetters.toMode = 0
     defaultKeyboard.addKey(keyModeChangeLetters, row: 3, page: 1)
@@ -513,7 +515,7 @@ func defaultKeyboard() -> Keyboard {
     defaultKeyboard.addKey(Key(space), row: 3, page: 1)
     
     
-    var keyModeld = Key(.Character)
+    let keyModeld = Key(.Character)
     keyModeld.setLetter("ഃ")
     defaultKeyboard.addKey(keyModeld, row: 3, page: 1)
 
@@ -521,7 +523,7 @@ func defaultKeyboard() -> Keyboard {
     if isPad {
         defaultKeyboard.addKey(Key(keyModeChangeLetters), row: 3, page: 1)
         
-        var dismiss = Key(.Dismiss)
+        let dismiss = Key(.Dismiss)
         defaultKeyboard.addKey(dismiss, row: 3, page: 1)
     }else{
         defaultKeyboard.addKey(Key(returnKey), row: 3, page: 1)
@@ -530,7 +532,7 @@ func defaultKeyboard() -> Keyboard {
     
     
     for key in ["[", "]", "{", "}", "#", "%", "^", "*", "+", "="] {
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter(key)
         defaultKeyboard.addKey(keyModel, row: 0, page: 2)
     }
@@ -550,7 +552,7 @@ func defaultKeyboard() -> Keyboard {
     }
     
     for key in ["_", "\\", "|", "~", "<", ">", c, d, "€"] {// ¥
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter(key)
         defaultKeyboard.addKey(keyModel, row: 1, page: 2)
     }
@@ -560,7 +562,7 @@ func defaultKeyboard() -> Keyboard {
         defaultKeyboard.addKey(Key(returnKey), row: 1, page: 2)
     }else{
         
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter("•")
         defaultKeyboard.addKey(keyModel, row: 1, page: 2)
         
@@ -569,14 +571,14 @@ func defaultKeyboard() -> Keyboard {
     defaultKeyboard.addKey(Key(keyModeChangeNumbers), row: 2, page: 2)
     
     for key in [".", ",", "?", "!", "'"] {
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter(key)
         defaultKeyboard.addKey(keyModel, row: 2, page: 2)
     }
     
     if isPad {
         
-        var keyModel = Key(.SpecialCharacter)
+        let keyModel = Key(.SpecialCharacter)
         keyModel.setLetter("\"")
         defaultKeyboard.addKey(keyModel, row: 2, page: 2)
         
@@ -598,7 +600,7 @@ func defaultKeyboard() -> Keyboard {
     
     defaultKeyboard.addKey(Key(space), row: 3, page: 2)
     
-    var keyModelk = Key(.Character)
+    let keyModelk = Key(.Character)
     keyModelk.setLetter("ൿ")
     defaultKeyboard.addKey(keyModelk, row: 3, page: 2)
     
@@ -606,7 +608,7 @@ func defaultKeyboard() -> Keyboard {
     if isPad {
         defaultKeyboard.addKey(Key(keyModeChangeLetters), row: 3, page: 2)
         
-        var dismiss = Key(.Dismiss)
+        let dismiss = Key(.Dismiss)
         defaultKeyboard.addKey(dismiss, row: 3, page: 2)
     }else{
         defaultKeyboard.addKey(Key(returnKey), row: 3, page: 2)

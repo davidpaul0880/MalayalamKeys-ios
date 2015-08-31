@@ -76,14 +76,14 @@ class Key: Hashable {
             
             if !skipSaram && range != nil {//m+20150401
                 
-                var myMutableString1 = NSMutableAttributedString(string: keyText)
+                let myMutableString1 = NSMutableAttributedString(string: keyText)
                 myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.grayColor(), NSFontAttributeName : UIFont.systemFontOfSize(20)], range: NSMakeRange(1, (keyText as NSString).length-1))
                 myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(24)], range: NSMakeRange(0, 1))
                 
                 self.uppercaseKeyCap = myMutableString1
                 
                 
-                var myMutableString = NSMutableAttributedString(string: keyText)
+                let myMutableString = NSMutableAttributedString(string: keyText)
                 myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.grayColor(), NSFontAttributeName : UIFont.systemFontOfSize(20)], range: NSMakeRange(0, 1))
                 myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(24)], range: NSMakeRange(1, (keyText as NSString).length-1))
                

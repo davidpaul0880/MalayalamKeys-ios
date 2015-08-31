@@ -19,18 +19,18 @@ class ImageKey: KeyboardKey {
         super.init(vibrancy: optionalVibrancy)
     }
 
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
     var image: UIImageView? {
         willSet {
-            var anImage = image
+            let anImage = image
             anImage?.removeFromSuperview()
         }
         didSet {
-            if var imageView = image {
+            if let imageView = image {
                 self.addSubview(imageView)
                 imageView.contentMode = UIViewContentMode.ScaleAspectFit
                 self.redrawImage()
