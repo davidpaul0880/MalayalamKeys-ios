@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = ["Setup & Usage", "User Guide", "About"]//NSMutableArray(), "Preview"
+    var objects = ["Setup & Usage", "User Guide", "About", "Review in iTunes"]//NSMutableArray(), "Preview"
 
 
     override func awakeFromNib() {
@@ -80,12 +80,21 @@ class MasterViewController: UITableViewController {
                 
                 controller.filePath = object
                 
+            }else if indexPath.row == 3 {
+                
+                let iTunesLink = "itms-apps://itunes.apple.com/app/id957578340";
+                UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
+                
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
             }
-            //controller.configureView()
-            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller.navigationItem.leftItemsSupplementBackButton = true
             
-            
+            if indexPath.row != 3 {
+                
+                //controller.configureView()
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                
+                
                 let orientation = UIApplication.sharedApplication().statusBarOrientation
                 
                 if orientation.isPortrait {
@@ -96,10 +105,8 @@ class MasterViewController: UITableViewController {
                 } else {
                     // Landscape
                 }
-            
-            
-            
-            
+
+            }
         }
     }
 

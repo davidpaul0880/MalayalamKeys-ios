@@ -171,7 +171,7 @@ class KeyboardKey: UIControl {
         self.addSubview(self.background)
         self.background.addSubview(self.label)
         
-        let setupViews: Void = {
+        let _: Void = {
             self.displayView.opaque = false
             self.underView?.opaque = false
             self.borderView?.opaque = false
@@ -264,7 +264,7 @@ class KeyboardKey: UIControl {
                 path?.applyTransform(transformFromShapeToView)
                 if path != nil { toPath.appendPath(path!) }
                 if let edgePaths = shape.edgePaths {
-                    for (e, anEdgePath) in edgePaths.enumerate() {
+                    for (_, anEdgePath) in edgePaths.enumerate() {
                         let editablePath = anEdgePath
                         editablePath.applyTransform(transformFromShapeToView)
                         toEdgePaths.appendPath(editablePath)
@@ -288,7 +288,7 @@ class KeyboardKey: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        if let popup = self.popup {
+        if let _ = self.popup {
             self.shadowLayer.shadowPath = shadowPath.CGPath
         }
         
@@ -449,7 +449,7 @@ class KeyboardKey: UIControl {
         }
     }
     //+20150421
-    func showExpandPopup(value: String, isleft: Bool, famee: CGRect){
+    func showExpandPopup(value: String, isleft: Bool, famee: CGRect, isExpandMore: Bool){
         
 
         if(highlighted){
@@ -468,16 +468,23 @@ class KeyboardKey: UIControl {
                 var heightt =  self.bounds.size.height
                 if(isPad){
                     
-                     widthh = 3.0 * widthh / 4.0
+                    widthh = 3.0 * widthh / 4.0
                      //heightt = 3.0 * heightt / 4.0
                     heightt -= 5;
+                } else {
+                    widthh += 2;
+                    if (isExpandMore) {
+                        widthh += 2;
+                    }
                 }
                 
                 var xx = self.bounds.origin.x
                 
                 if isleft {
                     xx -= (widthh * CGFloat(arrayVals.count - 1))
-                    xx += 20;
+                    if(isPad){
+                        xx += 20;
+                    }
                 }
               
                 let popup = UIView(frame: CGRectMake(xx , self.bounds.origin.y -  heightt - 2, widthh * CGFloat(arrayVals.count), heightt) )

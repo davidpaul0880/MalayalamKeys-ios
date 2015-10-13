@@ -43,7 +43,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
             
             
             if webView != nil {
-                var url = NSURL(fileURLWithPath: detail)
+                let url = NSURL(fileURLWithPath: detail)
                 webView.loadRequest(NSURLRequest(URL: url))
             }
             
@@ -61,7 +61,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
         self.edgesForExtendedLayout = UIRectEdge.None
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.titleTextAttributes = titleDict as! [String : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         

@@ -189,13 +189,13 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
             
             if let visibleCells = self.tableView?.visibleCells {
                 for cell in visibleCells {
-                    if let cell = cell as? UITableViewCell {
+                    //+20150916if let cell = cell as? UITableViewCell {
                         cell.backgroundColor = cellBackgroundColorDark
                         let label = cell.viewWithTag(2) as? UILabel
                         label?.textColor = cellLabelColorDark
                         let longLabel = cell.viewWithTag(3) as? UITextView
                         longLabel?.textColor = cellLongLabelColorDark
-                    }
+                    //}
                 }
             }
         }
@@ -207,13 +207,13 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
             
             if let visibleCells = self.tableView?.visibleCells {
                 for cell in visibleCells {
-                    if let cell = cell as? UITableViewCell {
+                    //+20150916if let cell = cell as? UITableViewCell {
                         cell.backgroundColor = cellBackgroundColorLight
                         let label = cell.viewWithTag(2) as? UILabel
                         label?.textColor = cellLabelColorLight
                         let longLabel = cell.viewWithTag(3) as? UITextView
                         longLabel?.textColor = cellLongLabelColorLight
-                    }
+                    //}
                 }
             }
         }
