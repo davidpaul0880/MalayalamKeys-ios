@@ -433,7 +433,8 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
         case
         Key.KeyType.Character,
         Key.KeyType.SpecialCharacter,
-        Key.KeyType.Period:
+        Key.KeyType.Period,
+        Key.KeyType.NumberMalayalam:
             key.color = self.self.globalColors.regularKey(darkMode, solidColorMode: solidColorMode)
             key.textColor = (darkMode ? self.globalColors.darkModeTextColor : nil)//m+20150324 self.globalColors.lightModeTextColor
             if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad || NSUserDefaults.standardUserDefaults().boolForKey(kDisablePopupKeys) { //+20150102

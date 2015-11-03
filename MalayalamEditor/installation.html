@@ -1,9 +1,27 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
+    <script  LANGUAGE="JavaScript" type="text/javascript">
+        function demo() {
+            
+            var page = document.getElementById('demo1');
+           
+            if (!page) return false;
+            if (page.style.visibility == 'hidden'){
+                page.style.display='block';
+                page.style.visibility='visible';
+            } else {
+                page.style.display='none';
+                page.style.visibility='hidden';
+            }
+            var ele = document.getElementById('gifid');
+            window.scrollTo(ele.offsetLeft,ele.offsetTop);
+            return true;
+        }
+    </script>
   <title>Installation</title>
 
-  
-  
+
+
   <style>
   body {
     font-family: Verdana;
@@ -50,5 +68,10 @@
 keyboards<br>
   </li>
 </ol>
-
+<div id="demo" style="visibility: visible; display: block;" onclick="demo();">
+    <li><p><font color="Blue"><b>Show Demo</b></font></p></li>
+    <div id="demo1" style="visibility: hidden; display: none;">
+        <img id="gifid" src="installation.gif"></img>
+    </div>
+</div>
 </body></html>

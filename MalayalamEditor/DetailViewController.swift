@@ -41,11 +41,34 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
         
         if let detail: String = self.filePath {
             
-            
-            if webView != nil {
-                let url = NSURL(fileURLWithPath: detail)
-                webView.loadRequest(NSURLRequest(URL: url))
+            /*if modeDisplay == 0 {
+                if webView != nil {
+                    let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+                    let basepath = arrayPath[0]
+                    print(basepath)
+                    //let fm = NSFileManager.defaultManager();
+                    //fm.copyItemAtURL(<#T##srcURL: NSURL##NSURL#>, toURL: <#T##NSURL#>)
+                    let url = NSURL(fileURLWithPath: "\(basepath)/installation.html")
+                    webView.loadRequest(NSURLRequest(URL: url))
+                }
             }
+            else if modeDisplay == 1 {
+                if webView != nil {
+                    let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+                    let basepath = arrayPath[0]
+                    print(basepath)
+                    //let fm = NSFileManager.defaultManager();
+                    //fm.copyItemAtURL(<#T##srcURL: NSURL##NSURL#>, toURL: <#T##NSURL#>)
+                    let url = NSURL(fileURLWithPath: "\(basepath)/help.html")
+                    webView.loadRequest(NSURLRequest(URL: url))
+                }
+            } else {*/
+                if webView != nil {
+                    let url = NSURL(fileURLWithPath: detail)
+                    webView.loadRequest(NSURLRequest(URL: url))
+                }
+           // }
+            
             
         }
         

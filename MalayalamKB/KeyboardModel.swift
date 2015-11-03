@@ -53,6 +53,7 @@ class Key: Hashable {
         case SpecialCharacter
         case Shift
         case Backspace
+        case NumberMalayalam
         case ModeChange
         case KeyboardChange
         case Period
@@ -76,17 +77,25 @@ class Key: Hashable {
             
             if range != nil {//m+20150401 !skipSaram &&
                 
+                var bigSize: CGFloat = 24
+                var smallSize: CGFloat = 20
+                let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+                if !isPad {
+                    bigSize = 22;
+                    smallSize = 20;
+                }
                 let myMutableString1 = NSMutableAttributedString(string: keyText)
-                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.lightGrayColor(), NSFontAttributeName : UIFont.systemFontOfSize(20)], range: NSMakeRange(1, (keyText as NSString).length-1))
-                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(24)], range: NSMakeRange(0, 1))
+                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.lightGrayColor(), NSFontAttributeName : UIFont.systemFontOfSize(smallSize)], range: NSMakeRange(1, (keyText as NSString).length-1))
+                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(bigSize)], range: NSMakeRange(0, 1))
                 
                 self.uppercaseKeyCap = myMutableString1
                 
                 let myMutableString = NSMutableAttributedString(string: keyText)
-                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.lightGrayColor(), NSFontAttributeName : UIFont.systemFontOfSize(20)], range: NSMakeRange(0, 1))
-                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(24)], range: NSMakeRange(1, (keyText as NSString).length-1))
-               
+                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.lightGrayColor(), NSFontAttributeName : UIFont.systemFontOfSize(smallSize)], range: NSMakeRange(0, 1))
+                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(bigSize)], range: NSMakeRange(1, (keyText as NSString).length-1))
+                
                 self.lowercaseKeyCap = myMutableString
+               
                 
                 
             }else{

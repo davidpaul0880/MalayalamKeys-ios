@@ -49,6 +49,7 @@ class ForwardingView: UIView {
                 let targets = control.allTargets() as NSSet
                 for target in targets.allObjects { // TODO: Xcode crashes
                     let actions = control.actionsForTarget(target, forControlEvent: controlEvent)
+                    print("actions = \(actions)")
                     if (actions != nil) {
                         for action in actions! {
                             let selector = Selector(action )

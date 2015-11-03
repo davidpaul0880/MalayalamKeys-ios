@@ -42,7 +42,8 @@ class PopupButton: UIControl {
         //self.label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
         self.label.userInteractionEnabled = false
         self.label.frame = CGRectMake(0.0, self.bounds.height / 3.0, self.bounds.width, self.bounds.height / 3.0)
-        
+        self.label.adjustsFontSizeToFitWidth = true;
+        self.label.minimumScaleFactor = CGFloat(0.6)
         self.label.textColor = self.textColor
         self.label.backgroundColor = self.bgColor
         

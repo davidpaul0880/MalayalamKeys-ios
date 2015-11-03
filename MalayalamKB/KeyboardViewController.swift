@@ -28,9 +28,6 @@ func metric(name: String) -> CGFloat {
             return CGFloat(metrics[name]!) * 1.3
         }
     }
-    
-    
-
 }
 
 // TODO: move this somewhere else and localize
@@ -38,7 +35,7 @@ func metric(name: String) -> CGFloat {
 let kPeriodShortcut = "kPeriodShortcut"
 let kKeyboardClicks = "kKeyboardClicks"
 let kDisablePopupKeys = "kDisablePopupKeys"
-let kKoottaksharamShortcut = "kKoottaksharamShortcut" //m+20150109
+//let kKoottaksharamShortcut = "kKoottaksharamShortcut" //m+20150109
 let kCapitalizeSwarangal = "kCapitalizeSwarangal"
 //let kKeyPadMalayalam = "kKeyPadMalayalam"
 
@@ -143,11 +140,17 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             //kAutoCapitalization: false, //+20141218
             //kKeyPadMalayalam: false,
             kPeriodShortcut: true,
-            kKoottaksharamShortcut: true, //m+20150109
+            //kKoottaksharamShortcut: true, //m+20150109
             kCapitalizeSwarangal: true,
             kKeyboardClicks: true,
             kDisablePopupKeys: false
         ])
+        //+roll
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: kDisablePopupKeys)
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: kPeriodShortcut)
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: kCapitalizeSwarangal)
+        //NSUserDefaults.standardUserDefaults().setBool(true, forKey: kKoottaksharamShortcut)
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: kKeyboardClicks)
         
         self.keyboard = defaultKeyboard()
         
@@ -161,7 +164,6 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("defaultsChanged:"), name: NSUserDefaultsDidChangeNotification, object: nil)
         
-        
     }
     
     required init?(coder: NSCoder) {
@@ -169,6 +171,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     }
     
     deinit {
+        
         backspaceDelayTimer?.invalidate()
         backspaceRepeatTimer?.invalidate()
         
@@ -265,7 +268,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
         self.setupLayout()
         
-        let orientationSavvyBounds = CGRectMake(0, 0, self.view.bounds.width, self.heightForOrientation(self.interfaceOrientation, withTopBanner: false))
+        let orientationSavvyBounds = CGRectMake(0, 0, self.view.bounds.width, self.heightForOrientation(self.interfaceOrientation, withTopBanner: false))//+20151021
         
         if (lastLayoutBounds != nil && lastLayoutBounds == orientationSavvyBounds) {
             // do nothing
@@ -284,6 +287,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     
     override func loadView() {
         super.loadView()
+        
         //+20150325
         if let aBanner = self.createBanner() {
             aBanner.hidden = true
@@ -291,8 +295,26 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             self.bannerView = aBanner
         }
         
+        //+20151023 to fix crash when click on settings button after types 3-4 lines
+        /*self.settingsView = createSettings()
+        self.settingsView!.darkMode = self.darkMode()
         
-
+        self.settingsView!.hidden = true
+        self.view.addSubview(self.settingsView!)
+       
+        self.settingsView!.translatesAutoresizingMaskIntoConstraints = false
+        
+        let widthConstraint = NSLayoutConstraint(item: self.settingsView!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: self.settingsView!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
+        let centerXConstraint = NSLayoutConstraint(item: self.settingsView!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        let centerYConstraint = NSLayoutConstraint(item: self.settingsView!, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        
+        self.view.addConstraint(widthConstraint)
+        self.view.addConstraint(heightConstraint)
+        self.view.addConstraint(centerXConstraint)
+        self.view.addConstraint(centerYConstraint)
+        */
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -355,15 +377,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         let topBannerHeight = (withTopBanner ? metric("topBanner") : 0)
         KeyboardViewController.workaroundClassVariable = orientation.isLandscape
         
-        
-        //+20141231
-        
-        if(isPad){
-        
-            return CGFloat(orientation.isPortrait ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )//+ topBannerHeight +20141218 //+20150325
-        }else{
-            return CGFloat(orientation.isPortrait ? canonicalPortraitHeight + topBannerHeight  : canonicalLandscapeHeight + topBannerHeight )// +20141218
-        }
+        return CGFloat(orientation.isPortrait ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )
         
     }
     
@@ -405,14 +419,14 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     case Key.KeyType.ModeChange:
                         keyView.addTarget(self, action: Selector("modeChangeTapped:"), forControlEvents: .TouchUpInside)
                     case Key.KeyType.Settings:
-                        keyView.addTarget(self, action: Selector("toggleSettings"), forControlEvents: .TouchUpInside)
+                        keyView.addTarget(self, action: Selector("toggleSettings:"), forControlEvents: .TouchUpInside)
                     case Key.KeyType.Dismiss:
                         keyView.addTarget(self, action: Selector("dismissKB:"), forControlEvents: .TouchUpInside)//+20141212
                     default:
                         break
                     }
                     
-                    if key.hasOutput {
+                    if key.hasOutput && key.type != Key.KeyType.NumberMalayalam {
                         
                        keyView.addTarget(self, action: "keyPressedHelper:", forControlEvents: .TouchUpInside)
                     }
@@ -446,7 +460,10 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                         //keyView.addTarget(self, action: Selector("highlightKey:"), forControlEvents: .TouchDown)
                         keyView.addTarget(self, action: Selector("unHighlightKey:"), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragOutside, .TouchDragExit])
                     }
-                    keyView.addTarget(self, action: Selector("hideExtPoup:"), forControlEvents: [.TouchUpInside, .TouchUpOutside])
+                    if (key.type != Key.KeyType.Settings){
+                        keyView.addTarget(self, action: Selector("hideExtPoup:"), forControlEvents: [.TouchUpInside, .TouchUpOutside])
+                    }
+                    
                     keyView.addTarget(self, action: Selector("playKeySound"), forControlEvents: .TouchDown)
                 }
             }
@@ -555,7 +572,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         self.layout?.updateKeyAppearanceTemp()
         
         self.bannerView?.darkMode = appearanceIsDark //+20150325
-        self.settingsView?.darkMode = appearanceIsDark
+        //+20151024self.settingsView?.darkMode = appearanceIsDark
     }
     
     func highlightKey(sender: KeyboardKey) {
@@ -568,7 +585,12 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             
             if  let extvalues = modell.extentionValuesCase(self.shiftState.uppercase()) {
                 
-                let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(timeForPopupDisplay * Double(NSEC_PER_SEC)))
+                var delaytime = timeForPopupDisplay
+                if modell.primaryValue == 10 {
+                    delaytime = 0
+                }
+                
+                let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(delaytime * Double(NSEC_PER_SEC)))
                 dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                     
                     
@@ -587,7 +609,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                                 
                             }else{
                                 
-                                sender.showExpandPopup(extvalues, isleft: model.isLeftExtention , famee: self.view.bounds, isExpandMore:(modell.primaryValue == 7))
+                                sender.showExpandPopup(extvalues, isleft: model.isLeftExtention , famee: self.view.bounds, isNumberPopup:(modell.primaryValue == 10))//to identify the mal number key
                                 sender.delegateExtention = self
                             }
                             
@@ -636,9 +658,9 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     func keyPressedAfter(){
         
         //m+20150325
-        let previousContext:String? = self.textDocumentProxy.documentContextBeforeInput//+20150916
+        //let previousContext:String? = self.textDocumentProxy.documentContextBeforeInput//+20150916
         
-        if let banner = self.bannerView as? PredictiveBanner {
+        /*+rollif let banner = self.bannerView as? PredictiveBanner {
             
             if previousContext == nil || previousContext!.isEmpty {
                 
@@ -685,7 +707,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                 
             }
             
-        }
+        }*/
     }
     //m+20150423 Delegate from popupbutton
     func keyPressedExtention(value: String){
@@ -814,7 +836,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             
             textDocumentProxy.deleteBackward()
             //+20150326
-            let previousContext:String? = self.textDocumentProxy.documentContextBeforeInput
+            /*+rolllet previousContext:String? = self.textDocumentProxy.documentContextBeforeInput
             
             if let banner = self.bannerView as? PredictiveBanner {
                 
@@ -848,14 +870,8 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     }
                 }
             }
-            
-            /*
-            if let banner = self.bannerView as? PredictiveBanner {
-                banner.clearBanner()
-            }*/
-            
-            
-            
+            */
+        
         //}
         //m+20150101
         // trigger for subsequent deletes
@@ -1116,12 +1132,14 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         }
     }
     
-    @IBAction func toggleSettings() {
+    @IBAction func toggleSettings(sender : UIControl) {//+20151022 added argument
         //+20141229self.playKeySound()
-        
+        print("am here")
         if self.settingsView == nil {
+            print("am here to create")
             if let aSettings = self.createSettings() {
                 
+                print("am here created")
                 aSettings.darkMode = self.darkMode()
                 
                 aSettings.hidden = true
@@ -1145,11 +1163,20 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
         
         if let settings = self.settingsView {
+            print("am hereto hide")
             let hidden = settings.hidden
+            hidden ? print("settings hidden yes") : print("settings not hidden")
             settings.hidden = !hidden
             self.forwardingView.hidden = hidden
             self.forwardingView.userInteractionEnabled = !hidden
             self.bannerView?.hidden = hidden//+20150325
+            if settings.hidden {
+                self.view.bringSubviewToFront(self.forwardingView)
+                if (self.bannerView != nil) { self.view.bringSubviewToFront(self.bannerView!) }
+            } else {
+                self.view.bringSubviewToFront(settings)
+            }
+            print("am not here")
         }
     }
     
@@ -1270,7 +1297,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             let keyOutput = key.outputForCase(scase)
             
             //m+20150108
-            if NSUserDefaults.standardUserDefaults().boolForKey(kKoottaksharamShortcut) {
+            /*if NSUserDefaults.standardUserDefaults().boolForKey(kKoottaksharamShortcut) {
                 let nowtime = CACurrentMediaTime()
                 if lastKey != nil && lasttime > 0 && nowtime - lasttime < timeForKoottaksharamShortcut  {
                     if lastKey!.primaryValue + key.secondaryValue == 10 {
@@ -1280,7 +1307,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                 }
                 lastKey = key
                 lasttime = nowtime
-            }
+            }*/
             
             
             //m+20150101
@@ -1326,7 +1353,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     func createSettings() -> ExtraView? {
         // note that dark mode is not yet valid here, so we just put false for clarity
         let settingsView = DefaultSettings(globalColors: self.dynamicType.globalColors, darkMode: false, solidColorMode: self.solidColorMode())
-        settingsView.backButton?.addTarget(self, action: Selector("toggleSettings"), forControlEvents: UIControlEvents.TouchUpInside)
+        settingsView.backButton?.addTarget(self, action: Selector("toggleSettings:"), forControlEvents: UIControlEvents.TouchUpInside)
         return settingsView
     }
 }
@@ -1343,7 +1370,7 @@ class PredictiveBanner: ExtraView {
     
     //var label: UILabel = UILabel()
     weak var keyboard: KeyboardViewController?
-    var dataStore : WordsDAO!
+    //+rollvar dataStore : WordsDAO!
     var searchText :String?
     
     let scrolview : UIScrollView = UIScrollView()
@@ -1352,9 +1379,8 @@ class PredictiveBanner: ExtraView {
         self.init(globalColors: nil, darkMode: false, solidColorMode: false)
         self.keyboard = keyboard
         //+20150326
-        dataStore = WordsDAO()
-        
-       
+        //+rolldataStore = WordsDAO()
+        //+rolldataStore.initWithDataBase()
         
         self.addSubview(scrolview)
         
@@ -1373,6 +1399,9 @@ class PredictiveBanner: ExtraView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*+rolldeinit {
+        dataStore.closeAll()
+    }*/
     override func setNeedsLayout() {
         super.setNeedsLayout()
     }
@@ -1394,17 +1423,19 @@ class PredictiveBanner: ExtraView {
             
                 if searchText != nil {
                     
-                    
-                    let previousContext:String? = self.keyboard!.textDocumentProxy.documentContextBeforeInput
-                    
-                    
-                    let array1: [String]? = previousContext?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                    
-                    
-                    let ct2 = array1!.last!.utf16.count
-                    for var i = 0 ; i < ct2 ; i++ {
+                    //+20151021
+                    if let previousContext:String? = self.keyboard!.textDocumentProxy.documentContextBeforeInput {
                         
-                        textDocumentProxy.deleteBackward()
+                        let array1: [String]? = previousContext?.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                        if (array1 != nil && array1!.count > 0 ) {
+                            
+                            let ct2 = array1!.last!.utf16.count
+                            for var i = 0 ; i < ct2 ; i++ {
+                                
+                                textDocumentProxy.deleteBackward()
+                            }
+                        }
+                        
                     }
                     
                     /*let previousContext:String? = (self.keyboard!.textDocumentProxy as? UITextDocumentProxy)?.documentContextBeforeInput
@@ -1537,8 +1568,8 @@ class PredictiveBanner: ExtraView {
                 textDocumentProxy.insertText(sender.titleLabel!.text!)
                 //textDocumentProxy.insertText(" ")
                 
-                self.clearBanner()
-                self.updateAlternateKeyList(sender.titleLabel!.text!, Mode: 1)
+                //+rollself.clearBanner()
+                //+rollself.updateAlternateKeyList(sender.titleLabel!.text!, Mode: 1)
                 
             //}
             
@@ -1588,23 +1619,23 @@ class PredictiveBanner: ExtraView {
         
     }
     
-    func clearBanner(){
+    /*+rollfunc clearBanner(){
         
         let sv = scrolview.subviews
         for v in sv {
             v.removeFromSuperview()
         }
         scrolview.scrollRectToVisible(CGRectMake(0,0,1,1), animated: false)
-    }
-    func updateAlternateKeyList(str: String?, Mode mode: Int32) {
+    }*/
+    /*+rollfunc updateAlternateKeyList(str: String?, Mode mode: Int32) {
         
         clearBanner()
         
         searchText = str
         
-        dataStore.initWithDataBase()
+        
         let objects = dataStore.getAllMatchedWords(str, mode: mode)
-        dataStore.closeAll()
+        
         
         if objects.count == 0 {
             
@@ -1704,7 +1735,7 @@ class PredictiveBanner: ExtraView {
         
         
         
-    }
+    }*/
     func updateAppearance() {
        
         

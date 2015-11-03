@@ -449,7 +449,7 @@ class KeyboardKey: UIControl {
         }
     }
     //+20150421
-    func showExpandPopup(value: String, isleft: Bool, famee: CGRect, isExpandMore: Bool){
+    func showExpandPopup(value: String, isleft: Bool, famee: CGRect, isNumberPopup: Bool){
         
 
         if(highlighted){
@@ -466,20 +466,18 @@ class KeyboardKey: UIControl {
                 
                 var widthh =  self.bounds.size.width
                 var heightt =  self.bounds.size.height
+                var xx = self.bounds.origin.x
                 if(isPad){
-                    
                     widthh = 3.0 * widthh / 4.0
-                     //heightt = 3.0 * heightt / 4.0
                     heightt -= 5;
                 } else {
-                    widthh += 2;
-                    if (isExpandMore) {
+                    if (isNumberPopup ) {
+                        widthh = 3.0 * widthh / 4.0
+                        xx -= (widthh * CGFloat(3))
+                    } else {
                         widthh += 2;
                     }
                 }
-                
-                var xx = self.bounds.origin.x
-                
                 if isleft {
                     xx -= (widthh * CGFloat(arrayVals.count - 1))
                     if(isPad){

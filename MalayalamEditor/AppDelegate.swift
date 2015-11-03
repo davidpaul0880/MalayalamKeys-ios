@@ -25,7 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         self.rootsplitview = splitViewController
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
-               
+        
+        //copy userguide to document folder
+        let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+        let basePath = arrayPath[0]//.stringByAppendingString("/help.html")
+        
+        let fmanager : NSFileManager = NSFileManager.defaultManager()
+        let bundle = NSBundle.mainBundle();
+      
+        do{
+            try fmanager.copyItemAtPath(bundle.pathForResource("installation", ofType: "html")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("installation", ofType: "gif")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("help", ofType: "html")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("d1", ofType: "gif")!, toPath: basePath as String);
+        } catch {
+            
+        }
+        
+        
+        
         return true
     }
 
