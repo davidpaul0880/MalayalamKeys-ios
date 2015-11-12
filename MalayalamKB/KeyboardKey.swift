@@ -449,16 +449,16 @@ class KeyboardKey: UIControl {
         }
     }
     //+20150421
-    func showExpandPopup(value: String, isleft: Bool, famee: CGRect, isNumberPopup: Bool){
+    func showExpandPopup(value: String, isleft: Bool, famee: CGRect, isNumberPopup: Bool, isTopRow: Bool) -> UIView? {
         
-
+        var firstButton : UIView?
         if(highlighted){
-            
+            self.highlighted = false
             hidePopup()
             
             if self.popupExtended == nil {
             
-             
+                self.layer.zPosition = 1000
                 
                 let arrayVals = value.componentsSeparatedByString(",")
                 
@@ -484,8 +484,13 @@ class KeyboardKey: UIControl {
                         xx += 20;
                     }
                 }
-              
-                let popup = UIView(frame: CGRectMake(xx , self.bounds.origin.y -  heightt - 2, widthh * CGFloat(arrayVals.count), heightt) )
+                var yy = self.bounds.origin.y  - 2;
+                if !isTopRow {
+                    yy -= heightt;
+                } else {
+                    yy -= 8
+                }
+                let popup = UIView(frame: CGRectMake(xx , yy, widthh * CGFloat(arrayVals.count), heightt) )
                 popup.backgroundColor = UIColor.whiteColor()
                 
                 var x = 0
@@ -501,20 +506,25 @@ class KeyboardKey: UIControl {
                     btn.addTarget(btn, action: Selector("unHighlightLabel:"), forControlEvents: [.TouchUpOutside, .TouchDragOutside, .TouchDragExit])
                     
                     btn.addTarget(self, action: Selector("selectedKey:"), forControlEvents: .TouchUpInside)
-                    
+                    if firstButton == nil {
+                        firstButton = btn
+                    }
+                    if isleft {
+                        firstButton = btn
+                    }
+                    //btn.layer.zPosition = 1002.0
                     popup.addSubview(btn)
                 }
-                
+                //popup.layer.zPosition = 1001.0
 
                 popup.tag = 12
                 self.addSubview(popup)
             
                 self.popupExtended = popup
-
-
+                
             }
         }
-        
+        return firstButton
     }
     func selectedKey(sender: PopupButton) {
         
@@ -530,7 +540,7 @@ class KeyboardKey: UIControl {
         
         //m+20150421
         if self.popupExtended != nil {
-            
+            self.layer.zPosition = 0 //+20151113
             self.popupExtended?.removeFromSuperview()
             self.popupExtended = nil
         }

@@ -146,7 +146,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             kDisablePopupKeys: false
         ])
         //+roll
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: kDisablePopupKeys)
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: kDisablePopupKeys)
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: kPeriodShortcut)
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: kCapitalizeSwarangal)
         //NSUserDefaults.standardUserDefaults().setBool(true, forKey: kKoottaksharamShortcut)
@@ -433,8 +433,8 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     
                     if key.isCharacter {
                         //+20150101
-
-                        if UIDevice.currentDevice().userInterfaceIdiom != UIUserInterfaceIdiom.Pad && !NSUserDefaults.standardUserDefaults().boolForKey(kDisablePopupKeys) {
+                        //+roll && !NSUserDefaults.standardUserDefaults().boolForKey(kDisablePopupKeys
+                        if (UIDevice.currentDevice().userInterfaceIdiom != UIUserInterfaceIdiom.Pad ) {
 
                             keyView.addTarget(self, action: Selector("showPopup:"), forControlEvents: [.TouchDown, .TouchDragInside, .TouchDragEnter])
                             keyView.addTarget(keyView, action: Selector("hidePopup"), forControlEvents: .TouchDragExit)
@@ -596,11 +596,13 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     
                     if sender.highlighted {
                         
+                        
                         //sender.downColor = UIColor.whiteColor() //issue with darkmode if set white
                         self.bannerView?.alpha = 0.8
                         
                         self.forwardingView.longPressKey = sender
-                        for (model, key) in self.layout!.modelToView {
+                        
+                        for (_, key) in self.layout!.modelToView {
                             
                             if key != sender {
                                 
@@ -608,13 +610,23 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                                 key.enabled = false
                                 
                             }else{
-                                
-                                sender.showExpandPopup(extvalues, isleft: model.isLeftExtention , famee: self.view.bounds, isNumberPopup:(modell.primaryValue == 10))//to identify the mal number key
-                                sender.delegateExtention = self
+                              
                             }
                             
                         }
-                        
+                        let firstButton =  sender.showExpandPopup(extvalues, isleft: modell.isLeftExtention , famee: self.view.bounds, isNumberPopup:(modell.primaryValue == 10), isTopRow: modell.isTopRow)//primaryValue == 10 to identify the mal number key
+                        sender.delegateExtention = self
+                        if (firstButton != nil) {
+                            
+                            if (!CGPointEqualToPoint(self.forwardingView.lastTouchPosition!, CGPointZero)) {
+                                let viewN = self.forwardingView.findNearestView(self.forwardingView.lastTouchPosition!)
+                                if (viewN != nil) {
+                                    self.forwardingView.handleControl(sender, controlEvent: .TouchDragExit)
+                                    self.forwardingView.ownView(self.forwardingView.lastTouch!, viewToOwn: viewN)
+                                    self.forwardingView.handleControl(viewN, controlEvent: .TouchDragInside)//+20151113
+                                }
+                            }
+                        }
                     }
                     
                 })

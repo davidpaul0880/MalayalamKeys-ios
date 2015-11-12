@@ -119,6 +119,7 @@ class Key: Hashable {
     var extentionValues: String?
     var extentionValuesUpper: String?
     var isLeftExtention: Bool = false
+    var isTopRow: Bool = false
     
     var isCharacter: Bool {
         get {

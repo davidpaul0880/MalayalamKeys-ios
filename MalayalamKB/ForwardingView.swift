@@ -12,6 +12,8 @@ class ForwardingView: UIView {
     
     var touchToView: [UITouch:UIView]
     var longPressKey: UIControl?
+    var lastTouchPosition: CGPoint? //+20151113
+    var lastTouch: UITouch?
     
     override init(frame: CGRect) {
         self.touchToView = [:]
@@ -221,6 +223,8 @@ class ForwardingView: UIView {
         for obj in touches {
             let touch = obj 
             let position = touch.locationInView(self)
+            lastTouchPosition = position
+            lastTouch = touch
             let view = findNearestView(position)
             
             let viewChangedOwnership = self.ownView(touch, viewToOwn: view)
@@ -240,7 +244,8 @@ class ForwardingView: UIView {
         for obj in touches {
             let touch = obj 
             let position = touch.locationInView(self)
-            
+            lastTouchPosition = position
+            lastTouch = touch
             let oldView = self.touchToView[touch]
             let newView = findNearestView(position)
             
@@ -289,7 +294,8 @@ class ForwardingView: UIView {
             let view = self.touchToView[touch]
             
             let touchPosition = touch.locationInView(self)
-            
+            lastTouchPosition = touchPosition
+            lastTouch = touch
             if self.bounds.contains(touchPosition) {
                 //m+20150422
                 if let control = view as? UIControl {
@@ -317,7 +323,8 @@ class ForwardingView: UIView {
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
         for obj in touches! {
             let touch = obj
-            
+            lastTouchPosition = CGPointZero
+            lastTouch = nil
             let view = self.touchToView[touch]
             
             self.handleControl(view, controlEvent: .TouchCancel)

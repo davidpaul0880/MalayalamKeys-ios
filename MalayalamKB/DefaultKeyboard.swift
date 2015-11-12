@@ -57,6 +57,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.isDoubleTappable = true
             keyModel.extentionValues = "ഭ,ബ്ര"
             keyModel.extentionValuesUpper = "ഭ്ര,ഭ്യ"
+            keyModel.isTopRow = true
         case "ങ":
             keyModel.keyText = "ഹ\n\(key)"
             keyModel.uppercaseOutput = "ഹ"
@@ -65,6 +66,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.primaryValue = 9
             keyModel.extentionValues = "ഹ,ങ്ക"
             keyModel.extentionValuesUpper = "ഹ്ര,ഹ്യ,ഹ്വ"
+            keyModel.isTopRow = true
         case "ഗ":
             keyModel.keyText = "ഘ\n\(key)"
             keyModel.uppercaseOutput = "ഘ"
@@ -73,6 +75,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.extentionValues = "ഗ്ല,ഗ്വ,ഗ്യ,ഗ്ര,ഘ"
             keyModel.extentionValuesUpper = "ഘ്ര"
             keyModel.isLeftExtention = true
+            keyModel.isTopRow = true
         case "ദ":
             keyModel.keyText = "ധ\n\(key)"
             keyModel.uppercaseOutput = "ധ"
@@ -81,6 +84,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.extentionValues = "ദ്ധ,ദ്വ,ദ്യ,ദ്ര,ധ"
             keyModel.extentionValuesUpper = "ധ്വ,ധ്യ,ധ്ര"
             keyModel.isLeftExtention = true
+            keyModel.isTopRow = true
         case "ജ":
             keyModel.keyText = "ഝ\n\(key)"
             keyModel.uppercaseOutput = "ഝ"
@@ -88,6 +92,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.isDoubleTappable = true
             keyModel.extentionValues = "ജ്വ,ജ്യ,ജ്ര,ഝ"
             keyModel.isLeftExtention = true
+            keyModel.isTopRow = true
         case "ഡ":
             keyModel.keyText = "ഢ\n\(key)"
             keyModel.uppercaseOutput = "ഢ"
@@ -96,6 +101,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.extentionValues = "ഡ്യ,ഡ്ര,ഢ"
             keyModel.extentionValuesUpper = "ഢ്യ"
             keyModel.isLeftExtention = true
+            keyModel.isTopRow = true
         default:
             
             keyModel.setLetter(key)
