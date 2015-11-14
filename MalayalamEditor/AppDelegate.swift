@@ -38,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             try fmanager.copyItemAtPath(bundle.pathForResource("installation", ofType: "gif")!, toPath: basePath as String);
             try fmanager.copyItemAtPath(bundle.pathForResource("help", ofType: "html")!, toPath: basePath as String);
             try fmanager.copyItemAtPath(bundle.pathForResource("d1", ofType: "gif")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("d2", ofType: "gif")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("d3", ofType: "gif")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("issuevva", ofType: "png")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("issueyya", ofType: "png")!, toPath: basePath as String);
+            try fmanager.copyItemAtPath(bundle.pathForResource("issuempa", ofType: "png")!, toPath: basePath as String);
         } catch {
             
         }

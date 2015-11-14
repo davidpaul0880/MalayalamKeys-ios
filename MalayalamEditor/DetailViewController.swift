@@ -34,9 +34,11 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
             
             self.title = "User Guide"
             
-        }else{
+        }else if modeDisplay == 2 {
             
             self.title = "About"
+        }else {
+            self.title = ""
         }
         
         if let detail: String = self.filePath {
@@ -63,7 +65,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
                     webView.loadRequest(NSURLRequest(URL: url))
                 }
             } else {*/
-                if webView != nil {
+                if webView != nil && modeDisplay < 3{
                     let url = NSURL(fileURLWithPath: detail)
                     webView.loadRequest(NSURLRequest(URL: url))
                 }

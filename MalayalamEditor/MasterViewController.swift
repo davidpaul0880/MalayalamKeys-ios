@@ -86,6 +86,8 @@ class MasterViewController: UITableViewController {
                 UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
                 
                 self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+                
+                controller.filePath = nil;
             }
             
             if indexPath.row != 3 {

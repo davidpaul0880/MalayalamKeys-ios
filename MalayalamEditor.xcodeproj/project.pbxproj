@@ -48,10 +48,13 @@
 		036D12E01AC3E21F001CDF36 /* WordsDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 036D12DF1AC3E21F001CDF36 /* WordsDAO.m */; };
 		036D12E31AC3EC6A001CDF36 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */; };
 		03FA07571AE7DAD7009D12BB /* PopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA07561AE7DAD7009D12BB /* PopupButton.swift */; };
-		8F5D249F1BE9118E003FB500 /* d2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8F5D249E1BE9118E003FB500 /* d2.gif */; settings = {ASSET_TAGS = (); }; };
-		8F5D24A11BE91422003FB500 /* d3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8F5D24A01BE91422003FB500 /* d3.gif */; settings = {ASSET_TAGS = (); }; };
-		8FCD21161BE7D9A500826C9A /* d1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD21151BE7D9A500826C9A /* d1.gif */; settings = {ASSET_TAGS = (); }; };
-		8FF93C8D1BE5273400601476 /* installation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FF93C8C1BE5273400601476 /* installation.gif */; settings = {ASSET_TAGS = (); }; };
+		8F4A69D11BF6AA7A00772E9D /* issuempa.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4A69CE1BF6AA7A00772E9D /* issuempa.png */; };
+		8F4A69D21BF6AA7A00772E9D /* issuevva.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4A69CF1BF6AA7A00772E9D /* issuevva.png */; };
+		8F4A69D31BF6AA7A00772E9D /* issueyya.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4A69D01BF6AA7A00772E9D /* issueyya.png */; };
+		8F5D249F1BE9118E003FB500 /* d2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8F5D249E1BE9118E003FB500 /* d2.gif */; };
+		8F5D24A11BE91422003FB500 /* d3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8F5D24A01BE91422003FB500 /* d3.gif */; };
+		8FCD21161BE7D9A500826C9A /* d1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD21151BE7D9A500826C9A /* d1.gif */; };
+		8FF93C8D1BE5273400601476 /* installation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FF93C8C1BE5273400601476 /* installation.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		036D12DF1AC3E21F001CDF36 /* WordsDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsDAO.m; sourceTree = "<group>"; };
 		036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		03FA07561AE7DAD7009D12BB /* PopupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupButton.swift; sourceTree = "<group>"; };
+		8F4A69CE1BF6AA7A00772E9D /* issuempa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = issuempa.png; sourceTree = "<group>"; };
+		8F4A69CF1BF6AA7A00772E9D /* issuevva.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = issuevva.png; sourceTree = "<group>"; };
+		8F4A69D01BF6AA7A00772E9D /* issueyya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = issueyya.png; sourceTree = "<group>"; };
 		8F5D249E1BE9118E003FB500 /* d2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = d2.gif; sourceTree = "<group>"; };
 		8F5D24A01BE91422003FB500 /* d3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = d3.gif; sourceTree = "<group>"; };
 		8FCD21151BE7D9A500826C9A /* d1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = d1.gif; sourceTree = "<group>"; };
@@ -286,6 +292,9 @@
 		035CC3521A51B13C00A66713 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8F4A69CE1BF6AA7A00772E9D /* issuempa.png */,
+				8F4A69CF1BF6AA7A00772E9D /* issuevva.png */,
+				8F4A69D01BF6AA7A00772E9D /* issueyya.png */,
 				8F5D24A01BE91422003FB500 /* d3.gif */,
 				8F5D249E1BE9118E003FB500 /* d2.gif */,
 				8FCD21151BE7D9A500826C9A /* d1.gif */,
@@ -366,7 +375,7 @@
 				TargetAttributes = {
 					0341C0891A5557900011A6D7 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = F2PHBVP83C;
+						DevelopmentTeam = 58V2A74LJ7;
 					};
 					035CC3261A51AE9B00A66713 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -424,6 +433,7 @@
 				8F5D24A11BE91422003FB500 /* d3.gif in Resources */,
 				8F5D249F1BE9118E003FB500 /* d2.gif in Resources */,
 				035CC34F1A51B02800A66713 /* info.html in Resources */,
+				8F4A69D31BF6AA7A00772E9D /* issueyya.png in Resources */,
 				035CC3561A51B13C00A66713 /* settingsadd.png in Resources */,
 				035CC3511A51B04A00A66713 /* help.html in Resources */,
 				035CC3341A51AE9B00A66713 /* Main.storyboard in Resources */,
@@ -431,7 +441,9 @@
 				035CC3391A51AE9B00A66713 /* LaunchScreen.xib in Resources */,
 				0341C10A1A555E940011A6D7 /* installation.html in Resources */,
 				8FF93C8D1BE5273400601476 /* installation.gif in Resources */,
+				8F4A69D11BF6AA7A00772E9D /* issuempa.png in Resources */,
 				035CC3361A51AE9B00A66713 /* Images.xcassets in Resources */,
+				8F4A69D21BF6AA7A00772E9D /* issuevva.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,8 +538,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -536,7 +548,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.MalayalamEditor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "519a7fbc-22ad-4794-83f5-c4693d5c6685";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -547,13 +559,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeesmon Jacob (58V2A74LJ7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.MalayalamEditor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "822f5d12-0e21-4d0a-b195-432196fed865";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
 			};
@@ -597,7 +609,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "519a7fbc-22ad-4794-83f5-c4693d5c6685";
+				PROVISIONING_PROFILE = "95b69e1f-37d0-4c57-8b5a-7ee7a703e3b7";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";

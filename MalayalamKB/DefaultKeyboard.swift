@@ -299,7 +299,7 @@ func defaultKeyboard() -> Keyboard {
             keyModel.lowercaseOutput = key
             keyModel.isDoubleTappable = true
             keyModel.extentionValues = "സ്വ,സ്യ,സ്ര,ശ"
-            keyModel.extentionValuesUpper = "ശ്വ,ശ്യ,ശ്ര"
+            keyModel.extentionValuesUpper = "ശ്ച,ശ്വ,ശ്യ,ശ്ര"
             keyModel.isLeftExtention = true
         default:
             
