@@ -5,13 +5,19 @@
 //  Created by jijo pulikkottil on 12/23/14.
 //  Copyright (c) 2014 jeesmon. All rights reserved.
 //
-
+import iAd
 import UIKit
 
-class DetailViewController: UIViewController , UIWebViewDelegate {
+
+class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDelegate {
     
     @IBOutlet var webView: UIWebView!
     @IBOutlet var activity: UIActivityIndicatorView!
+    
+    @IBOutlet weak var bottomLayout: NSLayoutConstraint!
+    
+    @IBOutlet weak var topLayout: NSLayoutConstraint!
+    var bannerView: ADBannerView!
     
     var modeDisplay: Int = 0
     
@@ -79,10 +85,18 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
     
     override func viewDidLoad() {
         
-        
-        
-        
         super.viewDidLoad()
+       
+        bannerView = ADBannerView(adType: .Banner)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.delegate = self
+        bannerView.hidden = true
+        view.addSubview(bannerView)
+        
+        let viewsDictionary = ["bannerView": bannerView]
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
+        
         self.edgesForExtendedLayout = UIRectEdge.None
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -117,6 +131,18 @@ class DetailViewController: UIViewController , UIWebViewDelegate {
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?){
         
         activity.stopAnimating()
+    }
+    
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        print("banner loaded")
+        bottomLayout.constant = -(banner.frame.size.height)
+        bannerView.hidden = false
+    }
+    
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        print("banner ntot loaded")
+        bottomLayout.constant = 0
+        bannerView.hidden = true
     }
 }
 

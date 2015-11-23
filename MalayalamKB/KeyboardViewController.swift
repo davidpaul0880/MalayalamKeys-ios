@@ -83,7 +83,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     var chandrakkaladoubletapped: Bool = false
     var lastchar: String = ""
     var lastKey: Key?
-    var lasttime: Double = 0
+    //var lasttime: Double = 0
     
     enum ShiftState {
         case Disabled
@@ -268,8 +268,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
         self.setupLayout()
         
-        let orientationSavvyBounds = CGRectMake(0, 0, self.view.bounds.width, self.heightForOrientation(self.interfaceOrientation, withTopBanner: false))//+20151021
-        
+        let orientationSavvyBounds = CGRectMake(0, 0, self.view.bounds.width, self.heightForOrientation(false))//+20151021
         if (lastLayoutBounds != nil && lastLayoutBounds == orientationSavvyBounds) {
             // do nothing
         }
@@ -319,7 +318,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     
     override func viewWillAppear(animated: Bool) {
         self.bannerView?.hidden = false //+20150325
-        self.keyboardHeight = self.heightForOrientation(self.interfaceOrientation, withTopBanner: true)
+        self.keyboardHeight = self.heightForOrientation(false)//+20151123
     }
     
     /*override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -342,7 +341,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             }
         }*/
         
-        self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
+        self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: false)//+20151123
     }
     /*+20150421override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
@@ -370,7 +369,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     func heightForOrientation(orientation: UIInterfaceOrientation, withTopBanner: Bool) -> CGFloat {
         let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
         
-        //TODO: hardcoded stuff
+               //TODO: hardcoded stuff
         let actualScreenWidth = (UIScreen.mainScreen().nativeBounds.size.width / UIScreen.mainScreen().nativeScale)
         let canonicalPortraitHeight = (isPad ? CGFloat(264) : CGFloat(orientation.isPortrait && actualScreenWidth >= 400 ? 226 : 216))
         let canonicalLandscapeHeight = (isPad ? CGFloat(352) : CGFloat(162))
@@ -378,6 +377,32 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         KeyboardViewController.workaroundClassVariable = orientation.isLandscape
         
         return CGFloat(orientation.isPortrait ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )
+        
+    }
+    
+    func heightForOrientation(withTopBanner: Bool) -> CGFloat {
+        let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+        
+        //+20151123
+        let screenSize = UIScreen.mainScreen().bounds.size
+        let screenH = screenSize.height
+        let screenW = screenSize.width
+        let isLandscape =  !(self.view.frame.size.width == screenW * ((screenW < screenH) ? 1 : 0) + screenH * ((screenW > screenH) ? 1 : 0))
+        KeyboardViewController.workaroundClassVariable = isLandscape
+        
+        
+        //TODO: hardcoded stuff
+        let actualScreenWidth = (UIScreen.mainScreen().nativeBounds.size.width / UIScreen.mainScreen().nativeScale)
+        //let canonicalPortraitHeight = (isPad ? CGFloat(264) : CGFloat(orientation.isPortrait && actualScreenWidth >= 400 ? 226 : 216))
+        let canonicalPortraitHeight = (isPad ? CGFloat(264) : CGFloat(!isLandscape && actualScreenWidth >= 400 ? 226 : 216))
+        let canonicalLandscapeHeight = (isPad ? CGFloat(352) : CGFloat(162))
+        let topBannerHeight = (withTopBanner ? metric("topBanner") : 0)
+        //KeyboardViewController.workaroundClassVariable = orientation.isLandscape
+        
+        
+        return CGFloat(!isLandscape ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )
+        
+        //return CGFloat(orientation.isPortrait ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )
         
     }
     
@@ -574,10 +599,10 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         self.bannerView?.darkMode = appearanceIsDark //+20150325
         //+20151024self.settingsView?.darkMode = appearanceIsDark
     }
-    
+    var clickedtime : Double = 0 //+20151123
     func highlightKey(sender: KeyboardKey) {
         
-        
+        clickedtime = CACurrentMediaTime()
         sender.highlighted = true
         //m+20150421
         
@@ -590,12 +615,11 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                     delaytime = 0
                 }
                 
+                
                 let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(delaytime * Double(NSEC_PER_SEC)))
                 dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                    
-                    
-                    if sender.highlighted {
-                        
+               
+                    if sender.highlighted && (CACurrentMediaTime() - self.clickedtime) > (delaytime - 0.03){
                         
                         //sender.downColor = UIColor.whiteColor() //issue with darkmode if set white
                         self.bannerView?.alpha = 0.8
@@ -727,6 +751,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         let textDocumentProxy = self.textDocumentProxy as UIKeyInput
         
         lastchar = value
+        needChandrakkala = false
         textDocumentProxy.insertText(value)
         
         keyPressedAfter()
@@ -814,6 +839,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             }()
             
             if charactersAreInCorrectState {//+20150916
+                needChandrakkala = false
                 self.textDocumentProxy.deleteBackward()
                 self.textDocumentProxy.deleteBackward()
                 self.textDocumentProxy.insertText(".")
@@ -933,20 +959,25 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         
         (sender.shape as? ShiftShape)?.withLock = false
     }
+    var needChandrakkala : Bool = false
     //m+20150101
     func characterDoubleTapped(sender: KeyboardKey) {
         
+        needChandrakkala = false
         if !self.shiftState.uppercase() {
             if let key = self.layout?.keyForView(sender) {
                 
                 //+20150916if let proxy = (self.textDocumentProxy as? UIKeyInput) {
-                let proxy = self.textDocumentProxy as UIKeyInput
+                //let proxy = self.textDocumentProxy as UIKeyInput
                     
                     
                     let k = key.outputForCase(self.shiftState.uppercase())
                     if k == lastchar && k != "ര" {
+                       //+20151123
+                            //proxy.insertText("്")
+                            needChandrakkala = true
                         
-                        proxy.insertText("്")
+                        
                         //proxy.deleteBackward()
                     }
                     
@@ -957,11 +988,15 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         }else{
             if let key = self.layout?.keyForView(sender) {
                 //+20150916if let proxy = (self.textDocumentProxy as? UIKeyInput) {
-                let proxy = self.textDocumentProxy as UIKeyInput
+                //let proxy = self.textDocumentProxy as UIKeyInput
                     
                     let k = key.outputForCase(self.shiftState.uppercase())
                     if k == lastchar && (k == "ശ" || k == "റ") {
-                        proxy.insertText("്")
+                        
+                            //+20151123
+                            //proxy.insertText("്")
+                        needChandrakkala = true
+                        
                     }
                 
                 //}
@@ -1146,7 +1181,6 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
     
     @IBAction func toggleSettings(sender : UIControl) {//+20151022 added argument
         //+20141229self.playKeySound()
-        print("am here")
         if self.settingsView == nil {
             print("am here to create")
             if let aSettings = self.createSettings() {
@@ -1326,6 +1360,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             
             if keyOutput == "്" {
                 
+                needChandrakkala = false
                 if chandrakkaladoubletapped {
                     
                     let endChar: Character = "\u{200C}"
@@ -1338,6 +1373,10 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
                 }
                 
             }else{
+                if needChandrakkala {
+                    proxy.insertText("്")
+                    needChandrakkala = false
+                }
                 proxy.insertText(keyOutput)
             }
             

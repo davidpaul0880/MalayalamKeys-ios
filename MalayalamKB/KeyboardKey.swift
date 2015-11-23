@@ -191,8 +191,6 @@ class KeyboardKey: UIControl {
             self.label.userInteractionEnabled = false
             self.label.numberOfLines = 2//+201412
             }()
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -470,6 +468,9 @@ class KeyboardKey: UIControl {
                 if(isPad){
                     widthh = 3.0 * widthh / 4.0
                     heightt -= 5;
+                    if (isNumberPopup ) {
+                        xx -= (widthh * CGFloat(2))
+                    }
                 } else {
                     if (isNumberPopup ) {
                         widthh = 3.0 * widthh / 4.0
@@ -488,7 +489,7 @@ class KeyboardKey: UIControl {
                 if !isTopRow {
                     yy -= heightt;
                 } else {
-                    yy -= 8
+                    yy -= 20
                 }
                 let popup = UIView(frame: CGRectMake(xx , yy, widthh * CGFloat(arrayVals.count), heightt) )
                 popup.backgroundColor = UIColor.whiteColor()
