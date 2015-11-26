@@ -17,7 +17,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
     @IBOutlet weak var bottomLayout: NSLayoutConstraint!
     
     @IBOutlet weak var topLayout: NSLayoutConstraint!
-    var bannerView: ADBannerView!
+    //var bannerView: ADBannerView!
     
     var modeDisplay: Int = 0
     
@@ -87,7 +87,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
         
         super.viewDidLoad()
        
-        bannerView = ADBannerView(adType: .Banner)
+        /*bannerView = ADBannerView(adType: .Banner)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.delegate = self
         bannerView.hidden = true
@@ -96,7 +96,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
         let viewsDictionary = ["bannerView": bannerView]
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
-        
+        */
         self.edgesForExtendedLayout = UIRectEdge.None
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -132,7 +132,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
         
         activity.stopAnimating()
     }
-    
+    /*
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         print("banner loaded")
         bottomLayout.constant = -(banner.frame.size.height)
@@ -143,6 +143,6 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
         print("banner ntot loaded")
         bottomLayout.constant = 0
         bannerView.hidden = true
-    }
+    }*/
 }
 

@@ -230,7 +230,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
             self.setupKeys()
             self.setMode(0)
             
-            self.setupKludge()
+            //self.setupKludge()
             
             self.updateKeyCaps(!self.shiftState.uppercase())
             self.setCapsIfNeeded()
@@ -330,19 +330,23 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         }
     }*/
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        
         self.forwardingView.resetTrackedViews()
-        //self.shiftStartingState = nil
+        ////self.shiftStartingState = nil
         self.shiftWasMultitapped = false
         
-        // optimization: ensures smooth animation
-        /*if let keyPool = self.layout?.keyPool {
-            for view in keyPool {
-                view.shouldRasterize = true
-            }
-        }*/
-        
-        self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: false)//+20151123
+         self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: false)//+20151123
     }
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
+        
+        self.forwardingView.resetTrackedViews()
+        ////self.shiftStartingState = nil
+        self.shiftWasMultitapped = false
+
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        self.keyboardHeight = self.heightForOrientation(false)//+20151123
+    }
+    
     /*+20150421override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
     }*/
@@ -387,7 +391,9 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         let screenSize = UIScreen.mainScreen().bounds.size
         let screenH = screenSize.height
         let screenW = screenSize.width
-        let isLandscape =  !(self.view.frame.size.width == screenW * ((screenW < screenH) ? 1 : 0) + screenH * ((screenW > screenH) ? 1 : 0))
+        
+        let isLandscape =  !(self.view.frame.size.width == (screenW * ((screenW < screenH) ? 1 : 0) + screenH * ((screenW > screenH) ? 1 : 0)))
+        
         KeyboardViewController.workaroundClassVariable = isLandscape
         
         
@@ -396,11 +402,10 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         //let canonicalPortraitHeight = (isPad ? CGFloat(264) : CGFloat(orientation.isPortrait && actualScreenWidth >= 400 ? 226 : 216))
         let canonicalPortraitHeight = (isPad ? CGFloat(264) : CGFloat(!isLandscape && actualScreenWidth >= 400 ? 226 : 216))
         let canonicalLandscapeHeight = (isPad ? CGFloat(352) : CGFloat(162))
-        let topBannerHeight = (withTopBanner ? metric("topBanner") : 0)
+        //let topBannerHeight = (withTopBanner ? metric("topBanner") : 0)
         //KeyboardViewController.workaroundClassVariable = orientation.isLandscape
         
-        
-        return CGFloat(!isLandscape ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )
+        return CGFloat(!isLandscape ? canonicalPortraitHeight  : canonicalLandscapeHeight )
         
         //return CGFloat(orientation.isPortrait ? canonicalPortraitHeight  + topBannerHeight  : canonicalLandscapeHeight  + topBannerHeight )
         
@@ -589,6 +594,7 @@ class KeyboardViewController: UIInputViewController, KeyboardKeyExtentionProtoco
         else {
             self.heightConstraint?.constant = height
         }
+        self.view.layoutIfNeeded()//+20151125
     }
     
     func updateAppearances(appearanceIsDark: Bool) {
