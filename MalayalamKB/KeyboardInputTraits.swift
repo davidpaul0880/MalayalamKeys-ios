@@ -24,19 +24,26 @@ extension KeyboardViewController {
     func addInputTraitsObservers() {
         // note that KVO doesn't work on textDocumentProxy, so we have to poll
         traitPollingTimer?.invalidate()
-        traitPollingTimer = UIScreen.mainScreen().displayLinkWithTarget(self, selector: Selector("pollTraits"))
-        traitPollingTimer?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        traitPollingTimer = UIScreen.main.displayLink(withTarget: self, selector: #selector(KeyboardViewController.pollTraits))
+        traitPollingTimer?.add(to: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
-    func pollTraits() {
+    @objc func pollTraits() {
         //if let proxy = (self.textDocumentProxy as? UITextInputTraits) {
-        let proxy = self.textDocumentProxy as UITextInputTraits
+        
+        var darkmode = UserDefaults(suiteName: "group.com.jeesmon.apps.MalayalamEditor")!.bool(forKey: "darkmode")
+        if darkmode == false{
+            
+            let proxy = self.textDocumentProxy as UITextInputTraits
             if let layout = self.layout {
-                let appearanceIsDark = (proxy.keyboardAppearance == UIKeyboardAppearance.Dark)
+                let appearanceIsDark = (proxy.keyboardAppearance == UIKeyboardAppearance.dark)
                 if appearanceIsDark != layout.darkMode {
                     self.updateAppearances(appearanceIsDark)
                 }
             }
+        }else {
+            self.updateAppearances(true)
+        }
         //}
     }
 }

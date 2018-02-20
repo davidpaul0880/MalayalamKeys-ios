@@ -18,7 +18,7 @@ class Keyboard {
         self.pages = []
     }
     
-    func addKey(key: Key, row: Int, page: Int) {
+    func addKey(_ key: Key, row: Int, page: Int) {
         if self.pages.count <= page {
             for _ in self.pages.count...page {
                 self.pages.append(Page())
@@ -36,7 +36,7 @@ class Page {
         self.rows = []
     }
     
-    func addKey(key: Key, row: Int) {
+    func addKey(_ key: Key, row: Int) {
         if self.rows.count <= row {
             for _ in self.rows.count...row {
                 self.rows.append([])
@@ -49,19 +49,19 @@ class Page {
 
 class Key: Hashable {
     enum KeyType {
-        case Character
-        case SpecialCharacter
-        case Shift
-        case Backspace
-        case NumberMalayalam
-        case ModeChange
-        case KeyboardChange
-        case Period
-        case Space
-        case Return
-        case Settings
-        case Dismiss
-        case Other
+        case character
+        case specialCharacter
+        case shift
+        case backspace
+        case numberMalayalam
+        case modeChange
+        case keyboardChange
+        case period
+        case space
+        case `return`
+        case settings
+        case dismiss
+        case other
     }
     
     var type: KeyType
@@ -72,27 +72,33 @@ class Key: Hashable {
         didSet{
             
             
-            let range = keyText.rangeOfString("\n.*", options :.RegularExpressionSearch)
+            let range = keyText.range(of: "\n.*", options :.regularExpression)
             //+20150929let skipSaram = (NSUserDefaults.standardUserDefaults().boolForKey(kCapitalizeSwarangal) && isSwaram)
             
             if range != nil {//m+20150401 !skipSaram &&
                 
+                var mainColor = UIColor.black
+                let darkmode = UserDefaults(suiteName: "group.com.jeesmon.apps.MalayalamEditor")!.bool(forKey: "darkmode")
+                if darkmode == true{
+                    mainColor = UIColor.white
+                }
+                
                 var bigSize: CGFloat = 24
                 var smallSize: CGFloat = 20
-                let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+                let isPad = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
                 if !isPad {
                     bigSize = 22;
                     smallSize = 20;
                 }
                 let myMutableString1 = NSMutableAttributedString(string: keyText)
-                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.lightGrayColor(), NSFontAttributeName : UIFont.systemFontOfSize(smallSize)], range: NSMakeRange(1, (keyText as NSString).length-1))
-                myMutableString1.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(bigSize)], range: NSMakeRange(0, 1))
+                myMutableString1.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font : UIFont.systemFont(ofSize: smallSize)], range: NSMakeRange(1, (keyText as NSString).length-1))
+                myMutableString1.addAttributes([NSAttributedStringKey.foregroundColor : mainColor, NSAttributedStringKey.font : UIFont.systemFont(ofSize: bigSize)], range: NSMakeRange(0, 1))
                 
                 self.uppercaseKeyCap = myMutableString1
                 
                 let myMutableString = NSMutableAttributedString(string: keyText)
-                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.lightGrayColor(), NSFontAttributeName : UIFont.systemFontOfSize(smallSize)], range: NSMakeRange(0, 1))
-                myMutableString.addAttributes([NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.systemFontOfSize(bigSize)], range: NSMakeRange(1, (keyText as NSString).length-1))
+                myMutableString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font : UIFont.systemFont(ofSize: smallSize)], range: NSMakeRange(0, 1))
+                myMutableString.addAttributes([NSAttributedStringKey.foregroundColor : mainColor, NSAttributedStringKey.font : UIFont.systemFont(ofSize: bigSize)], range: NSMakeRange(1, (keyText as NSString).length-1))
                 
                 self.lowercaseKeyCap = myMutableString
                
@@ -125,9 +131,9 @@ class Key: Hashable {
         get {
             switch self.type {
             case
-            .Character,
-            .SpecialCharacter,
-            .Period:
+            .character,
+            .specialCharacter,
+            .period:
                 return true
             default:
                 return false
@@ -138,19 +144,19 @@ class Key: Hashable {
     var isSpecial: Bool {
         get {
             switch self.type {
-            case .Shift:
+            case .shift:
                 return true
-            case .Backspace:
+            case .backspace:
                 return true
-            case .ModeChange:
+            case .modeChange:
                 return true
-            case .KeyboardChange:
+            case .keyboardChange:
                 return true
-            case .Return:
+            case .return:
                 return true
-            case .Space:
+            case .space:
                 return true
-            case .Settings:
+            case .settings:
                 return true
             default:
                 return false
@@ -190,14 +196,14 @@ class Key: Hashable {
         self.toMode = key.toMode
     }
     
-    func setLetter(letter: String) {
-        self.lowercaseOutput = (letter as NSString).lowercaseString
-        self.uppercaseOutput = (letter as NSString).uppercaseString
-        //m+20150324
-        if self.lowercaseOutput != nil {
+    func setLetter(_ letter: String) {
+        self.lowercaseOutput = (letter as NSString).lowercased
+        self.uppercaseOutput = (letter as NSString).uppercased
+        //m+20150324 ToDO:j to fix ku nu color in darkmode
+        /*if self.lowercaseOutput != nil {
         
             self.lowercaseKeyCap = NSAttributedString(string: self.lowercaseOutput!)
-        }
+        }*/
         if self.uppercaseOutput != nil {
             
             self.uppercaseKeyCap = NSAttributedString(string: self.uppercaseOutput!)
@@ -205,7 +211,7 @@ class Key: Hashable {
         
 
     }
-    func extentionValuesCase(uppercase: Bool) -> String? {
+    func extentionValuesCase(_ uppercase: Bool) -> String? {
         
         if uppercase {
             return self.extentionValuesUpper
@@ -214,7 +220,7 @@ class Key: Hashable {
         }
     }
     
-    func outputForCase(uppercase: Bool) -> String {
+    func outputForCase(_ uppercase: Bool) -> String {
         if uppercase {
             if self.uppercaseOutput != nil {
                 return self.uppercaseOutput!
@@ -239,7 +245,7 @@ class Key: Hashable {
         }
     }
     
-    func keyCapForCase(uppercase: Bool) -> NSAttributedString {//m+20150324
+    func keyCapForCase(_ uppercase: Bool) -> NSAttributedString {//m+20150324
         if uppercase {
             if self.uppercaseKeyCap != nil {
                 return self.uppercaseKeyCap!

@@ -16,7 +16,7 @@ class MasterViewController: UITableViewController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
@@ -25,9 +25,9 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : AnyObject]
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.tableView.rowHeight = 100
         // Do any additional setup after loading the view, typically from a nib.
@@ -50,58 +50,67 @@ class MasterViewController: UITableViewController {
    
     // MARK: - Segues
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let indexPath = self.tableView.indexPathForSelectedRow {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let indexPath = sender as? IndexPath {
             
             
-            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-            controller.modeDisplay = indexPath.row
             
-            if indexPath.row == 0 {
-                
-                let object = NSBundle.mainBundle().pathForResource("installation", ofType: "html")
+            
+            if (indexPath as NSIndexPath).row == 0 {
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.modeDisplay = (indexPath as NSIndexPath).row
+                let object = Bundle.main.path(forResource: "installation", ofType: "html")
                 
                 
                 
                 controller.filePath = object
             }
-            else if indexPath.row == 1 {
-                let object = NSBundle.mainBundle().pathForResource("help", ofType: "html")
+            else if (indexPath as NSIndexPath).row == 1 {
+                let object = Bundle.main.path(forResource: "help", ofType: "html")
                 
-                
-                
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.modeDisplay = (indexPath as NSIndexPath).row
                 controller.filePath = object
                 
             }
-            else if indexPath.row == 2 {
-                let object = NSBundle.mainBundle().pathForResource("info", ofType: "html")
+            else if (indexPath as NSIndexPath).row == 2 {
+                let object = Bundle.main.path(forResource: "info", ofType: "html")
                 
-                
-                
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.modeDisplay = (indexPath as NSIndexPath).row
                 controller.filePath = object
                 
-            }else if indexPath.row == 3 {
+            }else if (indexPath as NSIndexPath).row == 3 {
                 
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.modeDisplay = (indexPath as NSIndexPath).row
                 let iTunesLink = "itms-apps://itunes.apple.com/app/id957578340";
-                UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
+                UIApplication.shared.openURL(URL(string: iTunesLink)!)
                 
-                self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+                self.tableView.deselectRow(at: indexPath, animated: false)
                 
                 controller.filePath = nil;
+            } else if (indexPath as NSIndexPath).row == 4 {
+                
             }
             
-            if indexPath.row != 3 {
+            if (indexPath as NSIndexPath).row < 3 {
+                
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.modeDisplay = (indexPath as NSIndexPath).row
+                
                 
                 //controller.configureView()
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 
                 
-                let orientation = UIApplication.sharedApplication().statusBarOrientation
+                let orientation = UIApplication.shared.statusBarOrientation
                 
                 if orientation.isPortrait {
                     
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideMaster()
                     // Portrait
                 } else {
@@ -114,29 +123,36 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
         
-        let viewBg: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 100))
+        let viewBg: UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
         viewBg.backgroundColor = UIColor(red: 200/255, green: 120/255, blue: 0/255, alpha: 1)
         cell.selectedBackgroundView = viewBg
         
-        let object = objects[indexPath.row] as String
+        let object = objects[(indexPath as NSIndexPath).row] as String
         cell.textLabel!.textColor = UIColor(red: 200/255, green: 120/255, blue: 0/255, alpha: 1)
-        cell.textLabel!.textAlignment = NSTextAlignment.Center
+        cell.textLabel!.textAlignment = NSTextAlignment.center
         cell.textLabel!.text = object
         
         return cell
     }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (indexPath as NSIndexPath).row == 4 {
+            self.performSegue(withIdentifier: "ShowKeyboardPreview", sender: indexPath)
+        }else {
+        self.performSegue(withIdentifier: "ShowWebDetail", sender: indexPath)
+        }
+    }
 
 }
 

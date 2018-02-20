@@ -5,11 +5,10 @@
 //  Created by jijo pulikkottil on 12/23/14.
 //  Copyright (c) 2014 jeesmon. All rights reserved.
 //
-import iAd
 import UIKit
 
 
-class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDelegate {
+class DetailViewController: UIViewController , UIWebViewDelegate {
     
     @IBOutlet var webView: UIWebView!
     @IBOutlet var activity: UIActivityIndicatorView!
@@ -29,6 +28,7 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
     }
     
     func configureView() {
+        
         
         
         if modeDisplay == 0 {
@@ -72,8 +72,8 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
                 }
             } else {*/
                 if webView != nil && modeDisplay < 3{
-                    let url = NSURL(fileURLWithPath: detail)
-                    webView.loadRequest(NSURLRequest(URL: url))
+                    let url = URL(fileURLWithPath: detail)
+                    webView.loadRequest(URLRequest(url: url))
                 }
            // }
             
@@ -86,6 +86,10 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        UserDefaults(suiteName: "group.com.jeesmon.apps.MalayalamEditor")!.set(false, forKey: "darkmode")
+        UserDefaults.standard.synchronize()
+        
        
         /*bannerView = ADBannerView(adType: .Banner)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -97,17 +101,17 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
         */
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : AnyObject]
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         
         // Do any additional setup after loading the view, typically from a nib.
         //let isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
         if self.filePath == nil {
-            self.filePath = NSBundle.mainBundle().pathForResource("installation", ofType: "html")
+            self.filePath = Bundle.main.path(forResource: "installation", ofType: "html")
         }
         self.configureView()
         
@@ -118,17 +122,17 @@ class DetailViewController: UIViewController , UIWebViewDelegate, ADBannerViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         activity.startAnimating()
         return true
     }
     
-    func webViewDidFinishLoad(webView: UIWebView){
+    func webViewDidFinishLoad(_ webView: UIWebView){
         
         activity.stopAnimating()
     }
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?){
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error){
         
         activity.stopAnimating()
     }

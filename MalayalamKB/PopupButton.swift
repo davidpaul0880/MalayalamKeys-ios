@@ -11,7 +11,7 @@ import UIKit
 class PopupButton: UIControl {
     
     var label: UILabel!
-    
+    var darkMode: Bool
     var text : String? {
         
         didSet {
@@ -25,23 +25,31 @@ class PopupButton: UIControl {
     var bgColor:UIColor?
     var bgColorSelected:UIColor?
     
-    init(){
+    init(isDarkmode: Bool){
         
         label = UILabel()
         
+        darkMode = isDarkmode
+        if darkMode {
+            self.textColor = UIColor.lightGray
+            self.textColorSelected = UIColor.white
+            self.bgColor = GlobalColors.darkModeSolidColorRegularKey
+            
+            self.bgColorSelected = GlobalColors.darkModeSolidColorSpecialKey
+        } else {
+            self.textColor = UIColor.black
+            self.textColorSelected = UIColor.white
         
-        self.textColor = UIColor.blackColor()
-        self.textColorSelected = UIColor.whiteColor()
+            self.bgColor = UIColor.white
+            self.bgColorSelected = GlobalColors.lightModeSpecialKeyiPad
+        }
+        super.init(frame: CGRect.zero)
         
-        self.bgColor = UIColor.whiteColor()
-        self.bgColorSelected = GlobalColors.lightModeSpecialKeyiPad
-        
-        super.init(frame: CGRectZero)
-        
-        self.label.textAlignment = NSTextAlignment.Center
+        //self.backgroundColor = self.bgColor
+        self.label.textAlignment = NSTextAlignment.center
         //self.label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
-        self.label.userInteractionEnabled = false
-        self.label.frame = CGRectMake(0.0, self.bounds.height / 3.0, self.bounds.width, self.bounds.height / 3.0)
+        self.label.isUserInteractionEnabled = false
+        self.label.frame = CGRect(x: 0.0, y: self.bounds.height / 3.0, width: self.bounds.width, height: self.bounds.height / 3.0)
         self.label.adjustsFontSizeToFitWidth = true;
         self.label.minimumScaleFactor = CGFloat(0.6)
         self.label.textColor = self.textColor
@@ -52,27 +60,27 @@ class PopupButton: UIControl {
     override func layoutSubviews() {
         
         super.layoutSubviews()
-        self.label.frame = CGRectMake(1.0, self.bounds.height / 3.0 + 1, self.bounds.width - 2, self.bounds.height / 3.0 - 2)
+        self.label.frame = CGRect(x: 1.0, y: self.bounds.height / 3.0 + 1, width: self.bounds.width - 2, height: self.bounds.height / 3.0 - 2)
     }
-    func highlightLabel(sender: PopupButton) {
+    func highlightLabel(_ sender: PopupButton) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         self.label.textColor = self.textColorSelected
         self.label.backgroundColor = self.bgColorSelected
         
-        self.label.highlighted = true
+        self.label.isHighlighted = true
         
         CATransaction.commit()
         
         
     }
-    func unHighlightLabel(sender: PopupButton) {
+    func unHighlightLabel(_ sender: PopupButton) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         self.label.textColor = self.textColor
         self.label.backgroundColor = self.bgColor
         
-        self.label.highlighted = false
+        self.label.isHighlighted = false
         
         CATransaction.commit()
     }

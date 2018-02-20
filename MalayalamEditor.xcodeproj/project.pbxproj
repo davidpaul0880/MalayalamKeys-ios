@@ -39,7 +39,6 @@
 		035CC3341A51AE9B00A66713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3321A51AE9B00A66713 /* Main.storyboard */; };
 		035CC3361A51AE9B00A66713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3351A51AE9B00A66713 /* Images.xcassets */; };
 		035CC3391A51AE9B00A66713 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3371A51AE9B00A66713 /* LaunchScreen.xib */; };
-		035CC3451A51AE9B00A66713 /* MalayalamEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CC3441A51AE9B00A66713 /* MalayalamEditorTests.swift */; };
 		035CC34F1A51B02800A66713 /* info.html in Resources */ = {isa = PBXBuildFile; fileRef = 035CC34E1A51B02700A66713 /* info.html */; };
 		035CC3511A51B04A00A66713 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3501A51B04A00A66713 /* help.html */; };
 		035CC3551A51B13C00A66713 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 035CC3531A51B13C00A66713 /* settings.png */; };
@@ -52,7 +51,40 @@
 		8F4A69D31BF6AA7A00772E9D /* issueyya.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4A69D01BF6AA7A00772E9D /* issueyya.png */; };
 		8F5D249F1BE9118E003FB500 /* d2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8F5D249E1BE9118E003FB500 /* d2.gif */; };
 		8F5D24A11BE91422003FB500 /* d3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8F5D24A01BE91422003FB500 /* d3.gif */; };
+		8FB165301D491B4F001BF81A /* mlwords.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FB1652F1D491B4F001BF81A /* mlwords.sqlite */; };
 		8FCD21161BE7D9A500826C9A /* d1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD21151BE7D9A500826C9A /* d1.gif */; };
+		8FD0E7211D5CE73500F164A9 /* KBPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7201D5CE73500F164A9 /* KBPreviewController.swift */; };
+		8FD0E7571D5CF90B00F164A9 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7341D5CF90B00F164A9 /* DefaultKeyboard.swift */; };
+		8FD0E7581D5CF90B00F164A9 /* DefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7351D5CF90B00F164A9 /* DefaultSettings.swift */; };
+		8FD0E7591D5CF90B00F164A9 /* DefaultSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7361D5CF90B00F164A9 /* DefaultSettings.xib */; };
+		8FD0E75A1D5CF90B00F164A9 /* DirectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7371D5CF90B00F164A9 /* DirectionEnum.swift */; };
+		8FD0E75B1D5CF90B00F164A9 /* ExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7381D5CF90B00F164A9 /* ExtraView.swift */; };
+		8FD0E75C1D5CF90B00F164A9 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7391D5CF90B00F164A9 /* ForwardingView.swift */; };
+		8FD0E75D1D5CF90B00F164A9 /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E73A1D5CF90B00F164A9 /* ImageKey.swift */; };
+		8FD0E75E1D5CF90B00F164A9 /* dismisskb.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E73C1D5CF90B00F164A9 /* dismisskb.png */; };
+		8FD0E75F1D5CF90B00F164A9 /* dismisskbwh.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E73D1D5CF90B00F164A9 /* dismisskbwh.png */; };
+		8FD0E7601D5CF90B00F164A9 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E73E1D5CF90B00F164A9 /* gear.png */; };
+		8FD0E7611D5CF90B00F164A9 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E73F1D5CF90B00F164A9 /* gear@2x.png */; };
+		8FD0E7621D5CF90B00F164A9 /* gear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7401D5CF90B00F164A9 /* gear@3x.png */; };
+		8FD0E7631D5CF90B00F164A9 /* gearwh.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7411D5CF90B00F164A9 /* gearwh.png */; };
+		8FD0E7641D5CF90B00F164A9 /* gearwh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7421D5CF90B00F164A9 /* gearwh@2x.png */; };
+		8FD0E7651D5CF90B00F164A9 /* gearwh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7431D5CF90B00F164A9 /* gearwh@3x.png */; };
+		8FD0E7661D5CF90B00F164A9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7441D5CF90B00F164A9 /* Info.plist */; };
+		8FD0E7671D5CF90B00F164A9 /* KeyboardConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7451D5CF90B00F164A9 /* KeyboardConnector.swift */; };
+		8FD0E7681D5CF90B00F164A9 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7461D5CF90B00F164A9 /* KeyboardInputTraits.swift */; };
+		8FD0E7691D5CF90B00F164A9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7471D5CF90B00F164A9 /* KeyboardKey.swift */; };
+		8FD0E76A1D5CF90B00F164A9 /* KeyboardKeyBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7481D5CF90B00F164A9 /* KeyboardKeyBackground.swift */; };
+		8FD0E76B1D5CF90B00F164A9 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7491D5CF90B00F164A9 /* KeyboardLayout.swift */; };
+		8FD0E76C1D5CF90B00F164A9 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E74A1D5CF90B00F164A9 /* KeyboardModel.swift */; };
+		8FD0E76E1D5CF90B00F164A9 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E74C1D5CF90B00F164A9 /* KeyboardViewController.swift */; };
+		8FD0E76F1D5CF90B00F164A9 /* MalayalamKB.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E74E1D5CF90B00F164A9 /* MalayalamKB.entitlements */; };
+		8FD0E7701D5CF90B00F164A9 /* malwords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E74F1D5CF90B00F164A9 /* malwords.xcdatamodeld */; };
+		8FD0E7711D5CF90B00F164A9 /* mlwords.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0E7511D5CF90B00F164A9 /* mlwords.sqlite */; };
+		8FD0E7721D5CF90B00F164A9 /* PopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7521D5CF90B00F164A9 /* PopupButton.swift */; };
+		8FD0E7731D5CF90B00F164A9 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7531D5CF90B00F164A9 /* Shapes.swift */; };
+		8FD0E7741D5CF90B00F164A9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7541D5CF90B00F164A9 /* Utilities.swift */; };
+		8FD0E7751D5CF90B00F164A9 /* WordsDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0E7561D5CF90B00F164A9 /* WordsDAO.m */; };
+		8FD0E7771D5CFA6400F164A9 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD0E7761D5CFA6300F164A9 /* libsqlite3.0.tbd */; };
 		8FF93C8D1BE5273400601476 /* installation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FF93C8C1BE5273400601476 /* installation.gif */; };
 /* End PBXBuildFile section */
 
@@ -63,13 +95,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0341C0891A5557900011A6D7;
 			remoteInfo = MalayalamKB;
-		};
-		035CC33F1A51AE9B00A66713 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 035CC31F1A51AE9A00A66713 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 035CC3261A51AE9B00A66713;
-			remoteInfo = MalayalamEditor;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -123,7 +148,6 @@
 		035CC3331A51AE9B00A66713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		035CC3351A51AE9B00A66713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		035CC3381A51AE9B00A66713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		035CC33E1A51AE9B00A66713 /* MalayalamEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MalayalamEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		035CC3431A51AE9B00A66713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		035CC3441A51AE9B00A66713 /* MalayalamEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MalayalamEditorTests.swift; sourceTree = "<group>"; };
 		035CC34E1A51B02700A66713 /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info.html; sourceTree = "<group>"; };
@@ -140,7 +164,44 @@
 		8F4A69D01BF6AA7A00772E9D /* issueyya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = issueyya.png; sourceTree = "<group>"; };
 		8F5D249E1BE9118E003FB500 /* d2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = d2.gif; sourceTree = "<group>"; };
 		8F5D24A01BE91422003FB500 /* d3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = d3.gif; sourceTree = "<group>"; };
+		8F6BADB51D510989008C55C0 /* MalayalamKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MalayalamKB.entitlements; sourceTree = "<group>"; };
+		8F6BADB61D510B2B008C55C0 /* MalayalamEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MalayalamEditor.entitlements; sourceTree = "<group>"; };
+		8FB1652F1D491B4F001BF81A /* mlwords.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mlwords.sqlite; sourceTree = "<group>"; };
 		8FCD21151BE7D9A500826C9A /* d1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = d1.gif; sourceTree = "<group>"; };
+		8FD0E7201D5CE73500F164A9 /* KBPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBPreviewController.swift; sourceTree = "<group>"; };
+		8FD0E7341D5CF90B00F164A9 /* DefaultKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
+		8FD0E7351D5CF90B00F164A9 /* DefaultSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSettings.swift; sourceTree = "<group>"; };
+		8FD0E7361D5CF90B00F164A9 /* DefaultSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultSettings.xib; sourceTree = "<group>"; };
+		8FD0E7371D5CF90B00F164A9 /* DirectionEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionEnum.swift; sourceTree = "<group>"; };
+		8FD0E7381D5CF90B00F164A9 /* ExtraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraView.swift; sourceTree = "<group>"; };
+		8FD0E7391D5CF90B00F164A9 /* ForwardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardingView.swift; sourceTree = "<group>"; };
+		8FD0E73A1D5CF90B00F164A9 /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
+		8FD0E73C1D5CF90B00F164A9 /* dismisskb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismisskb.png; sourceTree = "<group>"; };
+		8FD0E73D1D5CF90B00F164A9 /* dismisskbwh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismisskbwh.png; sourceTree = "<group>"; };
+		8FD0E73E1D5CF90B00F164A9 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		8FD0E73F1D5CF90B00F164A9 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		8FD0E7401D5CF90B00F164A9 /* gear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@3x.png"; sourceTree = "<group>"; };
+		8FD0E7411D5CF90B00F164A9 /* gearwh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gearwh.png; sourceTree = "<group>"; };
+		8FD0E7421D5CF90B00F164A9 /* gearwh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gearwh@2x.png"; sourceTree = "<group>"; };
+		8FD0E7431D5CF90B00F164A9 /* gearwh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gearwh@3x.png"; sourceTree = "<group>"; };
+		8FD0E7441D5CF90B00F164A9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FD0E7451D5CF90B00F164A9 /* KeyboardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConnector.swift; sourceTree = "<group>"; };
+		8FD0E7461D5CF90B00F164A9 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
+		8FD0E7471D5CF90B00F164A9 /* KeyboardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
+		8FD0E7481D5CF90B00F164A9 /* KeyboardKeyBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKeyBackground.swift; sourceTree = "<group>"; };
+		8FD0E7491D5CF90B00F164A9 /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
+		8FD0E74A1D5CF90B00F164A9 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		8FD0E74C1D5CF90B00F164A9 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		8FD0E74D1D5CF90B00F164A9 /* MalayalamKB-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MalayalamKB-Bridging-Header.h"; sourceTree = "<group>"; };
+		8FD0E74E1D5CF90B00F164A9 /* MalayalamKB.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MalayalamKB.entitlements; sourceTree = "<group>"; };
+		8FD0E7501D5CF90B00F164A9 /* malwords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = malwords.xcdatamodel; sourceTree = "<group>"; };
+		8FD0E7511D5CF90B00F164A9 /* mlwords.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mlwords.sqlite; sourceTree = "<group>"; };
+		8FD0E7521D5CF90B00F164A9 /* PopupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupButton.swift; sourceTree = "<group>"; };
+		8FD0E7531D5CF90B00F164A9 /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		8FD0E7541D5CF90B00F164A9 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		8FD0E7551D5CF90B00F164A9 /* WordsDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsDAO.h; sourceTree = "<group>"; };
+		8FD0E7561D5CF90B00F164A9 /* WordsDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsDAO.m; sourceTree = "<group>"; };
+		8FD0E7761D5CFA6300F164A9 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8FF93C8C1BE5273400601476 /* installation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = installation.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,13 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		035CC33B1A51AE9B00A66713 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				8FD0E7771D5CFA6400F164A9 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +228,7 @@
 		0341C08B1A5557900011A6D7 /* MalayalamKB */ = {
 			isa = PBXGroup;
 			children = (
+				8F6BADB51D510989008C55C0 /* MalayalamKB.entitlements */,
 				0341C0F81A5558AB0011A6D7 /* images */,
 				0341C0C91A5558290011A6D7 /* DefaultKeyboard.swift */,
 				0341C0CA1A5558290011A6D7 /* DefaultSettings.swift */,
@@ -202,6 +258,7 @@
 		0341C08C1A5557900011A6D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8FB1652F1D491B4F001BF81A /* mlwords.sqlite */,
 				0341C08D1A5557900011A6D7 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -225,6 +282,7 @@
 		035CC31E1A51AE9A00A66713 = {
 			isa = PBXGroup;
 			children = (
+				8FD0E7761D5CFA6300F164A9 /* libsqlite3.0.tbd */,
 				036D12E11AC3E3DC001CDF36 /* libsqlite3.0.dylib */,
 				035CC3291A51AE9B00A66713 /* MalayalamEditor */,
 				035CC3411A51AE9B00A66713 /* MalayalamEditorTests */,
@@ -237,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				035CC3271A51AE9B00A66713 /* MalayalamEditor.app */,
-				035CC33E1A51AE9B00A66713 /* MalayalamEditorTests.xctest */,
 				0341C08A1A5557900011A6D7 /* MalayalamKB.appex */,
 			);
 			name = Products;
@@ -246,9 +303,12 @@
 		035CC3291A51AE9B00A66713 /* MalayalamEditor */ = {
 			isa = PBXGroup;
 			children = (
+				8FD0E7331D5CF90B00F164A9 /* MalayalamKB */,
+				8F6BADB61D510B2B008C55C0 /* MalayalamEditor.entitlements */,
 				035CC32C1A51AE9B00A66713 /* AppDelegate.swift */,
 				035CC32E1A51AE9B00A66713 /* MasterViewController.swift */,
 				035CC3301A51AE9B00A66713 /* DetailViewController.swift */,
+				8FD0E7201D5CE73500F164A9 /* KBPreviewController.swift */,
 				035CC3321A51AE9B00A66713 /* Main.storyboard */,
 				035CC3351A51AE9B00A66713 /* Images.xcassets */,
 				035CC3371A51AE9B00A66713 /* LaunchScreen.xib */,
@@ -302,6 +362,53 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		8FD0E7331D5CF90B00F164A9 /* MalayalamKB */ = {
+			isa = PBXGroup;
+			children = (
+				8FD0E7341D5CF90B00F164A9 /* DefaultKeyboard.swift */,
+				8FD0E7351D5CF90B00F164A9 /* DefaultSettings.swift */,
+				8FD0E7361D5CF90B00F164A9 /* DefaultSettings.xib */,
+				8FD0E7371D5CF90B00F164A9 /* DirectionEnum.swift */,
+				8FD0E7381D5CF90B00F164A9 /* ExtraView.swift */,
+				8FD0E7391D5CF90B00F164A9 /* ForwardingView.swift */,
+				8FD0E73A1D5CF90B00F164A9 /* ImageKey.swift */,
+				8FD0E73B1D5CF90B00F164A9 /* images */,
+				8FD0E7441D5CF90B00F164A9 /* Info.plist */,
+				8FD0E7451D5CF90B00F164A9 /* KeyboardConnector.swift */,
+				8FD0E7461D5CF90B00F164A9 /* KeyboardInputTraits.swift */,
+				8FD0E7471D5CF90B00F164A9 /* KeyboardKey.swift */,
+				8FD0E7481D5CF90B00F164A9 /* KeyboardKeyBackground.swift */,
+				8FD0E7491D5CF90B00F164A9 /* KeyboardLayout.swift */,
+				8FD0E74A1D5CF90B00F164A9 /* KeyboardModel.swift */,
+				8FD0E74C1D5CF90B00F164A9 /* KeyboardViewController.swift */,
+				8FD0E74D1D5CF90B00F164A9 /* MalayalamKB-Bridging-Header.h */,
+				8FD0E74E1D5CF90B00F164A9 /* MalayalamKB.entitlements */,
+				8FD0E74F1D5CF90B00F164A9 /* malwords.xcdatamodeld */,
+				8FD0E7511D5CF90B00F164A9 /* mlwords.sqlite */,
+				8FD0E7521D5CF90B00F164A9 /* PopupButton.swift */,
+				8FD0E7531D5CF90B00F164A9 /* Shapes.swift */,
+				8FD0E7541D5CF90B00F164A9 /* Utilities.swift */,
+				8FD0E7551D5CF90B00F164A9 /* WordsDAO.h */,
+				8FD0E7561D5CF90B00F164A9 /* WordsDAO.m */,
+			);
+			path = MalayalamKB;
+			sourceTree = "<group>";
+		};
+		8FD0E73B1D5CF90B00F164A9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8FD0E73C1D5CF90B00F164A9 /* dismisskb.png */,
+				8FD0E73D1D5CF90B00F164A9 /* dismisskbwh.png */,
+				8FD0E73E1D5CF90B00F164A9 /* gear.png */,
+				8FD0E73F1D5CF90B00F164A9 /* gear@2x.png */,
+				8FD0E7401D5CF90B00F164A9 /* gear@3x.png */,
+				8FD0E7411D5CF90B00F164A9 /* gearwh.png */,
+				8FD0E7421D5CF90B00F164A9 /* gearwh@2x.png */,
+				8FD0E7431D5CF90B00F164A9 /* gearwh@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -341,24 +448,6 @@
 			productReference = 035CC3271A51AE9B00A66713 /* MalayalamEditor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		035CC33D1A51AE9B00A66713 /* MalayalamEditorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 035CC34B1A51AE9B00A66713 /* Build configuration list for PBXNativeTarget "MalayalamEditorTests" */;
-			buildPhases = (
-				035CC33A1A51AE9B00A66713 /* Sources */,
-				035CC33B1A51AE9B00A66713 /* Frameworks */,
-				035CC33C1A51AE9B00A66713 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				035CC3401A51AE9B00A66713 /* PBXTargetDependency */,
-			);
-			name = MalayalamEditorTests;
-			productName = MalayalamEditorTests;
-			productReference = 035CC33E1A51AE9B00A66713 /* MalayalamEditorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -367,20 +456,35 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = jeesmon;
 				TargetAttributes = {
 					0341C0891A5557900011A6D7 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 58V2A74LJ7;
+						LastSwiftMigration = 0910;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					035CC3261A51AE9B00A66713 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 58V2A74LJ7;
-					};
-					035CC33D1A51AE9B00A66713 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 035CC3261A51AE9B00A66713;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -398,7 +502,6 @@
 			projectRoot = "";
 			targets = (
 				035CC3261A51AE9B00A66713 /* MalayalamEditor */,
-				035CC33D1A51AE9B00A66713 /* MalayalamEditorTests */,
 				0341C0891A5557900011A6D7 /* MalayalamKB */,
 			);
 		};
@@ -409,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FB165301D491B4F001BF81A /* mlwords.sqlite in Resources */,
 				0341C1071A5558AB0011A6D7 /* gearwh@2x.png in Resources */,
 				0341C1081A5558AB0011A6D7 /* gearwh@3x.png in Resources */,
 				0341C1061A5558AB0011A6D7 /* gearwh.png in Resources */,
@@ -426,27 +530,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				035CC3551A51B13C00A66713 /* settings.png in Resources */,
+				8FD0E7611D5CF90B00F164A9 /* gear@2x.png in Resources */,
 				8F5D24A11BE91422003FB500 /* d3.gif in Resources */,
 				8F5D249F1BE9118E003FB500 /* d2.gif in Resources */,
 				035CC34F1A51B02800A66713 /* info.html in Resources */,
 				8F4A69D31BF6AA7A00772E9D /* issueyya.png in Resources */,
 				035CC3561A51B13C00A66713 /* settingsadd.png in Resources */,
+				8FD0E7601D5CF90B00F164A9 /* gear.png in Resources */,
+				8FD0E75F1D5CF90B00F164A9 /* dismisskbwh.png in Resources */,
+				8FD0E7631D5CF90B00F164A9 /* gearwh.png in Resources */,
+				8FD0E7711D5CF90B00F164A9 /* mlwords.sqlite in Resources */,
 				035CC3511A51B04A00A66713 /* help.html in Resources */,
 				035CC3341A51AE9B00A66713 /* Main.storyboard in Resources */,
+				8FD0E7661D5CF90B00F164A9 /* Info.plist in Resources */,
+				8FD0E7591D5CF90B00F164A9 /* DefaultSettings.xib in Resources */,
 				8FCD21161BE7D9A500826C9A /* d1.gif in Resources */,
 				035CC3391A51AE9B00A66713 /* LaunchScreen.xib in Resources */,
+				8FD0E7651D5CF90B00F164A9 /* gearwh@3x.png in Resources */,
+				8FD0E76F1D5CF90B00F164A9 /* MalayalamKB.entitlements in Resources */,
 				0341C10A1A555E940011A6D7 /* installation.html in Resources */,
+				8FD0E7641D5CF90B00F164A9 /* gearwh@2x.png in Resources */,
 				8FF93C8D1BE5273400601476 /* installation.gif in Resources */,
 				8F4A69D11BF6AA7A00772E9D /* issuempa.png in Resources */,
 				035CC3361A51AE9B00A66713 /* Images.xcassets in Resources */,
+				8FD0E7621D5CF90B00F164A9 /* gear@3x.png in Resources */,
 				8F4A69D21BF6AA7A00772E9D /* issuevva.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		035CC33C1A51AE9B00A66713 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				8FD0E75E1D5CF90B00F164A9 /* dismisskb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,17 +590,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD0E76C1D5CF90B00F164A9 /* KeyboardModel.swift in Sources */,
+				8FD0E7751D5CF90B00F164A9 /* WordsDAO.m in Sources */,
 				035CC3311A51AE9B00A66713 /* DetailViewController.swift in Sources */,
+				8FD0E7741D5CF90B00F164A9 /* Utilities.swift in Sources */,
+				8FD0E75D1D5CF90B00F164A9 /* ImageKey.swift in Sources */,
+				8FD0E75B1D5CF90B00F164A9 /* ExtraView.swift in Sources */,
+				8FD0E75C1D5CF90B00F164A9 /* ForwardingView.swift in Sources */,
+				8FD0E7571D5CF90B00F164A9 /* DefaultKeyboard.swift in Sources */,
+				8FD0E7581D5CF90B00F164A9 /* DefaultSettings.swift in Sources */,
+				8FD0E76A1D5CF90B00F164A9 /* KeyboardKeyBackground.swift in Sources */,
+				8FD0E7721D5CF90B00F164A9 /* PopupButton.swift in Sources */,
+				8FD0E7671D5CF90B00F164A9 /* KeyboardConnector.swift in Sources */,
 				035CC32F1A51AE9B00A66713 /* MasterViewController.swift in Sources */,
+				8FD0E7681D5CF90B00F164A9 /* KeyboardInputTraits.swift in Sources */,
+				8FD0E75A1D5CF90B00F164A9 /* DirectionEnum.swift in Sources */,
+				8FD0E7731D5CF90B00F164A9 /* Shapes.swift in Sources */,
+				8FD0E76E1D5CF90B00F164A9 /* KeyboardViewController.swift in Sources */,
 				035CC32D1A51AE9B00A66713 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		035CC33A1A51AE9B00A66713 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				035CC3451A51AE9B00A66713 /* MalayalamEditorTests.swift in Sources */,
+				8FD0E76B1D5CF90B00F164A9 /* KeyboardLayout.swift in Sources */,
+				8FD0E7701D5CF90B00F164A9 /* malwords.xcdatamodeld in Sources */,
+				8FD0E7211D5CE73500F164A9 /* KBPreviewController.swift in Sources */,
+				8FD0E7691D5CF90B00F164A9 /* KeyboardKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,11 +622,6 @@
 			isa = PBXTargetDependency;
 			target = 0341C0891A5557900011A6D7 /* MalayalamKB */;
 			targetProxy = 0341C0901A5557900011A6D7 /* PBXContainerItemProxy */;
-		};
-		035CC3401A51AE9B00A66713 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 035CC3261A51AE9B00A66713 /* MalayalamEditor */;
-			targetProxy = 035CC33F1A51AE9B00A66713 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -534,20 +649,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MalayalamKB/MalayalamKB.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
+				DEVELOPMENT_TEAM = 58V2A74LJ7;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.MalayalamEditor.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeesmon.apps.MalayalamEditor.InscriptKB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c8a55c22-8147-4fe9-920b-f9f319c07713";
+				PROVISIONING_PROFILE_SPECIFIER = "EasyMalayalam Inscript Development";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -555,15 +675,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MalayalamKB/MalayalamKB.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeesmon Jacob (58V2A74LJ7)";
+				DEVELOPMENT_TEAM = 58V2A74LJ7;
 				INFOPLIST_FILE = MalayalamKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.MalayalamEditor.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeesmon.apps.MalayalamEditor.InscriptKB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "822f5d12-0e21-4d0a-b195-432196fed865";
+				PROVISIONING_PROFILE = "02a6c1e9-a0dd-47f3-8b51-9041ad5b57e3";
+				PROVISIONING_PROFILE_SPECIFIER = "EasyMalayalam Inscript Distribution_20171130";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -575,21 +700,31 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -602,10 +737,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "95b69e1f-37d0-4c57-8b5a-7ee7a703e3b7";
+				PROVISIONING_PROFILE = "531a0cd4-064a-4f93-8ae7-6ac551377ffc";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -620,30 +755,41 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeesmon Jacob (58V2A74LJ7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "822f5d12-0e21-4d0a-b195-432196fed865";
+				PROVISIONING_PROFILE = "531a0cd4-064a-4f93-8ae7-6ac551377ffc";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -652,70 +798,44 @@
 		035CC3491A51AE9B00A66713 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				CODE_SIGN_ENTITLEMENTS = MalayalamEditor/MalayalamEditor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 58V2A74LJ7;
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeesmon.apps.MalayalamEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "519a7fbc-22ad-4794-83f5-c4693d5c6685";
+				PROVISIONING_PROFILE = "dca3b30d-967b-4404-8b3c-957761b69fee";
+				PROVISIONING_PROFILE_SPECIFIER = "EasyMalayalam Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		035CC34A1A51AE9B00A66713 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeesmon Jacob (58V2A74LJ7)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				CODE_SIGN_ENTITLEMENTS = MalayalamEditor/MalayalamEditor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 58V2A74LJ7;
 				INFOPLIST_FILE = MalayalamEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeesmon.apps.MalayalamEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "822f5d12-0e21-4d0a-b195-432196fed865";
-			};
-			name = Release;
-		};
-		035CC34C1A51AE9B00A66713 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeesmon Jacob (28LDT98ZTB)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MalayalamEditorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "519a7fbc-22ad-4794-83f5-c4693d5c6685";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MalayalamEditor.app/MalayalamEditor";
-			};
-			name = Debug;
-		};
-		035CC34D1A51AE9B00A66713 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeesmon Jacob (58V2A74LJ7)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MalayalamEditorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeesmon.apps.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "822f5d12-0e21-4d0a-b195-432196fed865";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MalayalamEditor.app/MalayalamEditor";
+				PROVISIONING_PROFILE = "cb1dbd64-8504-4113-a87e-783135703ac1";
+				PROVISIONING_PROFILE_SPECIFIER = "EasyMalayalam Distribution_20171130";
+				SWIFT_OBJC_BRIDGING_HEADER = "MalayalamKB/MalayalamKB-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -749,16 +869,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		035CC34B1A51AE9B00A66713 /* Build configuration list for PBXNativeTarget "MalayalamEditorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				035CC34C1A51AE9B00A66713 /* Debug */,
-				035CC34D1A51AE9B00A66713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8FD0E74F1D5CF90B00F164A9 /* malwords.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8FD0E7501D5CF90B00F164A9 /* malwords.xcdatamodel */,
+			);
+			currentVersion = 8FD0E7501D5CF90B00F164A9 /* malwords.xcdatamodel */;
+			path = malwords.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 035CC31F1A51AE9A00A66713 /* Project object */;
 }
